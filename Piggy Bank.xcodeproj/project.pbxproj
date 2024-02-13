@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C1E2B78DC45005928B0 /* AppDelegate.swift */; };
 		19571C212B78DC45005928B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C202B78DC45005928B0 /* SceneDelegate.swift */; };
-		19571C232B78DC45005928B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C222B78DC45005928B0 /* ViewController.swift */; };
 		19571C262B78DC45005928B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19571C242B78DC45005928B0 /* Main.storyboard */; };
 		19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19571C272B78DC45005928B0 /* Piggy_Bank.xcdatamodeld */; };
 		19571C2B2B78DC46005928B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19571C2A2B78DC46005928B0 /* Assets.xcassets */; };
@@ -30,13 +29,15 @@
 		19571C702B78E64B005928B0 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C622B78E64B005928B0 /* Rubik-BlackItalic.ttf */; };
 		19571C712B78E64B005928B0 /* Rubik-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C632B78E64B005928B0 /* Rubik-SemiBoldItalic.ttf */; };
 		19571C722B78E64B005928B0 /* Rubik-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C642B78E64B005928B0 /* Rubik-ExtraBold.ttf */; };
+		19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C732B78F49C005928B0 /* CustomTabBarController.swift */; };
+		19571C772B78F5A4005928B0 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C762B78F5A4005928B0 /* CardsView.swift */; };
+		19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C782B78F5B6005928B0 /* CardsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19571C1B2B78DC45005928B0 /* Piggy Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Piggy Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19571C1E2B78DC45005928B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19571C202B78DC45005928B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		19571C222B78DC45005928B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		19571C252B78DC45005928B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19571C282B78DC45005928B0 /* Piggy_Bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Piggy_Bank.xcdatamodel; sourceTree = "<group>"; };
 		19571C2A2B78DC46005928B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +59,9 @@
 		19571C622B78E64B005928B0 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
 		19571C632B78E64B005928B0 /* Rubik-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		19571C642B78E64B005928B0 /* Rubik-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-ExtraBold.ttf"; sourceTree = "<group>"; };
+		19571C732B78F49C005928B0 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		19571C762B78F5A4005928B0 /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
+		19571C782B78F5B6005928B0 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,15 +95,16 @@
 			isa = PBXGroup;
 			children = (
 				19571C352B78DE27005928B0 /* LogIn */,
+				19571C752B78F592005928B0 /* Cards */,
 				19571C1E2B78DC45005928B0 /* AppDelegate.swift */,
 				19571C202B78DC45005928B0 /* SceneDelegate.swift */,
-				19571C222B78DC45005928B0 /* ViewController.swift */,
 				19571C242B78DC45005928B0 /* Main.storyboard */,
 				19571C2A2B78DC46005928B0 /* Assets.xcassets */,
 				19571C2C2B78DC46005928B0 /* LaunchScreen.storyboard */,
 				19571C2F2B78DC46005928B0 /* Info.plist */,
 				19571C272B78DC45005928B0 /* Piggy_Bank.xcdatamodeld */,
 				19571C3A2B78E5F3005928B0 /* Fonts */,
+				19571C732B78F49C005928B0 /* CustomTabBarController.swift */,
 			);
 			path = "Piggy Bank";
 			sourceTree = "<group>";
@@ -132,6 +137,15 @@
 				19571C632B78E64B005928B0 /* Rubik-SemiBoldItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		19571C752B78F592005928B0 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				19571C762B78F5A4005928B0 /* CardsView.swift */,
+				19571C782B78F5B6005928B0 /* CardsViewModel.swift */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				19571C372B78DE4C005928B0 /* LogInView.swift in Sources */,
-				19571C232B78DC45005928B0 /* ViewController.swift in Sources */,
+				19571C772B78F5A4005928B0 /* CardsView.swift in Sources */,
 				19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */,
+				19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */,
+				19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */,
 				19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */,
 				19571C392B78DE63005928B0 /* LogInViewModel.swift in Sources */,
 				19571C212B78DC45005928B0 /* SceneDelegate.swift in Sources */,
@@ -379,6 +395,7 @@
 				DEVELOPMENT_TEAM = BYHNB7QH96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Piggy Bank/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -407,6 +424,7 @@
 				DEVELOPMENT_TEAM = BYHNB7QH96;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Piggy Bank/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

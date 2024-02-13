@@ -4,6 +4,7 @@ final class DefaultLogInView: UIViewController {
     
     
     var viewModel: LogInViewModel!
+    var window: UIWindow?
     // MARK: - UI Elements
     private let imageView = UIImageView()
     private let infoLabel = UILabel()
@@ -12,13 +13,15 @@ final class DefaultLogInView: UIViewController {
     private let userNameTextField = UITextField()
     private let lineTextFieldLabel = UILabel()
     private let saveNameButton = UIButton()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
         setupConstraints()
         setupUI()
+        setupKeyboard()
+        setupTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +45,11 @@ final class DefaultLogInView: UIViewController {
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 470).isActive = true
+        infoLabel.bottomAnchor.constraint(equalTo: infoBoldLabel.topAnchor, constant: -8).isActive = true
         infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+                
         infoBoldLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoBoldLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 8).isActive = true
+        infoBoldLabel.bottomAnchor.constraint(equalTo: greetingsLabel.topAnchor, constant: -71).isActive = true
         infoBoldLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         greetingsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -88,21 +91,66 @@ final class DefaultLogInView: UIViewController {
         greetingsLabel.textColor = .white
         greetingsLabel.font = UIFont(name: "Rubik-Regular", size: 18)
         
-        
-        
         userNameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         userNameTextField.font = UIFont(name: "Rubik-Light", size: 18)
         userNameTextField.textColor = .white
         userNameTextField.textAlignment = .center
         
         lineTextFieldLabel.backgroundColor = .white
-
+        
         saveNameButton.setTitle("Start now", for: .normal)
         saveNameButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
         saveNameButton.tintColor = .white
         saveNameButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
         saveNameButton.layer.cornerRadius = 35
+        saveNameButton.addTarget(self, action: #selector(saveNameButtonTapped), for: .touchUpInside)
+
         
     }
+    
+    @objc private func saveNameButtonTapped() {
+        let tabBarController = CustomTabBarController()
+        // Устанавливаем начальные значения для анимации
+        tabBarController.view.frame = window?.frame ?? CGRect.zero
+        tabBarController.view.alpha = 0
+        
+        UIView.transition(with: window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            // Выполняем анимацию изменения rootViewController и его прозрачности
+            self.window?.rootViewController = tabBarController
+            self.window?.rootViewController?.view.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func setupTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
+        view.addGestureRecognizer(tap)
+    }
+    
+    
+    private func setupKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y = -keyboardSize.height
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardHide() {
+        view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    @objc func tapDone() {
+        view.endEditing(true)
+    }
+
     
 }
