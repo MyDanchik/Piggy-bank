@@ -1,6 +1,6 @@
 import UIKit
 
-final class DefaultCardsView: UIViewController {
+final class DefaultDiscountView: UIViewController {
     
     private let titleLabel = UILabel()
     
@@ -23,7 +23,7 @@ final class DefaultCardsView: UIViewController {
         
     }
     private func setupUI() {
-        titleLabel.text = "Your cards"
+        titleLabel.text = "Your discount"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         

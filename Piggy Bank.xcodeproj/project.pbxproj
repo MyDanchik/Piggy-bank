@@ -32,6 +32,12 @@
 		19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C732B78F49C005928B0 /* CustomTabBarController.swift */; };
 		19571C772B78F5A4005928B0 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C762B78F5A4005928B0 /* CardsView.swift */; };
 		19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C782B78F5B6005928B0 /* CardsViewModel.swift */; };
+		986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */; };
+		986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2602B7B925B00BB8C82 /* BanksView.swift */; };
+		986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */; };
+		986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2652B7BA97D00BB8C82 /* DiscountView.swift */; };
+		986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */; };
+		986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +68,12 @@
 		19571C732B78F49C005928B0 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		19571C762B78F5A4005928B0 /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		19571C782B78F5B6005928B0 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
+		986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanksViewModel.swift; sourceTree = "<group>"; };
+		986CC2602B7B925B00BB8C82 /* BanksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanksView.swift; sourceTree = "<group>"; };
+		986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountViewModel.swift; sourceTree = "<group>"; };
+		986CC2652B7BA97D00BB8C82 /* DiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountView.swift; sourceTree = "<group>"; };
+		986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
+		986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,9 @@
 			children = (
 				19571C352B78DE27005928B0 /* LogIn */,
 				19571C752B78F592005928B0 /* Cards */,
+				986CC2632B7BA94F00BB8C82 /* Discount */,
+				986CC25E2B7B923000BB8C82 /* Banks */,
+				986CC2682B7BAA1F00BB8C82 /* Exchange Rate */,
 				19571C1E2B78DC45005928B0 /* AppDelegate.swift */,
 				19571C202B78DC45005928B0 /* SceneDelegate.swift */,
 				19571C242B78DC45005928B0 /* Main.storyboard */,
@@ -146,6 +161,33 @@
 				19571C782B78F5B6005928B0 /* CardsViewModel.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		986CC25E2B7B923000BB8C82 /* Banks */ = {
+			isa = PBXGroup;
+			children = (
+				986CC2602B7B925B00BB8C82 /* BanksView.swift */,
+				986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */,
+			);
+			path = Banks;
+			sourceTree = "<group>";
+		};
+		986CC2632B7BA94F00BB8C82 /* Discount */ = {
+			isa = PBXGroup;
+			children = (
+				986CC2652B7BA97D00BB8C82 /* DiscountView.swift */,
+				986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */,
+			);
+			path = Discount;
+			sourceTree = "<group>";
+		};
+		986CC2682B7BAA1F00BB8C82 /* Exchange Rate */ = {
+			isa = PBXGroup;
+			children = (
+				986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */,
+				986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */,
+			);
+			path = "Exchange Rate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +278,14 @@
 				19571C372B78DE4C005928B0 /* LogInView.swift in Sources */,
 				19571C772B78F5A4005928B0 /* CardsView.swift in Sources */,
 				19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */,
+				986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */,
+				986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */,
 				19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */,
 				19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */,
+				986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */,
+				986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */,
+				986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */,
+				986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */,
 				19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */,
 				19571C392B78DE63005928B0 /* LogInViewModel.swift in Sources */,
 				19571C212B78DC45005928B0 /* SceneDelegate.swift in Sources */,

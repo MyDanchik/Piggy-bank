@@ -15,11 +15,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let view = DefaultLogInView()
         let viewModel = DefaultLogInViewModel()
         view.viewModel = viewModel
-        view.window = window
         let viewNavigationController = UINavigationController(rootViewController: view)
         window?.rootViewController = viewNavigationController
         window?.makeKeyAndVisible()
     }
+    
 
 
     func sceneDidDisconnect(_ scene: UIScene) {

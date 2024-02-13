@@ -4,7 +4,6 @@ final class DefaultLogInView: UIViewController {
     
     
     var viewModel: LogInViewModel!
-    var window: UIWindow?
     // MARK: - UI Elements
     private let imageView = UIImageView()
     private let infoLabel = UILabel()
@@ -109,17 +108,12 @@ final class DefaultLogInView: UIViewController {
     }
     
     @objc private func saveNameButtonTapped() {
-        let tabBarController = CustomTabBarController()
-        // Устанавливаем начальные значения для анимации
-        tabBarController.view.frame = window?.frame ?? CGRect.zero
-        tabBarController.view.alpha = 0
-        
-        UIView.transition(with: window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            // Выполняем анимацию изменения rootViewController и его прозрачности
-            self.window?.rootViewController = tabBarController
-            self.window?.rootViewController?.view.alpha = 1
-        }, completion: nil)
+        let nextViewController = CustomTabBarController()
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalTransitionStyle = .crossDissolve
+        present(nextViewController, animated: true, completion: nil)
     }
+
     
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
