@@ -2,6 +2,15 @@ import UIKit
 
 final class DefaultBanksView: UIViewController {
     
+    var viewModel: DefaultBanksViewModel! {
+        didSet {
+            viewModel.transition = { [weak self] addBanksView in
+                self?.navigationController?.pushViewController(addBanksView, animated: true)
+                self?.navigationItem.backButtonTitle = ""
+            }
+        }
+    }
+    
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private var tableView = UITableView()
@@ -17,6 +26,12 @@ final class DefaultBanksView: UIViewController {
         setupConstraints()
         setupUI()
         setupTableView()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel = DefaultBanksViewModel()
     }
     private func setupSubviews() {
         view.addSubview(titleLabel)
@@ -40,7 +55,7 @@ final class DefaultBanksView: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -49,8 +64,10 @@ final class DefaultBanksView: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
-
+    
     private func setupUI() {
+        
+        
         titleLabel.text = "Your piggy banks"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
@@ -59,12 +76,15 @@ final class DefaultBanksView: UIViewController {
         addButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
-        addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(self.transitionToAddBanksView), for: .touchUpInside)
     }
     
-    @objc func tapOnAddButton() {
+    
+    @objc func transitionToAddBanksView() {
+        viewModel.transitionToAddBanksView()
         print("add")
     }
+    
 }
 
 extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
@@ -85,5 +105,5 @@ extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
+    
 }

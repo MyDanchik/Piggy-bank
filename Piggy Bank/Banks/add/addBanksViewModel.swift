@@ -1,8 +1,5 @@
-//
-//  addBanksViewModel.swift
-//  Piggy Bank
-//
-//  Created by Daniil Yushkevich on 15.02.24.
-//
+import UIKit
 
-import Foundation
+final class DefaultAddBanksViewModel {
+    
+}

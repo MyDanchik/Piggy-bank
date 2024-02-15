@@ -14,7 +14,7 @@ class CustomTabBarController: UITabBarController {
         firstViewController.tabBarItem.title = nil
         firstViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         firstViewController.tabBarItem.image = UIImage(named: "Vector")
-
+        
         let secondViewController = UINavigationController(rootViewController: DefaultDiscountView())
         secondViewController.tabBarItem.title = nil
         secondViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
@@ -37,5 +37,5 @@ class CustomTabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = .backgroundColorMain
         tabBar.backgroundColor = UIColor(red: 26/255, green: 21/255, blue: 57/255, alpha: 1.0)
     }
-
+    
 }

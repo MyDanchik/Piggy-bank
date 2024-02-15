@@ -22,7 +22,7 @@ final class DefaultCardsView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
-
+        
     }
     
     private func setupConstraints() {
@@ -84,5 +84,5 @@ extension DefaultCardsView: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
+    
 }

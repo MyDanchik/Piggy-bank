@@ -9,7 +9,7 @@ final class DefaultDiscountView: UIViewController {
     let cardNames = ["Discount 1", "Discount 2", "Discount 3"]
     let cardPrices = ["12.000", "15.000", "18.000"]
     let cardColors: [UIColor] = [.card2, .card1, .card3]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColorMain
@@ -22,9 +22,9 @@ final class DefaultDiscountView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
-
+        
     }
-
+    
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
@@ -49,7 +49,7 @@ final class DefaultDiscountView: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
-
+    
     private func setupUI() {
         titleLabel.text = "Your discount"
         titleLabel.textColor = .black
@@ -61,7 +61,7 @@ final class DefaultDiscountView: UIViewController {
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
     }
-
+    
     @objc func tapOnAddButton() {
         print("add")
     }
@@ -86,6 +86,6 @@ extension DefaultDiscountView: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
+    
 }
 
