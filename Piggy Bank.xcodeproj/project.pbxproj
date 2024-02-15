@@ -32,6 +32,15 @@
 		19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C732B78F49C005928B0 /* CustomTabBarController.swift */; };
 		19571C772B78F5A4005928B0 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C762B78F5A4005928B0 /* CardsView.swift */; };
 		19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C782B78F5B6005928B0 /* CardsViewModel.swift */; };
+		982A5A7B2B7DF9BE00E7434F /* CardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982A5A7A2B7DF9BE00E7434F /* CardsTableViewCell.swift */; };
+		9833D6662B7CE7D3008B8073 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9833D6652B7CE7D3008B8073 /* Alamofire */; };
+		9833D6682B7CE806008B8073 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833D6672B7CE806008B8073 /* NetworkManager.swift */; };
+		9833D66A2B7CE834008B8073 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833D6692B7CE834008B8073 /* Exchange.swift */; };
+		9833D66E2B7CE88B008B8073 /* ExchangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833D66D2B7CE88B008B8073 /* ExchangeTableViewCell.swift */; };
+		98696D862B7E2265009C43B0 /* DiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98696D852B7E2265009C43B0 /* DiscountTableViewCell.swift */; };
+		98696D882B7E238A009C43B0 /* BanksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98696D872B7E238A009C43B0 /* BanksTableViewCell.swift */; };
+		98696D8B2B7E2577009C43B0 /* addBanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98696D8A2B7E2577009C43B0 /* addBanksView.swift */; };
+		98696D8D2B7E2582009C43B0 /* addBanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98696D8C2B7E2582009C43B0 /* addBanksViewModel.swift */; };
 		986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */; };
 		986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2602B7B925B00BB8C82 /* BanksView.swift */; };
 		986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */; };
@@ -68,6 +77,14 @@
 		19571C732B78F49C005928B0 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		19571C762B78F5A4005928B0 /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		19571C782B78F5B6005928B0 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
+		982A5A7A2B7DF9BE00E7434F /* CardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTableViewCell.swift; sourceTree = "<group>"; };
+		9833D6672B7CE806008B8073 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9833D6692B7CE834008B8073 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
+		9833D66D2B7CE88B008B8073 /* ExchangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTableViewCell.swift; sourceTree = "<group>"; };
+		98696D852B7E2265009C43B0 /* DiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountTableViewCell.swift; sourceTree = "<group>"; };
+		98696D872B7E238A009C43B0 /* BanksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanksTableViewCell.swift; sourceTree = "<group>"; };
+		98696D8A2B7E2577009C43B0 /* addBanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBanksView.swift; sourceTree = "<group>"; };
+		98696D8C2B7E2582009C43B0 /* addBanksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBanksViewModel.swift; sourceTree = "<group>"; };
 		986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanksViewModel.swift; sourceTree = "<group>"; };
 		986CC2602B7B925B00BB8C82 /* BanksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanksView.swift; sourceTree = "<group>"; };
 		986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9833D6662B7CE7D3008B8073 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,15 +177,27 @@
 			children = (
 				19571C762B78F5A4005928B0 /* CardsView.swift */,
 				19571C782B78F5B6005928B0 /* CardsViewModel.swift */,
+				982A5A7A2B7DF9BE00E7434F /* CardsTableViewCell.swift */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		98696D892B7E2565009C43B0 /* add */ = {
+			isa = PBXGroup;
+			children = (
+				98696D8A2B7E2577009C43B0 /* addBanksView.swift */,
+				98696D8C2B7E2582009C43B0 /* addBanksViewModel.swift */,
+			);
+			path = add;
 			sourceTree = "<group>";
 		};
 		986CC25E2B7B923000BB8C82 /* Banks */ = {
 			isa = PBXGroup;
 			children = (
+				98696D892B7E2565009C43B0 /* add */,
 				986CC2602B7B925B00BB8C82 /* BanksView.swift */,
 				986CC25F2B7B925B00BB8C82 /* BanksViewModel.swift */,
+				98696D872B7E238A009C43B0 /* BanksTableViewCell.swift */,
 			);
 			path = Banks;
 			sourceTree = "<group>";
@@ -177,6 +207,7 @@
 			children = (
 				986CC2652B7BA97D00BB8C82 /* DiscountView.swift */,
 				986CC2642B7BA97D00BB8C82 /* DiscountViewModel.swift */,
+				98696D852B7E2265009C43B0 /* DiscountTableViewCell.swift */,
 			);
 			path = Discount;
 			sourceTree = "<group>";
@@ -186,6 +217,9 @@
 			children = (
 				986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */,
 				986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */,
+				9833D66D2B7CE88B008B8073 /* ExchangeTableViewCell.swift */,
+				9833D6672B7CE806008B8073 /* NetworkManager.swift */,
+				9833D6692B7CE834008B8073 /* Exchange.swift */,
 			);
 			path = "Exchange Rate";
 			sourceTree = "<group>";
@@ -206,6 +240,9 @@
 			dependencies = (
 			);
 			name = "Piggy Bank";
+			packageProductDependencies = (
+				9833D6652B7CE7D3008B8073 /* Alamofire */,
+			);
 			productName = "Piggy Bank";
 			productReference = 19571C1B2B78DC45005928B0 /* Piggy Bank.app */;
 			productType = "com.apple.product-type.application";
@@ -234,6 +271,9 @@
 				Base,
 			);
 			mainGroup = 19571C122B78DC45005928B0;
+			packageReferences = (
+				9833D6642B7CE7D3008B8073 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 19571C1C2B78DC45005928B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,15 +319,23 @@
 				19571C772B78F5A4005928B0 /* CardsView.swift in Sources */,
 				19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */,
 				986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */,
+				9833D66A2B7CE834008B8073 /* Exchange.swift in Sources */,
 				986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */,
 				19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */,
 				19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */,
 				986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */,
 				986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */,
 				986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */,
+				982A5A7B2B7DF9BE00E7434F /* CardsTableViewCell.swift in Sources */,
 				986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */,
+				98696D862B7E2265009C43B0 /* DiscountTableViewCell.swift in Sources */,
 				19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */,
+				9833D6682B7CE806008B8073 /* NetworkManager.swift in Sources */,
 				19571C392B78DE63005928B0 /* LogInViewModel.swift in Sources */,
+				98696D882B7E238A009C43B0 /* BanksTableViewCell.swift in Sources */,
+				98696D8B2B7E2577009C43B0 /* addBanksView.swift in Sources */,
+				9833D66E2B7CE88B008B8073 /* ExchangeTableViewCell.swift in Sources */,
+				98696D8D2B7E2582009C43B0 /* addBanksViewModel.swift in Sources */,
 				19571C212B78DC45005928B0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9833D6642B7CE7D3008B8073 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9833D6652B7CE7D3008B8073 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9833D6642B7CE7D3008B8073 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		19571C272B78DC45005928B0 /* Piggy_Bank.xcdatamodeld */ = {

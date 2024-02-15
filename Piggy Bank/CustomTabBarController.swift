@@ -12,7 +12,6 @@ class CustomTabBarController: UITabBarController {
         // Создание экземпляров контроллеров, которые будут вкладками в таб-баре
         let firstViewController = UINavigationController(rootViewController: DefaultCardsView())
         firstViewController.tabBarItem.title = nil
-        //firstViewController.title = "My Movie List"
         firstViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         firstViewController.tabBarItem.image = UIImage(named: "Vector")
 
@@ -34,9 +33,8 @@ class CustomTabBarController: UITabBarController {
         // Установка контроллеров в таб-бар контроллер
         viewControllers = [firstViewController, secondViewController, thirdViewController, fourthViewController]
         
-        //tabBar.isTranslucent = false
-        tabBar.tintColor = .white
-        tabBar.barTintColor = .white
+        tabBar.tintColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
+        tabBar.unselectedItemTintColor = .backgroundColorMain
         tabBar.backgroundColor = UIColor(red: 26/255, green: 21/255, blue: 57/255, alpha: 1.0)
     }
 
