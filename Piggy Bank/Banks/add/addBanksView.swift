@@ -2,6 +2,7 @@ import UIKit
 
 final class DefaultAddBanksView: UIViewController {
     
+    
     var viewModel: DefaultAddBanksViewModel!
     
     private let titleLabel = UILabel()
@@ -12,6 +13,23 @@ final class DefaultAddBanksView: UIViewController {
     private let createButton = UIButton()
     private let lineSumTextFieldLabel = UILabel()
     private let lineNameTextFieldLabel = UILabel()
+    private let iconLabel = UILabel()
+    private let imageView = UIImageView()
+    private let previousButton = UIButton()
+    private let nextButton = UIButton()
+    
+
+    private var currentImageIndex = 0
+    
+    private let images: [UIImage] = [UIImage(named: "icon1")!,
+                                     UIImage(named: "icon2")!,
+                                     UIImage(named: "icon3")!,
+                                     UIImage(named: "icon4")!,
+                                     UIImage(named: "icon5")!,
+                                     UIImage(named: "icon6")!]
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +39,10 @@ final class DefaultAddBanksView: UIViewController {
         setupUI()
         setupKeyboard()
         setupTap()
+        
+        if !images.isEmpty {
+            updateImageView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,9 +64,36 @@ final class DefaultAddBanksView: UIViewController {
         view.addSubview(lineNameTextFieldLabel)
         view.addSubview(nameTextField)
         view.addSubview(nameLabel)
+        view.addSubview(iconLabel)
+        view.addSubview(imageView)
+        
+        
+        view.addSubview(previousButton)
+        view.addSubview(nextButton)
+        
+
         
     }
     private func setupConstraints() {
+        
+        iconLabel.translatesAutoresizingMaskIntoConstraints = false
+        iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: -100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 106).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 106).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        previousButton.translatesAutoresizingMaskIntoConstraints = false
+        previousButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        previousButton.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -40).isActive = true
+        
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        nextButton.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 40).isActive = true
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -87,7 +136,59 @@ final class DefaultAddBanksView: UIViewController {
         
     }
     
+    
+    
+    private func updateImageView() {
+        imageView.image = images[currentImageIndex]
+    }
+    
+    @objc private func previousButtonTapped() {
+        if currentImageIndex > 0 {
+            currentImageIndex -= 1
+            updateImageView()
+        }
+    }
+    
+    @objc private func nextButtonTapped() {
+        if currentImageIndex < images.count - 1 {
+            currentImageIndex += 1
+            updateImageView()
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     private func setupUI() {
+        
+        
+        iconLabel.text = "Icon"
+        iconLabel.textColor = .black
+        iconLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
+        
+        previousButton.tintColor = .black
+        previousButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        previousButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        previousButton.setTitleColor(.black, for: .normal)
+        previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
+
+        
+        nextButton.tintColor = .black
+        nextButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        nextButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        nextButton.setTitleColor(.black, for: .normal)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        
         titleLabel.text = "Creat piggy bank"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)

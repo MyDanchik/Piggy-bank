@@ -6,6 +6,7 @@ final class DefaultExchangeView: UIViewController {
     private let addButton = UIButton()
     private let tableView = UITableView()
     private var exchangeRates: [ExchangeRate] = []
+    private let lastUpdatedLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ final class DefaultExchangeView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
+        view.addSubview(lastUpdatedLabel)
     }
     
     private func setupTableView() {
@@ -41,6 +43,12 @@ final class DefaultExchangeView: UIViewController {
                 DispatchQueue.main.async {
                     self?.exchangeRates = filteredRates
                     self?.tableView.reloadData()
+                    
+                    // Обновляем текст метки с временем последней загрузки
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    self?.lastUpdatedLabel.text = "Last updated: \(dateFormatter.string(from: Date())) NBRB.BY"
+                    
                     self?.stopLoadingAnimation()
                 }
             } else {
@@ -48,6 +56,7 @@ final class DefaultExchangeView: UIViewController {
             }
         }
     }
+
     
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,11 +67,18 @@ final class DefaultExchangeView: UIViewController {
         addButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
         
+        lastUpdatedLabel.translatesAutoresizingMaskIntoConstraints = false
+        lastUpdatedLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        lastUpdatedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        tableView.topAnchor.constraint(equalTo: lastUpdatedLabel.bottomAnchor, constant: 5).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+
+
     }
     
     private func setupUI() {
@@ -75,6 +91,9 @@ final class DefaultExchangeView: UIViewController {
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
+        
+        lastUpdatedLabel.textColor = .gray
+        lastUpdatedLabel.font = UIFont(name: "Rubik-Light", size: 14)
     }
     
     private func startLoadingAnimation() {
