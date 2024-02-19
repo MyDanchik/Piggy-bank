@@ -4,5 +4,6 @@
         <attribute name="imageBank" attributeType="Binary"/>
         <attribute name="nameBank" attributeType="String"/>
         <attribute name="priceBank" attributeType="String"/>
+        <attribute name="savedPriceBank" optional="YES" attributeType="String"/>
     </entity>
 </model>

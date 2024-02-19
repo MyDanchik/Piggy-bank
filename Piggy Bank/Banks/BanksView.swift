@@ -115,4 +115,12 @@ extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
             present(alertDelete, animated: true)
         }
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fullBirthdaysView = DefaultModifyBanksView()
+        let birthdays = banksList[indexPath.row]
+        fullBirthdaysView.configureFullBirthdays(banks: birthdays)
+        navigationController?.pushViewController(fullBirthdaysView, animated: true)
+    }
 }

@@ -24,6 +24,8 @@ final class CoreDataManager {
 
         let banks = NSManagedObject(entity: entity, insertInto: managedContext)
 
+        banks.setValue("0", forKey: "savedPriceBank")
+
         banks.setValue(imageBank, forKey: "imageBank")
         banks.setValue(nameBank, forKey: "nameBank")
         banks.setValue(priceBank, forKey: "priceBank")
@@ -35,6 +37,52 @@ final class CoreDataManager {
             return .failure(.error("Could not save. \(error)"))
         }
     }
+
+    
+    func modifyBanks(savedPriceBank: String, forBankWithName name: String) -> Result<Void, CoreDataError> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .failure(.error("AppDelegate not found"))
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bank")
+        fetchRequest.predicate = NSPredicate(format: "nameBank == %@", name)
+
+        do {
+            let banks = try managedContext.fetch(fetchRequest)
+            if let bankToUpdate = banks.first as? NSManagedObject {
+                bankToUpdate.setValue(savedPriceBank, forKey: "savedPriceBank")
+                try managedContext.save()
+                return .success(())
+            } else {
+                return .failure(.error("Bank with name \(name) not found"))
+            }
+        } catch {
+            return .failure(.error("Could not modify bank: \(error)"))
+        }
+    }
+    
+    func getCurrentBank(withName name: String) -> Bank? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            print("AppDelegate not found")
+            return nil
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<Bank>(entityName: "Bank")
+        fetchRequest.predicate = NSPredicate(format: "nameBank == %@", name)
+
+        do {
+            let banks = try managedContext.fetch(fetchRequest)
+            return banks.first
+        } catch {
+            print("Error fetching bank: \(error)")
+            return nil
+        }
+    }
+    
     
     func getBanks() -> Result<[Bank], CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
