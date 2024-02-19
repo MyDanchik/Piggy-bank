@@ -73,6 +73,10 @@ final class CardsTableViewCell: UITableViewCell {
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
         imageCard.image = UIImage(named: "Group1")
+        
+        
+        
+
     }
     
     // MARK: - Configuration

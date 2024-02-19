@@ -4,6 +4,7 @@ final class DefaultAddBanksView: UIViewController {
     
     
     var viewModel: DefaultAddBanksViewModel!
+    var onSave: (() -> Void)?
     
     private let titleLabel = UILabel()
     private let nameLabel = UILabel()
@@ -27,6 +28,7 @@ final class DefaultAddBanksView: UIViewController {
                                      UIImage(named: "icon4")!,
                                      UIImage(named: "icon5")!,
                                      UIImage(named: "icon6")!]
+    
     
     
     
@@ -66,13 +68,8 @@ final class DefaultAddBanksView: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(iconLabel)
         view.addSubview(imageView)
-        
-        
         view.addSubview(previousButton)
         view.addSubview(nextButton)
-        
-
-        
     }
     private func setupConstraints() {
         
@@ -156,13 +153,6 @@ final class DefaultAddBanksView: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
     private func setupUI() {
         
         
@@ -211,6 +201,8 @@ final class DefaultAddBanksView: UIViewController {
         sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         sumTextField.font = UIFont(name: "Rubik-Light", size: 18)
         sumTextField.textColor = .black
+        sumTextField.delegate = self // Установка делегата для sumTextField
+        sumTextField.keyboardType = .numberPad // Установка типа клавиатуры
         sumTextField.textAlignment = .center
         
         lineSumTextFieldLabel.backgroundColor = .black
@@ -225,8 +217,13 @@ final class DefaultAddBanksView: UIViewController {
     
     @objc func saveButtonTapped() {
         print("save")
+        saveBanks()
+        goBack()
+        
     }
-    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
     
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
@@ -260,4 +257,38 @@ final class DefaultAddBanksView: UIViewController {
     }
     
     
+    
+    private func saveBanks() {
+        // Get necessary data from UI elements
+        guard let imageBanks = imageView.image?.jpegData(compressionQuality: 1.0),
+              let nameBanks = nameTextField.text, !nameBanks.isEmpty,
+              let priceBanks = sumTextField.text, !priceBanks.isEmpty
+        else {
+            // Handle invalid input
+            return
+        }
+
+        // Call method in view model to save data
+        viewModel.saveNewBanks(imageBanks: imageBanks,
+                                    nameBanks: nameBanks,
+                                    priceBanks: priceBanks)
+
+        // After saving, notify the parent view controller
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.onSave?()
+        }
+    }
+
+
+    
+    
+}
+
+extension DefaultAddBanksView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Проверяем, является ли вводимый символ числом
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
 }

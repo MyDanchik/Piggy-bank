@@ -47,6 +47,7 @@
 		986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2652B7BA97D00BB8C82 /* DiscountView.swift */; };
 		986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */; };
 		986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */; };
+		988DB2EA2B832A8F0057E34F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DB2E92B832A8F0057E34F /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		986CC2652B7BA97D00BB8C82 /* DiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountView.swift; sourceTree = "<group>"; };
 		986CC2692B7BAA4B00BB8C82 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		986CC26A2B7BAA4B00BB8C82 /* ExchangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		988DB2E92B832A8F0057E34F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				19571C2C2B78DC46005928B0 /* LaunchScreen.storyboard */,
 				19571C2F2B78DC46005928B0 /* Info.plist */,
 				19571C272B78DC45005928B0 /* Piggy_Bank.xcdatamodeld */,
+				988DB2E92B832A8F0057E34F /* CoreDataManager.swift */,
 				19571C3A2B78E5F3005928B0 /* Fonts */,
 				19571C732B78F49C005928B0 /* CustomTabBarController.swift */,
 			);
@@ -323,6 +326,7 @@
 				986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */,
 				19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */,
 				19571C792B78F5B6005928B0 /* CardsViewModel.swift in Sources */,
+				988DB2EA2B832A8F0057E34F /* CoreDataManager.swift in Sources */,
 				986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */,
 				986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */,
 				986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */,

@@ -30,7 +30,7 @@ final class DefaultExchangeView: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ExchangeTableViewCell.self, forCellReuseIdentifier: "ExchangeTableViewCell")
-        tableView.rowHeight = 150
+        tableView.rowHeight = 120
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
