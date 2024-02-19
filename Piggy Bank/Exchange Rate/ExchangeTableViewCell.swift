@@ -53,7 +53,7 @@ final class ExchangeTableViewCell: UITableViewCell {
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 5)
         customView.layer.shadowRadius = 6
-        customView.layer.shadowOpacity = 0.30
+        customView.layer.shadowOpacity = 0.20
         customView.layer.borderWidth = 2.0
         customView.layer.borderColor = UIColor.purple.cgColor
         customView.layer.cornerRadius = 30

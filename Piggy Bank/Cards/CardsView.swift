@@ -8,7 +8,6 @@ final class DefaultCardsView: UIViewController {
     
     let cardNames = ["Card 1", "Card 2", "Card 3"]
     let cardPrices = ["12.000", "15.000", "18.000"]
-    let cardColors: [UIColor] = [.card1, .card2, .card3]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +76,10 @@ extension DefaultCardsView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CardsTableViewCell", for: indexPath) as? CardsTableViewCell else {
             return UITableViewCell()
         }
-        guard indexPath.row < cardNames.count && indexPath.row < cardPrices.count && indexPath.row < cardColors.count else {
+        guard indexPath.row < cardNames.count && indexPath.row < cardPrices.count else {
             return cell
         }
-        cell.configure(name: cardNames[indexPath.row], price: cardPrices[indexPath.row], color: cardColors[indexPath.row])
+        cell.configure(name: cardNames[indexPath.row], price: cardPrices[indexPath.row])
         
         return cell
     }

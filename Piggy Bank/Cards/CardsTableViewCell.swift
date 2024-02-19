@@ -58,16 +58,19 @@ final class CardsTableViewCell: UITableViewCell {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .backgroundColorMain
         
-        customView.layer.cornerRadius = 30
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customView.layer.shadowRadius = 5
-        customView.layer.shadowOpacity = 0.50
+        customView.layer.shadowRadius = 6
+        customView.layer.shadowOpacity = 0.20
+        customView.layer.borderWidth = 2.0
+        customView.layer.borderColor = UIColor.purple.cgColor
+        customView.layer.cornerRadius = 30
+        customView.backgroundColor = .backgroundColorMain
         
-        nameLabel.textColor = .white
+        nameLabel.textColor = .black
         nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)
         
-        priceLabel.textColor = .white
+        priceLabel.textColor = .black
         priceLabel.font = UIFont(name: "Rubik-Regular", size: 18)
         
         imageCard.contentMode = .scaleAspectFill
@@ -80,9 +83,8 @@ final class CardsTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configuration
-    func configure(name: String, price: String, color: UIColor) {
+    func configure(name: String, price: String) {
         nameLabel.text = name
         priceLabel.text = price
-        customView.backgroundColor = color
     }
 }

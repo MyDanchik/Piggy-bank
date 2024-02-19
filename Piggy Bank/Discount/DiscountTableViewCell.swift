@@ -62,7 +62,7 @@ final class DiscountTableViewCell: UITableViewCell {
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 5)
         customView.layer.shadowRadius = 5
-        customView.layer.shadowOpacity = 0.50
+        customView.layer.shadowOpacity = 0.20
         
         nameLabel.textColor = .white
         nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)
