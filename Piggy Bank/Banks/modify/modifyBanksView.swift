@@ -1,5 +1,4 @@
 import UIKit
-import CoreData
 
 final class DefaultModifyBanksView: UIViewController {
     
@@ -89,7 +88,6 @@ final class DefaultModifyBanksView: UIViewController {
         replenishTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         replenishTextLabel.widthAnchor.constraint(equalTo: createButton.widthAnchor, multiplier: 0.7).isActive = true
         
-        
         lineReplenishTextFieldLabel.translatesAutoresizingMaskIntoConstraints = false
         lineReplenishTextFieldLabel.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -70).isActive = true
         lineReplenishTextFieldLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -137,8 +135,8 @@ final class DefaultModifyBanksView: UIViewController {
         replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         replenishTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
         replenishTextLabel.textColor = .black
-        replenishTextLabel.delegate = self // Установка делегата для sumTextField
-        replenishTextLabel.keyboardType = .numberPad // Установка типа клавиатуры
+        replenishTextLabel.delegate = self
+        replenishTextLabel.keyboardType = .numberPad
         replenishTextLabel.textAlignment = .center
         
         lineReplenishTextFieldLabel.backgroundColor = .black
@@ -154,8 +152,6 @@ final class DefaultModifyBanksView: UIViewController {
     @objc func saveButtonTapped() {
         print("save")
         saveBanks()
-        //goBack()
-        
     }
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
@@ -223,13 +219,13 @@ final class DefaultModifyBanksView: UIViewController {
         case .success:
             print("Data saved successfully")
             onSave?()
-            configureFullBirthdays(banks: currentBank)
+            configureFullBanks(banks: currentBank)
         case .failure(let error):
             print("Error saving data: \(error)")
         }
     }
 
-    func configureFullBirthdays(banks: Bank) {
+    func configureFullBanks(banks: Bank) {
         if let imageData = banks.imageBank, let bankImage = UIImage(data: imageData) {
             self.imageView.image = bankImage
         } else {

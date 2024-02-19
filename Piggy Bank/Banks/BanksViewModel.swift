@@ -18,8 +18,7 @@ final class DefaultBanksViewModel {
         addBanksView.viewModel = addBanksViewModel
         transition?(addBanksView)
     }
-    
-    
+        
     func loadBanks() {
         let operationResult = CoreDataManager.instance.getBanks()
         switch operationResult {

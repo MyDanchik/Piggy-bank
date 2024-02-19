@@ -18,8 +18,6 @@ final class DefaultAddBanksView: UIViewController {
     private let imageView = UIImageView()
     private let previousButton = UIButton()
     private let nextButton = UIButton()
-    
-
     private var currentImageIndex = 0
     
     private let images: [UIImage] = [UIImage(named: "icon1")!,
@@ -28,10 +26,6 @@ final class DefaultAddBanksView: UIViewController {
                                      UIImage(named: "icon4")!,
                                      UIImage(named: "icon5")!,
                                      UIImage(named: "icon6")!]
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,8 +127,6 @@ final class DefaultAddBanksView: UIViewController {
         
     }
     
-    
-    
     private func updateImageView() {
         imageView.image = images[currentImageIndex]
     }
@@ -154,15 +146,11 @@ final class DefaultAddBanksView: UIViewController {
     }
     
     private func setupUI() {
-        
-        
         iconLabel.text = "Icon"
         iconLabel.textColor = .black
         iconLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
-        
         imageView.contentMode = .scaleAspectFit
-        
         
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         
@@ -230,7 +218,6 @@ final class DefaultAddBanksView: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    
     private func setupKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -255,38 +242,26 @@ final class DefaultAddBanksView: UIViewController {
     @objc func tapDone() {
         view.endEditing(true)
     }
-    
-    
-    
+
     private func saveBanks() {
-        // Get necessary data from UI elements
         guard let imageBanks = imageView.image?.jpegData(compressionQuality: 1.0),
               let nameBanks = nameTextField.text, !nameBanks.isEmpty,
               let priceBanks = sumTextField.text, !priceBanks.isEmpty
         else {
-            // Handle invalid input
             return
         }
-
-        // Call method in view model to save data
         viewModel.saveNewBanks(imageBanks: imageBanks,
                                     nameBanks: nameBanks,
                                     priceBanks: priceBanks)
 
-        // After saving, notify the parent view controller
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.onSave?()
         }
     }
-
-
-    
-    
 }
 
 extension DefaultAddBanksView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Проверяем, является ли вводимый символ числом
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)

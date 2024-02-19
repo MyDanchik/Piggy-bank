@@ -1,4 +1,3 @@
-
 import UIKit
 
 final class BanksTableViewCell: UITableViewCell {
@@ -7,8 +6,6 @@ final class BanksTableViewCell: UITableViewCell {
     let nameLabel = UILabel()
     let priceLabel = UILabel()
     let imageCard = UIImageView()
-    
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,7 +20,6 @@ final class BanksTableViewCell: UITableViewCell {
         setupSubviews()
         setupConstraints()
     }
-
 
     // MARK: - UI Setup
     
@@ -76,12 +72,9 @@ final class BanksTableViewCell: UITableViewCell {
         priceLabel.textColor = .black
         priceLabel.font = UIFont(name: "Rubik-Regular", size: 18)
         
-        
         imageCard.layer.cornerRadius = 35
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
-        
-        
     }
     
     // MARK: - Configuration
@@ -95,6 +88,4 @@ final class BanksTableViewCell: UITableViewCell {
         nameLabel.text = banks.nameBank
         priceLabel.text = "\(banks.priceBank ?? "") $"
     }
-
-    
 }

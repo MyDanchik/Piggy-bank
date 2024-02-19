@@ -25,7 +25,6 @@ final class DefaultBanksView: UIViewController {
     private let addButton = UIButton()
     private var tableView = UITableView()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColorMain
@@ -101,7 +100,6 @@ extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let bank = banksList[indexPath.row]
@@ -115,12 +113,11 @@ extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
             present(alertDelete, animated: true)
         }
     }
-    
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fullBirthdaysView = DefaultModifyBanksView()
-        let birthdays = banksList[indexPath.row]
-        fullBirthdaysView.configureFullBirthdays(banks: birthdays)
-        navigationController?.pushViewController(fullBirthdaysView, animated: true)
+        let fullBanksView = DefaultModifyBanksView()
+        let banks = banksList[indexPath.row]
+        fullBanksView.configureFullBanks(banks: banks)
+        navigationController?.pushViewController(fullBanksView, animated: true)
     }
 }

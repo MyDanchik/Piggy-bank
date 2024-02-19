@@ -2,7 +2,6 @@ import UIKit
 
 protocol ModifyBanksViewModel {
     func modifyMyBanks(savedPriceBank: String?, forBankWithName: String)
-    
 }
 
 final class DefaultModifyBanksViewModel: ModifyBanksViewModel {
