@@ -2,13 +2,28 @@ import UIKit
 
 final class DefaultDiscountView: UIViewController {
     
+    
+    var viewModel: DefaultDiscountViewModel! {
+        didSet {
+            viewModel.transition = { [weak self] addDiscountView in
+                self?.navigationController?.pushViewController(addDiscountView, animated: true)
+                self?.navigationItem.backButtonTitle = ""
+            }
+            viewModel.setupDiscounts = { [weak self] discounts in
+                self?.discountsList = discounts
+            }
+        }
+    }
+    
+    var discountsList = [Discount]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private var tableView = UITableView()
-    
-    let cardNames = ["Discount 1", "Discount 2", "Discount 3"]
-    let cardPrices = ["12.000", "15.000", "18.000"]
-    let cardColors: [UIColor] = [.card2, .card1, .card3]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +32,15 @@ final class DefaultDiscountView: UIViewController {
         setupConstraints()
         setupUI()
         setupTableView()
+        tableView.reloadData()
+        viewModel = DefaultDiscountViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadDiscounts()
+        
+        
     }
     private func setupSubviews() {
         view.addSubview(titleLabel)
@@ -59,10 +83,10 @@ final class DefaultDiscountView: UIViewController {
         addButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
-        addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(self.transitionToAddDiscountView), for: .touchUpInside)
     }
-    
-    @objc func tapOnAddButton() {
+    @objc func transitionToAddDiscountView() {
+        viewModel.transitionToAddDiscountView()
         print("add")
     }
 }
@@ -71,21 +95,31 @@ final class DefaultDiscountView: UIViewController {
 extension DefaultDiscountView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardNames.count
+        return discountsList.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiscountTableViewCell", for: indexPath) as? DiscountTableViewCell else {
             return UITableViewCell()
         }
-        guard indexPath.row < cardNames.count && indexPath.row < cardPrices.count && indexPath.row < cardColors.count else {
-            return cell
-        }
-        cell.configure(name: cardNames[indexPath.row], price: cardPrices[indexPath.row], color: cardColors[indexPath.row])
-        
+        let discounts = discountsList[indexPath.row]
+        cell.configureEntity(discounts: discounts)
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let discount = discountsList[indexPath.row]
+            let alertDelete = UIAlertController(title: NSLocalizedString("mainPage.alertDelete.message", comment: ""), message: "", preferredStyle: .alert)
+            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.no", comment: ""), style: .default, handler: nil))
+            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.yes", comment: ""), style: .destructive, handler: { _ in
+                _ = CoreDataManager.instance.deleteDiscounts(discount)
+                self.discountsList.remove(at: indexPath.row) // Удаляем объект из массива
+                tableView.reloadData() // Обновляем таблицу
+            }))
+            present(alertDelete, animated: true)
+        }
+    }
+    
 }
-

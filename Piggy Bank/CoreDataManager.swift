@@ -13,6 +13,74 @@ final class CoreDataManager {
     static let instance = CoreDataManager()
     private init() {}
 
+    
+    
+    
+    func saveDiscounts(imageFrontDiscount: Data, nameDiscount: String) -> Result<Void, CoreDataError> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .failure(.error("AppDelegate not found"))
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let entity = NSEntityDescription.entity(forEntityName: "Discount", in: managedContext)!
+
+        let discounts = NSManagedObject(entity: entity, insertInto: managedContext)
+
+        discounts.setValue(imageFrontDiscount, forKey: "imageFrontDiscount")
+        discounts.setValue(nameDiscount, forKey: "nameDiscount")
+
+        do {
+            try managedContext.save()
+            return .success(())
+        } catch {
+            return .failure(.error("Could not save. \(error)"))
+        }
+    }
+    
+    func getDiscounts() -> Result<[Discount], CoreDataError> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .failure(.error("AppDelegate not found"))
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<Discount>(entityName: "Discount")
+
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            return .success(objects)
+        } catch {
+            return .failure(.error("Could not fetch \(error)"))
+        }
+    }
+    
+    func deleteDiscounts(_ discounts: Discount) -> Result<Void, CoreDataError> {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return .failure(.error("AppDelegate not found"))
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        do {
+            managedContext.delete(discounts)
+            try managedContext.save()
+            return .success(())
+        } catch {
+            return .failure(.error("Error deleting Banks: \(error)"))
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func saveBanks(imageBank: Data, nameBank: String, priceBank: String) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
@@ -82,7 +150,6 @@ final class CoreDataManager {
             return nil
         }
     }
-    
     
     func getBanks() -> Result<[Bank], CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

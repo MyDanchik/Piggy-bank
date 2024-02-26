@@ -13,13 +13,15 @@ final class DiscountTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        setupSubviews()
         setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupConstraints()
         setupUI()
+        setupSubviews()
+        setupConstraints()
     }
     
     // MARK: - UI Setup
@@ -32,9 +34,6 @@ final class DiscountTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        
-        setupSubviews()
-        
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 27).isActive = true
@@ -58,27 +57,40 @@ final class DiscountTableViewCell: UITableViewCell {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .backgroundColorMain
         
-        customView.layer.cornerRadius = 30
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customView.layer.shadowRadius = 5
+        customView.layer.shadowRadius = 6
         customView.layer.shadowOpacity = 0.20
+        customView.layer.borderWidth = 2.0
+        customView.layer.borderColor = UIColor.purple.cgColor
+        customView.layer.cornerRadius = 30
+        customView.backgroundColor = .backgroundColorMain
         
-        nameLabel.textColor = .white
+        nameLabel.textColor = .black
         nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)
         
-        priceLabel.textColor = .white
+        priceLabel.textColor = .black
         priceLabel.font = UIFont(name: "Rubik-Regular", size: 18)
         
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
         imageCard.image = UIImage(named: "Group1")
+        
+        
+        
+
     }
     
     // MARK: - Configuration
-    func configure(name: String, price: String, color: UIColor) {
-        nameLabel.text = name
-        priceLabel.text = price
-        customView.backgroundColor = color
+    func configureEntity(discounts: Discount) {
+        
+        /*
+        if let imageData = discounts.imageFrontDiscount, let bankImage = UIImage(data: imageData) {
+            self.imageCard.image = bankImage
+        } else {
+            self.imageCard.image = UIImage(named: "default_image")
+        }
+        */
+        nameLabel.text = discounts.nameDiscount
     }
 }
