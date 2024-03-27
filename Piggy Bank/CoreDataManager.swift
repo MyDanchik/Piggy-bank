@@ -13,7 +13,7 @@ final class CoreDataManager {
     static let instance = CoreDataManager()
     private init() {}
 
-    func saveDiscounts(imageFrontDiscount: Data, nameDiscount: String) -> Result<Void, CoreDataError> {
+    func saveDiscounts(imageFrontDiscount: Data, imageBackDiscount: Data, nameDiscount: String) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
         }
@@ -25,6 +25,7 @@ final class CoreDataManager {
         let discounts = NSManagedObject(entity: entity, insertInto: managedContext)
 
         discounts.setValue(imageFrontDiscount, forKey: "imageFrontDiscount")
+        discounts.setValue(imageBackDiscount, forKey: "imageBackDiscount")
         discounts.setValue(nameDiscount, forKey: "nameDiscount")
 
         do {

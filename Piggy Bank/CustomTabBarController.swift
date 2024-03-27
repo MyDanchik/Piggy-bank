@@ -31,11 +31,11 @@ class CustomTabBarController: UITabBarController {
         fourthViewController.tabBarItem.image = UIImage(named: "Vector4")
         
         // Установка контроллеров в таб-бар контроллер
-        viewControllers = [firstViewController, secondViewController, thirdViewController, fourthViewController]
+        viewControllers = [secondViewController, thirdViewController, fourthViewController]
         
-        tabBar.tintColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
-        tabBar.unselectedItemTintColor = .backgroundColorMain
-        tabBar.backgroundColor = UIColor(red: 26/255, green: 21/255, blue: 57/255, alpha: 1.0)
+        tabBar.tintColor = UIColor(resource: .Colors.tintSelectColorTapBar)
+        tabBar.unselectedItemTintColor = UIColor(resource: .Colors.tintColorTapBar)
+        tabBar.backgroundColor = UIColor(resource: .Colors.backgroundTapBar)
     }
     
 }

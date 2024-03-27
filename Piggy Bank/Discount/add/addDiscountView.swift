@@ -21,7 +21,7 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColorMain
+        view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()
         setupUI()
@@ -87,25 +87,25 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         customFrontView.bottomAnchor.constraint(equalTo: customBackView.topAnchor, constant: -30).isActive = true
         customFrontView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         customFrontView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
-        customFrontView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        customFrontView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         addFrontImageButton.translatesAutoresizingMaskIntoConstraints = false
         addFrontImageButton.bottomAnchor.constraint(equalTo: customBackView.topAnchor, constant: -30).isActive = true
         addFrontImageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         addFrontImageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
-        addFrontImageButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        addFrontImageButton.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         customBackView.translatesAutoresizingMaskIntoConstraints = false
         customBackView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -40).isActive = true
         customBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         customBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
-        customBackView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        customBackView.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         addBackImageButton.translatesAutoresizingMaskIntoConstraints = false
         addBackImageButton.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -40).isActive = true
         addBackImageButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         addBackImageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
-        addBackImageButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        addBackImageButton.heightAnchor.constraint(equalToConstant: 190).isActive = true
         
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
@@ -115,48 +115,43 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
     }
     
     private func setupUI() {
-        customFrontView.layer.shadowColor = UIColor.black.cgColor
-        customFrontView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customFrontView.layer.shadowRadius = 6
-        customFrontView.layer.shadowOpacity = 0.20
-        customFrontView.layer.borderWidth = 2.0
-        customFrontView.layer.borderColor = UIColor.purple.cgColor
-        customFrontView.layer.cornerRadius = 30
-        customFrontView.backgroundColor = .backgroundColorMain
+        customFrontView.layer.cornerRadius = 40
+        customFrontView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         customFrontView.layer.masksToBounds = true
         
+        let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 55)
+        
         addFrontImageButton.backgroundColor = .clear
-        addFrontImageButton.setImage(UIImage(named: "addImageBirthdaysView"), for: .normal)
+        addFrontImageButton.tintColor = UIColor(resource: .Colors.colorText)
+        addFrontImageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
+        addFrontImageButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         addFrontImageButton.addTarget(self, action: #selector(tapOnAlertButton), for: .touchUpInside)
         
-        customBackView.layer.shadowColor = UIColor.black.cgColor
-        customBackView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customBackView.layer.shadowRadius = 6
-        customBackView.layer.shadowOpacity = 0.20
-        customBackView.layer.borderWidth = 2.0
-        customBackView.layer.borderColor = UIColor.purple.cgColor
-        customBackView.layer.cornerRadius = 30
-        customBackView.backgroundColor = .backgroundColorMain
+        customBackView.layer.cornerRadius = 40
+        customBackView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         customBackView.layer.masksToBounds = true
         
         addBackImageButton.backgroundColor = .clear
-        addBackImageButton.setImage(UIImage(named: "addImageBirthdaysView"), for: .normal)
+        addBackImageButton.tintColor = UIColor(resource: .Colors.colorText)
+        addBackImageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
+        addBackImageButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         addBackImageButton.addTarget(self, action: #selector(tapOnAlertButton2), for: .touchUpInside)
         
         titleLabel.text = "Creat discount"
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         nameLabel.text = "Name"
-        nameLabel.textColor = .black
-        nameLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        nameLabel.textColor = UIColor(resource: .Colors.colorText)
+        nameLabel.font = UIFont(name: "Rubik-Medium", size: 20)
         
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         nameTextField.font = UIFont(name: "Rubik-Light", size: 18)
-        nameTextField.textColor = .black
+        nameTextField.textColor = UIColor(resource: .Colors.colorText)
         nameTextField.textAlignment = .center
         
-        lineNameTextFieldLabel.backgroundColor = .black
+        lineNameTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         createButton.setTitle("Creat", for: .normal)
         createButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
@@ -184,11 +179,12 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
     
     private func saveDiscounts() {
         guard let imageFrontDiscount = customFrontView.image?.jpegData(compressionQuality: 1.0),
+              let imageBackDiscount = customBackView.image?.jpegData(compressionQuality: 1.0),
               let nameDiscount = nameTextField.text, !nameDiscount.isEmpty
         else {
             return
         }
-        viewModel.saveNewDiscount(imageFrontDiscount: imageFrontDiscount,
+        viewModel.saveNewDiscount(imageFrontDiscount: imageFrontDiscount, imageBackDiscount: imageBackDiscount,
                                   nameDiscount: nameDiscount)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in

@@ -5,7 +5,6 @@ final class DiscountTableViewCell: UITableViewCell {
     // MARK: - UI Elements
     let customView = UIView()
     let nameLabel = UILabel()
-    let priceLabel = UILabel()
     let imageCard = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,7 +26,6 @@ final class DiscountTableViewCell: UITableViewCell {
     private func setupSubviews() {
         contentView.addSubview(customView)
         customView.addSubview(nameLabel)
-        customView.addSubview(priceLabel)
         customView.addSubview(imageCard)
     }
     
@@ -36,39 +34,30 @@ final class DiscountTableViewCell: UITableViewCell {
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 27).isActive = true
         customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -27).isActive = true
-        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
+        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         
         imageCard.translatesAutoresizingMaskIntoConstraints = false
-        imageCard.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: 0).isActive = true
-        imageCard.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: 0).isActive = true
+        imageCard.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        imageCard.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -30).isActive = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.topAnchor.constraint(equalTo: customView.topAnchor, constant: 30).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 40).isActive = true
-        
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -30).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 40).isActive = true
+        nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 30).isActive = true
     }
     
     private func setupUI() {
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .backgroundColorMain
+        contentView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         customView.layer.shadowColor = UIColor.black.cgColor
-        customView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customView.layer.shadowRadius = 6
+        customView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        customView.layer.shadowRadius = 5
         customView.layer.shadowOpacity = 0.20
-        customView.layer.borderWidth = 2.0
-        customView.layer.borderColor = UIColor.purple.cgColor
-        customView.layer.cornerRadius = 30
-        customView.backgroundColor = .backgroundColorMain
+        customView.layer.cornerRadius = 50
+        customView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         
-        nameLabel.textColor = .black
-        nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)
-        
-        priceLabel.textColor = .black
-        priceLabel.font = UIFont(name: "Rubik-Regular", size: 18)
+        nameLabel.textColor = UIColor(resource: .Colors.colorText)
+        nameLabel.font = UIFont(name: "Rubik-Regular", size: 20)
         
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
@@ -77,14 +66,6 @@ final class DiscountTableViewCell: UITableViewCell {
     
     // MARK: - Configuration
     func configureEntity(discounts: Discount) {
-        
-        /*
-        if let imageData = discounts.imageFrontDiscount, let bankImage = UIImage(data: imageData) {
-            self.imageCard.image = bankImage
-        } else {
-            self.imageCard.image = UIImage(named: "default_image")
-        }
-        */
         nameLabel.text = discounts.nameDiscount
     }
 }

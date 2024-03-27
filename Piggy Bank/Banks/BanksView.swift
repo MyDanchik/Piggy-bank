@@ -26,7 +26,7 @@ final class DefaultBanksView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColorMain
+        view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()
         setupUI()
@@ -50,12 +50,15 @@ final class DefaultBanksView: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 43).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -65,21 +68,27 @@ final class DefaultBanksView: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(BanksTableViewCell.self, forCellReuseIdentifier: "BanksTableViewCell")
-        tableView.rowHeight = 260
+        tableView.rowHeight = 120
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
     
     private func setupUI() {
         titleLabel.text = "Your piggy banks"
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
-        addButton.tintColor = .black
-        addButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        addButton.tintColor = UIColor(resource: .Colors.colorText)
+        addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(self.transitionToAddBanksView), for: .touchUpInside)
+        addButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
+        addButton.layer.cornerRadius = 27.5
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowOpacity = 0.20
     }
     
     @objc func transitionToAddBanksView() {
@@ -109,8 +118,8 @@ extension DefaultBanksView: UITableViewDelegate, UITableViewDataSource {
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.no", comment: ""), style: .default, handler: nil))
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.yes", comment: ""), style: .destructive, handler: { _ in
                 _ = CoreDataManager.instance.deleteBanks(bank)
-                self.banksList.remove(at: indexPath.row) // Удаляем объект из массива
-                tableView.reloadData() // Обновляем таблицу
+                self.banksList.remove(at: indexPath.row)
+                tableView.reloadData()
             }))
             present(alertDelete, animated: true)
         }

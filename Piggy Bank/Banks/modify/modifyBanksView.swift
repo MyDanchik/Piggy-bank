@@ -19,7 +19,7 @@ final class DefaultModifyBanksView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColorMain
+        view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()
         setupUI()
@@ -105,35 +105,36 @@ final class DefaultModifyBanksView: UIViewController {
         imageView.layer.cornerRadius = 53
         imageView.layer.masksToBounds = true
 
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         savedLabel.text = "Saved"
-        savedLabel.textColor = .black
+        savedLabel.textColor = UIColor(resource: .Colors.colorText)
         savedLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         savedTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
-        savedTextLabel.textColor = .black
+        savedTextLabel.textColor = UIColor(resource: .Colors.colorText)
 
         leftLabel.text = "Left"
-        leftLabel.textColor = .black
+        leftLabel.textColor = UIColor(resource: .Colors.colorText)
         leftLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         leftTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
-        leftTextLabel.textColor = .black
+        leftTextLabel.textColor = UIColor(resource: .Colors.colorText)
  
         replenishLabel.text = "Replenish"
-        replenishLabel.textColor = .black
+        replenishLabel.textColor = UIColor(resource: .Colors.colorText)
         replenishLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
-        replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish",
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         replenishTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
-        replenishTextLabel.textColor = .black
+        replenishTextLabel.textColor = UIColor(resource: .Colors.colorText)
         replenishTextLabel.delegate = self
         replenishTextLabel.keyboardType = .numberPad
         replenishTextLabel.textAlignment = .center
         
-        lineReplenishTextFieldLabel.backgroundColor = .black
+        lineReplenishTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         createButton.setTitle("Ok", for: .normal)
         createButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)

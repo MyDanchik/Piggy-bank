@@ -260,8 +260,8 @@
 		98E5A06C2B8C8D4700D8024D /* add */ = {
 			isa = PBXGroup;
 			children = (
-				98E5A06D2B8C8D4700D8024D /* addDiscountViewModel.swift */,
 				98E5A06E2B8C8D4700D8024D /* addDiscountView.swift */,
+				98E5A06D2B8C8D4700D8024D /* addDiscountViewModel.swift */,
 			);
 			path = add;
 			sourceTree = "<group>";

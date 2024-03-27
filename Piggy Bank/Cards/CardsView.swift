@@ -11,7 +11,7 @@ final class DefaultCardsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColorMain
+        view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()
         setupUI()

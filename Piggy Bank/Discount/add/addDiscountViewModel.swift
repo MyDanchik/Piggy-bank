@@ -8,7 +8,7 @@ protocol AddDiscountViewModel {
     var setupAlert: ((UIAlertController) -> Void)? { get set }
     var setupPHPicker: ((PHPickerViewController) -> Void)? { get set }
     var setupUIImagePicker: ((UIImagePickerController) -> Void)? { get set }
-    func saveNewDiscount(imageFrontDiscount: Data?, nameDiscount: String?)
+    func saveNewDiscount(imageFrontDiscount: Data?, imageBackDiscount: Data?, nameDiscount: String?)
 }
 
 final class DefaultAddDiscountViewModel: AddDiscountViewModel {
@@ -47,15 +47,16 @@ final class DefaultAddDiscountViewModel: AddDiscountViewModel {
     }
 
 
-    func saveNewDiscount(imageFrontDiscount: Data?, nameDiscount: String?) {
+    func saveNewDiscount(imageFrontDiscount: Data?, imageBackDiscount: Data?, nameDiscount: String?) {
         guard let imageFrontDiscount = imageFrontDiscount,
+              let imageBackDiscount = imageBackDiscount,
               let nameDiscount = nameDiscount, !nameDiscount.isEmpty else {
             let alertEmpty = UIAlertController(title: NSLocalizedString("Bank.alertEmpty", comment: ""), message: "", preferredStyle: .alert)
             alertEmpty.addAction(UIAlertAction(title: NSLocalizedString("Bank.alertOK", comment: ""), style: .destructive, handler: nil))
             return
         }
         
-        let result = CoreDataManager.instance.saveDiscounts(imageFrontDiscount: imageFrontDiscount, nameDiscount: nameDiscount)
+        let result = CoreDataManager.instance.saveDiscounts(imageFrontDiscount: imageFrontDiscount, imageBackDiscount: imageBackDiscount, nameDiscount: nameDiscount)
         
         switch result {
         case .success:

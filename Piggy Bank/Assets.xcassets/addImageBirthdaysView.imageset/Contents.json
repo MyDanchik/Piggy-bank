@@ -1,17 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "addImage.pdf",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "imageWW.png",
+      "filename" : "icons8-плюс-100.png",
       "idiom" : "universal"
     }
   ],

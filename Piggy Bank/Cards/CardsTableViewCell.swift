@@ -52,7 +52,7 @@ final class CardsTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .backgroundColorMain
+        contentView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 5)
@@ -61,7 +61,7 @@ final class CardsTableViewCell: UITableViewCell {
         customView.layer.borderWidth = 2.0
         customView.layer.borderColor = UIColor.purple.cgColor
         customView.layer.cornerRadius = 30
-        customView.backgroundColor = .backgroundColorMain
+        customView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         nameLabel.textColor = .black
         nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)

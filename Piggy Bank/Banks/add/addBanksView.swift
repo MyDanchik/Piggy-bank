@@ -2,7 +2,6 @@ import UIKit
 
 final class DefaultAddBanksView: UIViewController {
     
-    
     var viewModel: DefaultAddBanksViewModel!
     var onSave: (() -> Void)?
     
@@ -29,7 +28,7 @@ final class DefaultAddBanksView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColorMain
+        view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()
         setupUI()
@@ -66,7 +65,6 @@ final class DefaultAddBanksView: UIViewController {
         view.addSubview(nextButton)
     }
     private func setupConstraints() {
-        
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
@@ -124,7 +122,6 @@ final class DefaultAddBanksView: UIViewController {
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        
     }
     
     private func updateImageView() {
@@ -147,53 +144,52 @@ final class DefaultAddBanksView: UIViewController {
     
     private func setupUI() {
         iconLabel.text = "Icon"
-        iconLabel.textColor = .black
+        iconLabel.textColor = UIColor(resource: .Colors.colorText)
         iconLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         imageView.contentMode = .scaleAspectFit
         
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         
-        previousButton.tintColor = .black
+        previousButton.tintColor = UIColor(resource: .Colors.colorText)
         previousButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
         previousButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
-        previousButton.setTitleColor(.black, for: .normal)
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
 
-        
-        nextButton.tintColor = .black
+        nextButton.tintColor = UIColor(resource: .Colors.colorText)
         nextButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         nextButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
-        nextButton.setTitleColor(.black, for: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         
         titleLabel.text = "Creat piggy bank"
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
         nameLabel.text = "Name"
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(resource: .Colors.colorText)
         nameLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", 
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         nameTextField.font = UIFont(name: "Rubik-Light", size: 18)
-        nameTextField.textColor = .black
+        nameTextField.textColor = UIColor(resource: .Colors.colorText)
         nameTextField.textAlignment = .center
         
-        lineNameTextFieldLabel.backgroundColor = .black
+        lineNameTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         sumLabel.text = "Sum"
-        sumLabel.textColor = .black
+        sumLabel.textColor = UIColor(resource: .Colors.colorText)
         sumLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
-        sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum", 
+                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         sumTextField.font = UIFont(name: "Rubik-Light", size: 18)
-        sumTextField.textColor = .black
-        sumTextField.delegate = self // Установка делегата для sumTextField
-        sumTextField.keyboardType = .numberPad // Установка типа клавиатуры
+        sumTextField.textColor = UIColor(resource: .Colors.colorText)
+        sumTextField.delegate = self
+        sumTextField.keyboardType = .numberPad
         sumTextField.textAlignment = .center
         
-        lineSumTextFieldLabel.backgroundColor = .black
+        lineSumTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         createButton.setTitle("Creat", for: .normal)
         createButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
@@ -201,6 +197,32 @@ final class DefaultAddBanksView: UIViewController {
         createButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+        
+    private func setupTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
+        view.addGestureRecognizer(tap)
+    }
+    
+    private func setupKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    private func saveBanks() {
+        guard let imageBanks = imageView.image?.jpegData(compressionQuality: 1.0),
+              let nameBanks = nameTextField.text, !nameBanks.isEmpty,
+              let priceBanks = sumTextField.text, !priceBanks.isEmpty
+        else {
+            return
+        }
+        viewModel.saveNewBanks(imageBanks: imageBanks,
+                                    nameBanks: nameBanks,
+                                    priceBanks: priceBanks)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.onSave?()
+        }
     }
     
     @objc func saveButtonTapped() {
@@ -211,17 +233,6 @@ final class DefaultAddBanksView: UIViewController {
     }
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
-        view.addGestureRecognizer(tap)
-    }
-    
-    private func setupKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardShow(notification: Notification) {
@@ -241,22 +252,6 @@ final class DefaultAddBanksView: UIViewController {
     }
     @objc func tapDone() {
         view.endEditing(true)
-    }
-
-    private func saveBanks() {
-        guard let imageBanks = imageView.image?.jpegData(compressionQuality: 1.0),
-              let nameBanks = nameTextField.text, !nameBanks.isEmpty,
-              let priceBanks = sumTextField.text, !priceBanks.isEmpty
-        else {
-            return
-        }
-        viewModel.saveNewBanks(imageBanks: imageBanks,
-                                    nameBanks: nameBanks,
-                                    priceBanks: priceBanks)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.onSave?()
-        }
     }
 }
 

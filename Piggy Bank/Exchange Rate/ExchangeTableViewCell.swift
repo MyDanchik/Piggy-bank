@@ -30,14 +30,13 @@ final class ExchangeTableViewCell: UITableViewCell {
         
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 27).isActive = true
-        customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -27).isActive = true
-        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
-        
+        customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         
         imageFlag.translatesAutoresizingMaskIntoConstraints = false
         imageFlag.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        imageFlag.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 25).isActive = true
+        imageFlag.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 15).isActive = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
@@ -48,22 +47,20 @@ final class ExchangeTableViewCell: UITableViewCell {
         priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -25).isActive = true
         
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .backgroundColorMain
+        contentView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         customView.layer.shadowColor = UIColor.black.cgColor
-        customView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customView.layer.shadowRadius = 6
+        customView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        customView.layer.shadowRadius = 5
         customView.layer.shadowOpacity = 0.20
-        customView.layer.borderWidth = 2.0
-        customView.layer.borderColor = UIColor.purple.cgColor
-        customView.layer.cornerRadius = 30
-        customView.backgroundColor = .backgroundColorMain
+        customView.layer.cornerRadius = 40
+        customView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         
-        nameLabel.textColor = .black
-        nameLabel.font = UIFont(name: "Rubik-Regular", size: 25)
+        nameLabel.textColor = UIColor(resource: .Colors.colorText)
+        nameLabel.font = UIFont(name: "Rubik-Regular", size: 20)
         
-        priceLabel.textColor = .black
-        priceLabel.font = UIFont(name: "Rubik-Regular", size: 25)
+        priceLabel.textColor = UIColor(resource: .Colors.colorText)
+        priceLabel.font = UIFont(name: "Rubik-Regular", size: 20)
     }
     
     // MARK: - Configuration
