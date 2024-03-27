@@ -8,8 +8,6 @@ final class DiscountTableViewCell: UITableViewCell {
     let priceLabel = UILabel()
     let imageCard = UIImageView()
     
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -75,10 +73,6 @@ final class DiscountTableViewCell: UITableViewCell {
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
         imageCard.image = UIImage(named: "Group1")
-        
-        
-        
-
     }
     
     // MARK: - Configuration

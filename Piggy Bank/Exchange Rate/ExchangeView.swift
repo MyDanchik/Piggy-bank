@@ -57,7 +57,6 @@ final class DefaultExchangeView: UIViewController {
         }
     }
 
-    
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
@@ -76,9 +75,6 @@ final class DefaultExchangeView: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-
-
     }
     
     private func setupUI() {

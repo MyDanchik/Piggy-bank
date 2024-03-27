@@ -1,4 +1,3 @@
-
 import UIKit
 
 final class CardsTableViewCell: UITableViewCell {
@@ -7,8 +6,6 @@ final class CardsTableViewCell: UITableViewCell {
     let nameLabel = UILabel()
     let priceLabel = UILabel()
     let imageCard = UIImageView()
-    
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,7 +29,6 @@ final class CardsTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        
         setupSubviews()
         
         customView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,10 +72,6 @@ final class CardsTableViewCell: UITableViewCell {
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
         imageCard.image = UIImage(named: "Group1")
-        
-        
-        
-
     }
     
     // MARK: - Configuration

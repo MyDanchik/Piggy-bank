@@ -2,7 +2,6 @@ import UIKit
 
 final class DefaultBanksView: UIViewController {
     
-    
     var viewModel: DefaultBanksViewModel! {
         didSet {
             viewModel.transition = { [weak self] addBanksView in
@@ -39,14 +38,14 @@ final class DefaultBanksView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadBanks()
-        
-        
     }
+    
     private func setupSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
     }
+    
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
@@ -61,6 +60,7 @@ final class DefaultBanksView: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -69,6 +69,7 @@ final class DefaultBanksView: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
+    
     private func setupUI() {
         titleLabel.text = "Your piggy banks"
         titleLabel.textColor = .black
@@ -80,6 +81,7 @@ final class DefaultBanksView: UIViewController {
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(self.transitionToAddBanksView), for: .touchUpInside)
     }
+    
     @objc func transitionToAddBanksView() {
         viewModel.transitionToAddBanksView()
         print("add")

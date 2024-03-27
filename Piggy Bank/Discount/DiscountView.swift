@@ -2,7 +2,6 @@ import UIKit
 
 final class DefaultDiscountView: UIViewController {
     
-    
     var viewModel: DefaultDiscountViewModel! {
         didSet {
             viewModel.transition = { [weak self] addDiscountView in
@@ -39,14 +38,12 @@ final class DefaultDiscountView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadDiscounts()
-        
-        
     }
+    
     private func setupSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
-        
     }
     
     private func setupConstraints() {
@@ -85,6 +82,7 @@ final class DefaultDiscountView: UIViewController {
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(self.transitionToAddDiscountView), for: .touchUpInside)
     }
+    
     @objc func transitionToAddDiscountView() {
         viewModel.transitionToAddDiscountView()
         print("add")
@@ -107,7 +105,6 @@ extension DefaultDiscountView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let discount = discountsList[indexPath.row]
@@ -120,6 +117,13 @@ extension DefaultDiscountView: UITableViewDelegate, UITableViewDataSource {
             }))
             present(alertDelete, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fullBirthdaysView = DefaulInfoView()
+        let birthdays = discountsList[indexPath.row]
+        fullBirthdaysView.configureFullBirthdays(discounts: birthdays)
+        navigationController?.pushViewController(fullBirthdaysView, animated: true)
     }
     
 }

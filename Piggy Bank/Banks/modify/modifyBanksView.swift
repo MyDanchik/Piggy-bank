@@ -1,8 +1,7 @@
 import UIKit
 
 final class DefaultModifyBanksView: UIViewController {
-    
-    
+
     var viewModel: DefaultModifyBanksViewModel!
     var onSave: (() -> Void)?
     
@@ -51,8 +50,8 @@ final class DefaultModifyBanksView: UIViewController {
         view.addSubview(replenishLabel)
         view.addSubview(replenishTextLabel)
     }
+    
     private func setupConstraints() {
-        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -99,11 +98,9 @@ final class DefaultModifyBanksView: UIViewController {
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        
     }
     
     private func setupUI() {
-        
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 53
         imageView.layer.masksToBounds = true
@@ -118,7 +115,6 @@ final class DefaultModifyBanksView: UIViewController {
         savedTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
         savedTextLabel.textColor = .black
 
-        
         leftLabel.text = "Left"
         leftLabel.textColor = .black
         leftLabel.font = UIFont(name: "Rubik-Medium", size: 24)
@@ -126,11 +122,9 @@ final class DefaultModifyBanksView: UIViewController {
         leftTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
         leftTextLabel.textColor = .black
  
-        
         replenishLabel.text = "Replenish"
         replenishLabel.textColor = .black
         replenishLabel.font = UIFont(name: "Rubik-Medium", size: 24)
-        
         
         replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         replenishTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
@@ -149,14 +143,6 @@ final class DefaultModifyBanksView: UIViewController {
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     
-    @objc func saveButtonTapped() {
-        print("save")
-        saveBanks()
-    }
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
         view.addGestureRecognizer(tap)
@@ -167,25 +153,6 @@ final class DefaultModifyBanksView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            view.frame.origin.y = -keyboardSize.height
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @objc func keyboardHide() {
-        view.frame.origin.y = 0
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    @objc func tapDone() {
-        view.endEditing(true)
     }
     
     private func saveBanks() {
@@ -241,6 +208,34 @@ final class DefaultModifyBanksView: UIViewController {
         } else {
             leftTextLabel.text = "N/A"
         }
+    }
+    
+    @objc func saveButtonTapped() {
+        print("save")
+        saveBanks()
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func keyboardShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y = -keyboardSize.height
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardHide() {
+        view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    @objc func tapDone() {
+        view.endEditing(true)
     }
 }
 

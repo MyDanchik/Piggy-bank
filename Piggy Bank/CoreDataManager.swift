@@ -13,9 +13,6 @@ final class CoreDataManager {
     static let instance = CoreDataManager()
     private init() {}
 
-    
-    
-    
     func saveDiscounts(imageFrontDiscount: Data, nameDiscount: String) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
@@ -70,16 +67,6 @@ final class CoreDataManager {
             return .failure(.error("Error deleting Banks: \(error)"))
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func saveBanks(imageBank: Data, nameBank: String, priceBank: String) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

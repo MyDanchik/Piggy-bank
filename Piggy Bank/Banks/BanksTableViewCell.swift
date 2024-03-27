@@ -20,7 +20,6 @@ final class BanksTableViewCell: UITableViewCell {
         setupSubviews()
         setupConstraints()
     }
-
     // MARK: - UI Setup
     
     private func setupSubviews() {

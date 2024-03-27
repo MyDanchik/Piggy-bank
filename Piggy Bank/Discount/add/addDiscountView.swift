@@ -3,10 +3,10 @@ import PhotosUI
 
 final class DefaultAddDiscountView: UIViewController, UINavigationControllerDelegate {
     
-    
     var viewModel: DefaultAddDiscountViewModel!
     var onSave: (() -> Void)?
     
+    private var isImageSelected = true
     private let titleLabel = UILabel()
     private let nameLabel = UILabel()
     private let nameTextField = UITextField()
@@ -14,16 +14,10 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
     private let lineNameTextFieldLabel = UILabel()
     private let iconLabel = UILabel()
     private let imageView = UIImageView()
-    
-    
-    
     private let customFrontView = UIImageView()
     private let addFrontImageButton = UIButton()
-    
     private let customBackView = UIImageView()
     private let addBackImageButton = UIButton()
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +47,13 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         view.addSubview(nameLabel)
         view.addSubview(iconLabel)
         view.addSubview(imageView)
-        
         view.addSubview(customFrontView)
         view.addSubview(addFrontImageButton)
-
-        
         view.addSubview(customBackView)
         view.addSubview(addBackImageButton)
-
-        
     }
+    
     private func setupConstraints() {
-        
-        
-
-        
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
@@ -78,7 +64,6 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         imageView.widthAnchor.constraint(equalToConstant: 106).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -98,7 +83,6 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         lineNameTextFieldLabel.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineNameTextFieldLabel.widthAnchor.constraint(equalTo: createButton.widthAnchor, multiplier: 0.7).isActive = true
         
-
         customFrontView.translatesAutoresizingMaskIntoConstraints = false
         customFrontView.bottomAnchor.constraint(equalTo: customBackView.topAnchor, constant: -30).isActive = true
         customFrontView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
@@ -111,16 +95,11 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         addFrontImageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         addFrontImageButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
-
-        
-        
-        
         customBackView.translatesAutoresizingMaskIntoConstraints = false
         customBackView.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -40).isActive = true
         customBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         customBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         customBackView.heightAnchor.constraint(equalToConstant: 180).isActive = true
-        
         
         addBackImageButton.translatesAutoresizingMaskIntoConstraints = false
         addBackImageButton.bottomAnchor.constraint(equalTo: createButton.topAnchor, constant: -40).isActive = true
@@ -128,21 +107,14 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         addBackImageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         addBackImageButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
-        
-        
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        
     }
     
     private func setupUI() {
-        
-        
-        
-        
         customFrontView.layer.shadowColor = UIColor.black.cgColor
         customFrontView.layer.shadowOffset = CGSize(width: 0, height: 5)
         customFrontView.layer.shadowRadius = 6
@@ -153,15 +125,9 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         customFrontView.backgroundColor = .backgroundColorMain
         customFrontView.layer.masksToBounds = true
         
-        
         addFrontImageButton.backgroundColor = .clear
         addFrontImageButton.setImage(UIImage(named: "addImageBirthdaysView"), for: .normal)
         addFrontImageButton.addTarget(self, action: #selector(tapOnAlertButton), for: .touchUpInside)
-        
-        
-        
-        
-        
         
         customBackView.layer.shadowColor = UIColor.black.cgColor
         customBackView.layer.shadowOffset = CGSize(width: 0, height: 5)
@@ -172,9 +138,6 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         customBackView.layer.cornerRadius = 30
         customBackView.backgroundColor = .backgroundColorMain
         customBackView.layer.masksToBounds = true
-        
-        
-        
         
         addBackImageButton.backgroundColor = .clear
         addBackImageButton.setImage(UIImage(named: "addImageBirthdaysView"), for: .normal)
@@ -203,7 +166,6 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     
-    
     private func setupBindings() {
         viewModel.setupAlert = { [weak self] alert in
             self?.present(alert, animated: true)
@@ -220,26 +182,6 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
         }
     }
     
-    @objc func saveButtonTapped() {
-        print("save")
-        saveDiscounts()
-        goBack()
-        
-    }
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    private func setupTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
-        view.addGestureRecognizer(tap)
-    }
-    
-    
-    @objc func tapDone() {
-        view.endEditing(true)
-    }
-
     private func saveDiscounts() {
         guard let imageFrontDiscount = customFrontView.image?.jpegData(compressionQuality: 1.0),
               let nameDiscount = nameTextField.text, !nameDiscount.isEmpty
@@ -253,33 +195,16 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
             self?.onSave?()
         }
     }
-    private var isFrontImageSelected = true
     
-    @objc func tapOnAlertButton() {
-        viewModel?.tapOnALertButton()
-        isFrontImageSelected = true // Устанавливаем, что выбран передний пикер
-        print("im")
-    }
-
-    @objc func tapOnAlertButton2() {
-        viewModel?.tapOnALertButton()
-        isFrontImageSelected = false // Устанавливаем, что выбран задний пикер
-        print("im2")
-    }
-
-    
-    @objc func openGalery() {
-        viewModel.openGalery()
-    }
-    
-    @objc func openCamera() {
-        viewModel.openCamera()
+    private func setupTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
+        view.addGestureRecognizer(tap)
     }
     
     private func setupImage(image: UIImage?) {
         if let image = image {
             DispatchQueue.main.async {
-                if self.isFrontImageSelected {
+                if self.isImageSelected {
                     self.customFrontView.image = image
                     self.addFrontImageButton.setImage(UIImage(), for: .normal)
                 } else {
@@ -288,6 +213,41 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
                 }
             }
         }
+    }
+    
+    @objc func saveButtonTapped() {
+        print("save")
+        saveDiscounts()
+        goBack()
+        
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tapDone() {
+        view.endEditing(true)
+    }
+    
+    @objc func tapOnAlertButton() {
+        viewModel?.tapOnALertButton()
+        isImageSelected = true
+        print("im")
+    }
+
+    @objc func tapOnAlertButton2() {
+        viewModel?.tapOnALertButton()
+        isImageSelected = false
+        print("im2")
+    }
+
+    @objc func openGalery() {
+        viewModel.openGalery()
+    }
+    
+    @objc func openCamera() {
+        viewModel.openCamera()
     }
 }
 
@@ -298,7 +258,6 @@ extension DefaultAddDiscountView: UITextFieldDelegate {
         return allowedCharacters.isSuperset(of: characterSet)
     }
 }
-
 
 extension DefaultAddDiscountView: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {

@@ -8,7 +8,6 @@ protocol DiscountViewModel {
 }
 
 final class DefaultDiscountViewModel {
-    
     var transition: ((DefaultAddDiscountView) -> Void)?
     var setupDiscounts: (([Discount]) -> Void)?
     

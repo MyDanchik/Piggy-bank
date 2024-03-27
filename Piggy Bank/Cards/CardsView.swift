@@ -21,7 +21,6 @@ final class DefaultCardsView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
-        
     }
     
     private func setupConstraints() {
@@ -48,6 +47,7 @@ final class DefaultCardsView: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
+    
     private func setupUI() {
         titleLabel.text = "Your cards"
         titleLabel.textColor = .black
@@ -70,7 +70,6 @@ extension DefaultCardsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cardNames.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CardsTableViewCell", for: indexPath) as? CardsTableViewCell else {

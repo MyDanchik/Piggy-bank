@@ -2,7 +2,6 @@ import UIKit
 
 final class DefaultLogInView: UIViewController {
     
-    
     var viewModel: LogInViewModel!
     // MARK: - UI Elements
     private let imageView = UIImageView()
@@ -12,7 +11,6 @@ final class DefaultLogInView: UIViewController {
     private let userNameTextField = UITextField()
     private let lineTextFieldLabel = UILabel()
     private let saveNameButton = UIButton()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +34,7 @@ final class DefaultLogInView: UIViewController {
         view.addSubview(lineTextFieldLabel)
         view.addSubview(saveNameButton)
     }
+    
     private func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -71,8 +70,8 @@ final class DefaultLogInView: UIViewController {
         saveNameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         saveNameButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         saveNameButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        
     }
+    
     private func setupUI() {
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFill
@@ -103,23 +102,12 @@ final class DefaultLogInView: UIViewController {
         saveNameButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
         saveNameButton.layer.cornerRadius = 35
         saveNameButton.addTarget(self, action: #selector(saveNameButtonTapped), for: .touchUpInside)
-
-        
     }
-    
-    @objc private func saveNameButtonTapped() {
-        let nextViewController = CustomTabBarController()
-        nextViewController.modalPresentationStyle = .fullScreen
-        nextViewController.modalTransitionStyle = .crossDissolve
-        present(nextViewController, animated: true, completion: nil)
-    }
-
     
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
         view.addGestureRecognizer(tap)
     }
-    
     
     private func setupKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -146,5 +134,10 @@ final class DefaultLogInView: UIViewController {
         view.endEditing(true)
     }
 
-    
+    @objc private func saveNameButtonTapped() {
+        let nextViewController = CustomTabBarController()
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalTransitionStyle = .crossDissolve
+        present(nextViewController, animated: true, completion: nil)
+    }
 }
