@@ -61,7 +61,7 @@ final class DiscountTableViewCell: UITableViewCell {
         
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true
-        imageCard.image = UIImage(named: "Group1")
+        imageCard.image = UIImage(named: "DiscountStart")
     }
     
     // MARK: - Configuration

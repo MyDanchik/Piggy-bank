@@ -33,6 +33,8 @@
 		1962BFC72B97466A004F4B0C /* InfoDiccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1962BFC62B97466A004F4B0C /* InfoDiccountView.swift */; };
 		19945F782BB57A3900BCC8B4 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19945F752BB57A3900BCC8B4 /* ConverterView.swift */; };
 		19945F792BB57A3900BCC8B4 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19945F762BB57A3900BCC8B4 /* ConverterViewModel.swift */; };
+		19945F7E2BB5EF5100BCC8B4 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19945F7D2BB5EF5100BCC8B4 /* UIFont + Extension.swift */; };
+		19A6188C2BB5F52E005B9436 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A6188B2BB5F52E005B9436 /* UIImage + Extension.swift */; };
 		9833D6662B7CE7D3008B8073 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9833D6652B7CE7D3008B8073 /* Alamofire */; };
 		9833D6682B7CE806008B8073 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833D6672B7CE806008B8073 /* NetworkManager.swift */; };
 		9833D66A2B7CE834008B8073 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833D6692B7CE834008B8073 /* Exchange.swift */; };
@@ -83,6 +85,8 @@
 		1962BFC62B97466A004F4B0C /* InfoDiccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDiccountView.swift; sourceTree = "<group>"; };
 		19945F752BB57A3900BCC8B4 /* ConverterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		19945F762BB57A3900BCC8B4 /* ConverterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		19945F7D2BB5EF5100BCC8B4 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		19A6188B2BB5F52E005B9436 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		9833D6672B7CE806008B8073 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9833D6692B7CE834008B8073 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		9833D66D2B7CE88B008B8073 /* ExchangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,7 +225,9 @@
 				9833D6672B7CE806008B8073 /* NetworkManager.swift */,
 				19571C732B78F49C005928B0 /* CustomTabBarController.swift */,
 				988DB2E92B832A8F0057E34F /* CoreDataManager.swift */,
+				19945F7D2BB5EF5100BCC8B4 /* UIFont + Extension.swift */,
 				19571C3A2B78E5F3005928B0 /* Fonts */,
+				19A6188B2BB5F52E005B9436 /* UIImage + Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -385,11 +391,13 @@
 				9833D66A2B7CE834008B8073 /* Exchange.swift in Sources */,
 				986CC2662B7BA97D00BB8C82 /* DiscountViewModel.swift in Sources */,
 				19571C742B78F49C005928B0 /* CustomTabBarController.swift in Sources */,
+				19A6188C2BB5F52E005B9436 /* UIImage + Extension.swift in Sources */,
 				1962BFC72B97466A004F4B0C /* InfoDiccountView.swift in Sources */,
 				988DB2EA2B832A8F0057E34F /* CoreDataManager.swift in Sources */,
 				986CC2672B7BA97D00BB8C82 /* DiscountView.swift in Sources */,
 				986CC2612B7B925B00BB8C82 /* BanksViewModel.swift in Sources */,
 				986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */,
+				19945F7E2BB5EF5100BCC8B4 /* UIFont + Extension.swift in Sources */,
 				19945F792BB57A3900BCC8B4 /* ConverterViewModel.swift in Sources */,
 				986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */,
 				98696D862B7E2265009C43B0 /* DiscountTableViewCell.swift in Sources */,

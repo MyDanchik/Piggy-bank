@@ -34,8 +34,6 @@ final class DefaulInfoView: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(customFrontView)
         view.addSubview(customBackView)
-        
-
     }
     
     private func setupConstraints() {

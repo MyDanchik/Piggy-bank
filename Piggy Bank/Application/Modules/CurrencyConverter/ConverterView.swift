@@ -148,7 +148,7 @@ class ConverterView: UIViewController {
     
     private func fetchConverterRates() {
         viewModel.fetchConverterRates { [weak self] rates in
-            if let rates = rates {
+            if rates != nil {
                 self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
             } else {
 

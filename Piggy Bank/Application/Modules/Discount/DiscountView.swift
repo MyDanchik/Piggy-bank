@@ -112,9 +112,10 @@ extension DiscountView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let discount = discountsList[indexPath.row]
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "") { (_, _, completion) in
+            let discount = self.discountsList[indexPath.row]
+            
             let alertDelete = UIAlertController(title: NSLocalizedString("mainPage.alertDelete.message", comment: ""), message: "", preferredStyle: .alert)
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.no", comment: ""), style: .default, handler: nil))
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.yes", comment: ""), style: .destructive, handler: { _ in
@@ -122,8 +123,20 @@ extension DiscountView: UITableViewDelegate, UITableViewDataSource {
                 self.discountsList.remove(at: indexPath.row)
                 tableView.reloadData()
             }))
-            present(alertDelete, animated: true)
+            self.present(alertDelete, animated: true)
+            
+            completion(true)
         }
+        
+        let originalImage = UIImage(resource: .Images.trash)
+        let scaledImage = originalImage.resized(to: CGSize(width: 65, height: 65))
+
+        deleteAction.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
+        deleteAction.image = scaledImage
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+
+        return configuration
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

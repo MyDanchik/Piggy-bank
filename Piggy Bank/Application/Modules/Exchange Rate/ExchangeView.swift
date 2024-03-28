@@ -81,7 +81,7 @@ final class ExchangeView: UIViewController {
     
     private func fetchExchangeRates() {
         viewModel.fetchExchangeRates { [weak self] rates in
-            if let rates = rates {
+            if rates != nil {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.stopLoadingAnimation()
