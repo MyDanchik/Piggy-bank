@@ -1,8 +1,8 @@
 import UIKit
 
-final class DefaultModifyBanksView: UIViewController {
+final class ModifyBanksView: UIViewController {
 
-    var viewModel: DefaultModifyBanksViewModel!
+    var viewModel: ModifyBanksViewModel!
     var onSave: (() -> Void)?
     
     private let titleLabel = UILabel()
@@ -240,7 +240,7 @@ final class DefaultModifyBanksView: UIViewController {
     }
 }
 
-extension DefaultModifyBanksView: UITextFieldDelegate {
+extension ModifyBanksView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)

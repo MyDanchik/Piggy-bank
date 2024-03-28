@@ -1,9 +1,9 @@
 import UIKit
 import PhotosUI
 
-final class DefaultAddDiscountView: UIViewController, UINavigationControllerDelegate {
+final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     
-    var viewModel: DefaultAddDiscountViewModel!
+    var viewModel: AddDiscountViewModel!
     var onSave: (() -> Void)?
     
     private var isImageSelected = true
@@ -247,7 +247,7 @@ final class DefaultAddDiscountView: UIViewController, UINavigationControllerDele
     }
 }
 
-extension DefaultAddDiscountView: UITextFieldDelegate {
+extension AddDiscountView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
@@ -255,7 +255,7 @@ extension DefaultAddDiscountView: UITextFieldDelegate {
     }
 }
 
-extension DefaultAddDiscountView: PHPickerViewControllerDelegate {
+extension AddDiscountView: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         let itemProvider = results.first?.itemProvider
         if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
@@ -267,7 +267,7 @@ extension DefaultAddDiscountView: PHPickerViewControllerDelegate {
     }
 }
 
-extension DefaultAddDiscountView: UIImagePickerControllerDelegate {
+extension AddDiscountView: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             setupImage(image: image)

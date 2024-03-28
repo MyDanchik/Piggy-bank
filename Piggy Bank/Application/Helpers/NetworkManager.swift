@@ -1,14 +1,14 @@
 import Alamofire
+import Foundation
 
-final class NetworkManager {
+final class NetworkManager: NSCopying {
     
-    static let shared = NetworkManager()
+    static let instance = NetworkManager()
+    private let url = "https://www.nbrb.by/api/exrates/rates?periodicity=0"
     
     private init() {}
     
     func fetchExchangeRates(completion: @escaping ([ExchangeRate]?) -> Void) {
-        let url = "https://www.nbrb.by/api/exrates/rates?periodicity=0"
-        
         AF.request(url).responseDecodable(of: [ExchangeRate].self) { response in
             switch response.result {
             case .success(let rates):
@@ -18,6 +18,9 @@ final class NetworkManager {
                 completion(nil)
             }
         }
+    }
+    func copy(with zone: NSZone? = nil) -> Any {
+        return NetworkManager.instance
     }
 }
 

@@ -1,20 +1,20 @@
 import UIKit
 
-final class DefaultDiscountView: UIViewController {
+final class BanksView: UIViewController {
     
-    var viewModel: DefaultDiscountViewModel! {
+    var viewModel: BanksViewModel! {
         didSet {
-            viewModel.transition = { [weak self] addDiscountView in
-                self?.navigationController?.pushViewController(addDiscountView, animated: true)
+            viewModel.transition = { [weak self] addBanksView in
+                self?.navigationController?.pushViewController(addBanksView, animated: true)
                 self?.navigationItem.backButtonTitle = ""
             }
-            viewModel.setupDiscounts = { [weak self] discounts in
-                self?.discountsList = discounts
+            viewModel.setupBanks = { [weak self] banks in
+                self?.banksList = banks
             }
         }
     }
     
-    var discountsList = [Discount]() {
+    var banksList = [Bank]() {
         didSet {
             tableView.reloadData()
         }
@@ -23,7 +23,7 @@ final class DefaultDiscountView: UIViewController {
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private var tableView = UITableView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
@@ -32,12 +32,12 @@ final class DefaultDiscountView: UIViewController {
         setupUI()
         setupTableView()
         tableView.reloadData()
-        viewModel = DefaultDiscountViewModel()
+        viewModel = BanksViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.loadDiscounts()
+        viewModel.loadBanks()
     }
     
     private func setupSubviews() {
@@ -67,14 +67,14 @@ final class DefaultDiscountView: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(DiscountTableViewCell.self, forCellReuseIdentifier: "DiscountTableViewCell")
-        tableView.rowHeight = 210
+        tableView.register(BanksTableViewCell.self, forCellReuseIdentifier: "BanksTableViewCell")
+        tableView.rowHeight = 120
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
     
     private func setupUI() {
-        titleLabel.text = "Your discount"
+        titleLabel.text = "Your piggy banks"
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
         
@@ -82,7 +82,7 @@ final class DefaultDiscountView: UIViewController {
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
-        addButton.addTarget(self, action: #selector(self.transitionToAddDiscountView), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(self.transitionToAddBanksView), for: .touchUpInside)
         addButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
         addButton.layer.cornerRadius = 27.5
         addButton.layer.shadowColor = UIColor.black.cgColor
@@ -91,49 +91,44 @@ final class DefaultDiscountView: UIViewController {
         addButton.layer.shadowOpacity = 0.20
     }
     
-    @objc func transitionToAddDiscountView() {
-        viewModel.transitionToAddDiscountView()
+    @objc func transitionToAddBanksView() {
+        viewModel.transitionToAddBanksView()
         print("add")
     }
 }
-
-extension DefaultDiscountView: UITableViewDelegate, UITableViewDataSource {
+extension BanksView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return discountsList.count
+        return banksList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiscountTableViewCell", for: indexPath) as? DiscountTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BanksTableViewCell", for: indexPath) as? BanksTableViewCell else {
             return UITableViewCell()
         }
-        let discounts = discountsList[indexPath.row]
-        cell.configureEntity(discounts: discounts)
+        let banks = banksList[indexPath.row]
+        cell.configureEntity(banks: banks)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let discount = discountsList[indexPath.row]
+            let bank = banksList[indexPath.row]
             let alertDelete = UIAlertController(title: NSLocalizedString("mainPage.alertDelete.message", comment: ""), message: "", preferredStyle: .alert)
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.no", comment: ""), style: .default, handler: nil))
             alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.yes", comment: ""), style: .destructive, handler: { _ in
-                _ = CoreDataManager.instance.deleteDiscounts(discount)
-                self.discountsList.remove(at: indexPath.row)
+                _ = CoreDataManager.instance.deleteBanks(bank)
+                self.banksList.remove(at: indexPath.row)
                 tableView.reloadData()
             }))
             present(alertDelete, animated: true)
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fullInfoView = DefaulInfoView()
-        let info = discountsList[indexPath.row]
-        fullInfoView.configureFullBirthdays(discounts: info)
-        let navController = UINavigationController(rootViewController: fullInfoView)
-        navController.modalPresentationStyle = .formSheet
-        present(navController, animated: true, completion: nil)
-    }
 
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let fullBanksView = ModifyBanksView()
+        let banks = banksList[indexPath.row]
+        fullBanksView.configureFullBanks(banks: banks)
+        navigationController?.pushViewController(fullBanksView, animated: true)
+    }
 }

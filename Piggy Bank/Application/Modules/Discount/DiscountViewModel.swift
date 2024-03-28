@@ -1,19 +1,13 @@
 import UIKit
 
-protocol DiscountViewModel {
-    func transitionToAddDiscountView()
-    func loadBanks()
-    var transition: ((DefaultAddDiscountView) -> Void)? { get set }
-    var setupBanks: (([Discount]) -> Void)? { get set }
-}
-
-final class DefaultDiscountViewModel {
-    var transition: ((DefaultAddDiscountView) -> Void)?
+final class DiscountViewModel {
+    
+    var transition: ((AddDiscountView) -> Void)?
     var setupDiscounts: (([Discount]) -> Void)?
     
     func transitionToAddDiscountView() {
-        let addDiscountView = DefaultAddDiscountView()
-        let addDiscountViewModel = DefaultAddDiscountViewModel()
+        let addDiscountView = AddDiscountView()
+        let addDiscountViewModel = AddDiscountViewModel()
         addDiscountView.viewModel = addDiscountViewModel
         transition?(addDiscountView)
     }

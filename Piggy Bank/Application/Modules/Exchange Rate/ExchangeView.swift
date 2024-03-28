@@ -1,6 +1,6 @@
 import UIKit
 
-final class DefaultExchangeView: UIViewController {
+final class ExchangeView: UIViewController {
     
     private let titleLabel = UILabel()
     private let fetchButton = UIButton()
@@ -36,7 +36,7 @@ final class DefaultExchangeView: UIViewController {
     }
     
     private func fetchExchangeRates() {
-        NetworkManager.shared.fetchExchangeRates { [weak self] rates in
+        NetworkManager.instance.fetchExchangeRates { [weak self] rates in
             if let rates = rates {
                 // Фильтруем курсы, оставляем только доллар и евро
                 let filteredRates = rates.filter { $0.abbreviation == "USD" || $0.abbreviation == "EUR" || $0.abbreviation == "RUB" || $0.abbreviation == "PLN" || $0.abbreviation == "CNY"}
@@ -124,10 +124,16 @@ final class DefaultExchangeView: UIViewController {
         fetchExchangeRates()
         startLoadingAnimation()
         print("update")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let alertController = UIAlertController(title: "Обновлено", message: "время \(dateFormatter.string(from: Date()))", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
-extension DefaultExchangeView: UITableViewDelegate, UITableViewDataSource {
+extension ExchangeView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exchangeRates.count

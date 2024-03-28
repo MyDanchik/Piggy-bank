@@ -1,20 +1,13 @@
 import UIKit
 
-protocol BanksViewModel {
-    func transitionToAddBanksView()
-    func loadBanks()
-    var transition: ((DefaultAddBanksView) -> Void)? { get set }
-    var setupBanks: (([Bank]) -> Void)? { get set }
-}
-
-final class DefaultBanksViewModel {
+final class BanksViewModel {
     
-    var transition: ((DefaultAddBanksView) -> Void)?
+    var transition: ((AddBanksView) -> Void)?
     var setupBanks: (([Bank]) -> Void)?
     
     func transitionToAddBanksView() {
-        let addBanksView = DefaultAddBanksView()
-        let addBanksViewModel = DefaultAddBanksViewModel()
+        let addBanksView = AddBanksView()
+        let addBanksViewModel = AddBanksViewModel()
         addBanksView.viewModel = addBanksViewModel
         transition?(addBanksView)
     }

@@ -1,17 +1,7 @@
 import UIKit
 import PhotosUI
 
-protocol AddDiscountViewModel {
-    func tapOnALertButton()
-    func openGalery()
-    func openCamera()
-    var setupAlert: ((UIAlertController) -> Void)? { get set }
-    var setupPHPicker: ((PHPickerViewController) -> Void)? { get set }
-    var setupUIImagePicker: ((UIImagePickerController) -> Void)? { get set }
-    func saveNewDiscount(imageFrontDiscount: Data?, imageBackDiscount: Data?, nameDiscount: String?)
-}
-
-final class DefaultAddDiscountViewModel: AddDiscountViewModel {
+final class AddDiscountViewModel {
     
     var setupAlert: ((UIAlertController) -> Void)?
     var setupUIImagePicker: ((UIImagePickerController) -> Void)?
