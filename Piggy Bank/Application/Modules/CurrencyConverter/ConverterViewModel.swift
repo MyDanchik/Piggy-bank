@@ -18,5 +18,18 @@ final class ConverterViewModel {
             }
         }
     }
+    
+    func convertCurrency(from sourceCurrency: String, to targetCurrency: String, amount: Double) -> Double? {
+        guard let sourceRate = exchangeRates.first(where: { $0.abbreviation == sourceCurrency }),
+              targetCurrency == "BYN" else {
+            return nil
+        }
+
+        return amount * (sourceRate.rate / sourceRate.scale)
+    }
+
+
+
+
 }
 

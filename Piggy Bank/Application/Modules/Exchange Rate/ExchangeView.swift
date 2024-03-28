@@ -81,7 +81,7 @@ final class ExchangeView: UIViewController {
     
     private func fetchExchangeRates() {
         viewModel.fetchExchangeRates { [weak self] rates in
-            if rates != nil {
+            if let rates = rates {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.stopLoadingAnimation()
@@ -94,7 +94,6 @@ final class ExchangeView: UIViewController {
     }
     
     private func startLoadingAnimation() {
-        // Создаем и добавляем индикатор загрузки на вашу вью
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .black
         activityIndicator.center = view.center
@@ -103,7 +102,6 @@ final class ExchangeView: UIViewController {
     }
     
     private func stopLoadingAnimation() {
-        // Удаляем индикатор загрузки из вашей вью
         for subview in view.subviews {
             if let activityIndicator = subview as? UIActivityIndicatorView {
                 activityIndicator.stopAnimating()

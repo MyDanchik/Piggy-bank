@@ -24,6 +24,7 @@ class ConverterView: UIViewController {
         constraints()
         configureUI()
         fetchConverterRates()
+        setupTap()
     }
 
     // MARK: - Methods
@@ -147,13 +148,14 @@ class ConverterView: UIViewController {
     
     private func fetchConverterRates() {
         viewModel.fetchConverterRates { [weak self] rates in
-            if rates != nil {
+            if let rates = rates {
                 self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
             } else {
 
                 print("Failed to fetch exchange rates")
             }
         }
+        amountTextFieldForFirstView.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
     }
     
     private func showCurrencySelectionActionSheet(with rates: [ExchangeRate]) {
@@ -170,17 +172,30 @@ class ConverterView: UIViewController {
         actionSheet.addAction(cancelAction)
         
         present(actionSheet, animated: true, completion: nil)
+        conversionResult.text = " "
+        amountTextFieldForFirstView.text = ""
     }
     
+    private func convertAndDisplayResult(from sourceCurrency: String, to targetCurrency: String, amount: Double) {
+        if let convertedAmount = viewModel.convertCurrency(from: sourceCurrency, to: targetCurrency, amount: amount) {
+            conversionResult.text = String(format: "%.2f", convertedAmount)
+        } else {
+            print("Failed to convert currency")
+        }
+    }
     
-    @objc func currentCurrencySelectionTapped() {
-        
+    private func setupTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func tapDone() {
+        view.endEditing(true)
     }
     
     @objc private func currentCurrencyButtonTapped() {
         viewModel.fetchConverterRates { [weak self] rates in
             if let rates = rates {
-                self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
                 self?.showCurrencySelectionActionSheet(with: rates)
             } else {
                 print("Failed to fetch exchange rates")
@@ -188,6 +203,23 @@ class ConverterView: UIViewController {
         }
     }
 
+    @objc private func amountTextFieldDidChange() {
+        guard let amountText = amountTextFieldForFirstView.text, !amountText.isEmpty else {
+            conversionResult.text = " "
+            return
+        }
+        
+        guard let amountText = amountTextFieldForFirstView.text, let amount = Double(amountText) else {
+            print("Invalid amount entered")
+            return
+        }
+        
+        guard let sourceCurrency = currentCurrencyButton.title(for: .normal), let targetCurrency = desiredCurrencyButton.title(for: .normal) else {
+            print("Currency not selected")
+            return
+        }
+        convertAndDisplayResult(from: sourceCurrency, to: targetCurrency, amount: amount)
+    }
 }
 
 
