@@ -3,27 +3,27 @@ import UIKit
 class ConverterView: UIViewController {
     
     // MARK: - Publuc Properties
-    var viewModel: ConverterViewModel!
+    private var viewModel = ConverterViewModel()
     
     // MARK: - UI Properties
-    let converterTitleLabel = UILabel()
-    let firstCurrencyView = UIView()
-    let secondCurrencyView = UIView()
-    let changeCurrencyButton = UIButton()
-    let currentCurrencyButton = UIButton(type: .system)
-    let amountTextFieldForFirstView = UITextField()
-    let desiredCurrencyButton = UIButton(type: .system)
-    let conversionResult = UILabel()
-    let littleView1 = UIView()
-    let littleView2 = UIView()
+    private let converterTitleLabel = UILabel()
+    private let firstCurrencyView = UIView()
+    private let secondCurrencyView = UIView()
+    private let changeCurrencyButton = UIButton()
+    private let currentCurrencyButton = UIButton(type: .system)
+    private let amountTextFieldForFirstView = UITextField()
+    private let desiredCurrencyButton = UIButton(type: .system)
+    private let conversionResult = UILabel()
+    private let littleView1 = UIView()
+    private let littleView2 = UIView()
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addSubviews()
         constraints()
         configureUI()
+        fetchConverterRates()
     }
 
     // MARK: - Methods
@@ -121,7 +121,6 @@ class ConverterView: UIViewController {
         let imageForChangeCurrencyButton = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: configurationForChangeCurrencyButton)
         changeCurrencyButton.setImage(imageForChangeCurrencyButton, for: .normal)
         changeCurrencyButton.tintColor = UIColor(resource: .Colors.tintSelectColorTapBar)
-        changeCurrencyButton.addTarget(self, action: #selector(changeCurrencyButtonTapped), for: .touchUpInside)
         
         secondCurrencyView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         secondCurrencyView.layer.cornerRadius = 40
@@ -132,31 +131,65 @@ class ConverterView: UIViewController {
         
         amountTextFieldForFirstView.keyboardType = .numberPad
         
-        currentCurrencyButton.setTitle("USD", for: .normal)
+        currentCurrencyButton.setTitle("Add", for: .normal)
         currentCurrencyButton.tintColor = UIColor(resource: .Colors.colorText)
         currentCurrencyButton.semanticContentAttribute = .forceRightToLeft
         currentCurrencyButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         currentCurrencyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         currentCurrencyButton.setTitleColor(UIColor(resource: .Colors.colorText), for: .normal)
-        currentCurrencyButton.addTarget(self, action: #selector(currentCurrencySelectionTapped), for: .touchUpInside)
+        currentCurrencyButton.addTarget(self, action: #selector(currentCurrencyButtonTapped), for: .touchUpInside)
         
         desiredCurrencyButton.setTitle("BYN", for: .normal)
         desiredCurrencyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         desiredCurrencyButton.setTitleColor(UIColor(resource: .Colors.colorText), for: .normal)
     }
     
-    @objc func editingChanged() {
+    
+    private func fetchConverterRates() {
+        viewModel.fetchConverterRates { [weak self] rates in
+            if rates != nil {
+                self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
+            } else {
 
+                print("Failed to fetch exchange rates")
+            }
+        }
     }
+    
+    private func showCurrencySelectionActionSheet(with rates: [ExchangeRate]) {
+        let actionSheet = UIAlertController(title: "Выбор валюты", message: nil, preferredStyle: .actionSheet)
+        
+        for rate in rates {
+            let action = UIAlertAction(title: rate.abbreviation, style: .default) { [weak self] _ in
+                self?.currentCurrencyButton.setTitle(rate.abbreviation, for: .normal)
+            }
+            actionSheet.addAction(action)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
     
     @objc func currentCurrencySelectionTapped() {
-
+        
     }
     
-    @objc func changeCurrencyButtonTapped() {
-
+    @objc private func currentCurrencyButtonTapped() {
+        viewModel.fetchConverterRates { [weak self] rates in
+            if let rates = rates {
+                self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
+                self?.showCurrencySelectionActionSheet(with: rates)
+            } else {
+                print("Failed to fetch exchange rates")
+            }
+        }
     }
+
 }
 
 
 
+ 

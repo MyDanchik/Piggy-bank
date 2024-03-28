@@ -2,10 +2,11 @@ import UIKit
 
 final class ExchangeView: UIViewController {
     
+    private var viewModel = ExchangeViewModel()
+    
     private let titleLabel = UILabel()
     private let fetchButton = UIButton()
     private let tableView = UITableView()
-    private var exchangeRates: [ExchangeRate] = []
     private let lastUpdatedLabel = UILabel()
     
     override func viewDidLoad() {
@@ -35,28 +36,6 @@ final class ExchangeView: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    private func fetchExchangeRates() {
-        NetworkManager.instance.fetchExchangeRates { [weak self] rates in
-            if let rates = rates {
-                // Фильтруем курсы, оставляем только доллар и евро
-                let filteredRates = rates.filter { $0.abbreviation == "USD" || $0.abbreviation == "EUR" || $0.abbreviation == "RUB" || $0.abbreviation == "PLN" || $0.abbreviation == "CNY"}
-                DispatchQueue.main.async {
-                    self?.exchangeRates = filteredRates
-                    self?.tableView.reloadData()
-                    
-                    // Обновляем текст метки с временем последней загрузки
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    self?.lastUpdatedLabel.text = "Last updated: \(dateFormatter.string(from: Date())) NBRB.BY"
-                    
-                    self?.stopLoadingAnimation()
-                }
-            } else {
-                print("Failed to fetch exchange rates")
-            }
-        }
-    }
-
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
@@ -100,6 +79,20 @@ final class ExchangeView: UIViewController {
         lastUpdatedLabel.font = UIFont(name: "Rubik-Light", size: 14)
     }
     
+    private func fetchExchangeRates() {
+        viewModel.fetchExchangeRates { [weak self] rates in
+            if rates != nil {
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.stopLoadingAnimation()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    self?.lastUpdatedLabel.text = "Last updated: \(dateFormatter.string(from: Date()))"
+                }
+            }
+        }
+    }
+    
     private func startLoadingAnimation() {
         // Создаем и добавляем индикатор загрузки на вашу вью
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -136,7 +129,7 @@ final class ExchangeView: UIViewController {
 extension ExchangeView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exchangeRates.count
+        return viewModel.exchangeRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -144,7 +137,7 @@ extension ExchangeView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let rate = exchangeRates[indexPath.row]
+        let rate = viewModel.exchangeRates[indexPath.row]
         cell.configure(with: rate)
         return cell
     }
