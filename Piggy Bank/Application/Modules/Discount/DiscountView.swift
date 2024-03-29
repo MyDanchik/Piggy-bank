@@ -75,9 +75,9 @@ final class DiscountView: UIViewController {
     }
     
     private func setupUI() {
-        titleLabel.text = "Your discount"
+        titleLabel.text = NSLocalizedString("App.DiscountView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         addButton.tintColor = UIColor(resource: .Colors.colorText)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)

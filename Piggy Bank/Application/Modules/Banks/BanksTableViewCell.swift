@@ -63,10 +63,10 @@ final class BanksTableViewCell: UITableViewCell {
         customView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
-        nameLabel.font = UIFont(name: "Rubik-Medium", size: 20)
+        nameLabel.font = UIFont.rubik(ofSize: 20, style: .medium)
         
         priceLabel.textColor = UIColor(resource: .Colors.colorText)
-        priceLabel.font = UIFont(name: "Rubik-Regular", size: 16)
+        priceLabel.font = UIFont.rubik(ofSize: 16, style: .regular)
         
         imageCard.layer.cornerRadius = 35
         imageCard.contentMode = .scaleAspectFill

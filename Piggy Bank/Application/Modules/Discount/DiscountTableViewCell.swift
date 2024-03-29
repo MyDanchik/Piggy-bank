@@ -57,7 +57,7 @@ final class DiscountTableViewCell: UITableViewCell {
         customView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
-        nameLabel.font = UIFont(name: "Rubik-Regular", size: 20)
+        nameLabel.font = UIFont.rubik(ofSize: 20, style: .medium)
         
         imageCard.contentMode = .scaleAspectFill
         imageCard.clipsToBounds = true

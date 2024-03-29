@@ -114,29 +114,29 @@ final class ModifyBanksView: UIViewController {
         imageView.layer.masksToBounds = true
 
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         savedLabel.text = "Saved"
         savedLabel.textColor = UIColor(resource: .Colors.colorText)
-        savedLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        savedLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        savedTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
+        savedTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         savedTextLabel.textColor = UIColor(resource: .Colors.colorText)
 
         leftLabel.text = "Left"
         leftLabel.textColor = UIColor(resource: .Colors.colorText)
-        leftLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        leftLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        leftTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
+        leftTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         leftTextLabel.textColor = UIColor(resource: .Colors.colorText)
  
         replenishLabel.text = "Replenish"
         replenishLabel.textColor = UIColor(resource: .Colors.colorText)
-        replenishLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        replenishLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish",
                                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
-        replenishTextLabel.font = UIFont(name: "Rubik-Light", size: 18)
+        replenishTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         replenishTextLabel.textColor = UIColor(resource: .Colors.colorText)
         replenishTextLabel.delegate = self
         replenishTextLabel.keyboardType = .numberPad
@@ -145,9 +145,9 @@ final class ModifyBanksView: UIViewController {
         lineReplenishTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         createButton.setTitle("Ok", for: .normal)
-        createButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
+        createButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         createButton.tintColor = .white
-        createButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
+        createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         

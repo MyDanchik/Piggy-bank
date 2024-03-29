@@ -1,0 +1,12 @@
+// MARK: - DiscountView
+"App.DiscountView.NavigationItemTitle" = "Discount";
+
+// MARK: - BanksView
+"App.BanksView.NavigationItemTitle" = "Piggy banks";
+
+// MARK: - ExchangeView
+"App.ExchangeView.NavigationItemTitle" = "Exchange Rate";
+
+// MARK: - ConverterView
+"App.ConverterView.NavigationItemTitle" = "Converter";
+

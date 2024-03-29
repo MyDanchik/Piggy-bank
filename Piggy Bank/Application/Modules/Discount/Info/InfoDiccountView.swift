@@ -58,7 +58,7 @@ final class DefaulInfoView: UIViewController {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
     
         customFrontView.contentMode = .scaleAspectFill
         customFrontView.layer.shadowColor = UIColor.black.cgColor

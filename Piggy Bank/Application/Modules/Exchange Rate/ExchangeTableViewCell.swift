@@ -57,10 +57,10 @@ final class ExchangeTableViewCell: UITableViewCell {
         customView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
-        nameLabel.font = UIFont(name: "Rubik-Regular", size: 20)
+        nameLabel.font = UIFont.rubik(ofSize: 20, style: .regular)
         
         priceLabel.textColor = UIColor(resource: .Colors.colorText)
-        priceLabel.font = UIFont(name: "Rubik-Regular", size: 20)
+        priceLabel.font = UIFont.rubik(ofSize: 20, style: .regular)
     }
     
     // MARK: - Configuration

@@ -60,9 +60,9 @@ final class ExchangeView: UIViewController {
     }
     
     private func setupUI() {
-        titleLabel.text = "Exchange Rate"
+        titleLabel.text = NSLocalizedString("App.ExchangeView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         fetchButton.tintColor = UIColor(resource: .Colors.colorText)
         fetchButton.setImage(UIImage(systemName: "goforward"), for: .normal)
@@ -77,7 +77,7 @@ final class ExchangeView: UIViewController {
         fetchButton.layer.shadowOpacity = 0.20
         
         lastUpdatedLabel.textColor = .gray
-        lastUpdatedLabel.font = UIFont(name: "Rubik-Light", size: 14)
+        lastUpdatedLabel.font = UIFont.rubik(ofSize: 14, style: .light)
     }
     
     private func fetchExchangeRates() {

@@ -79,27 +79,27 @@ final class DefaultLogInView: UIViewController {
         
         infoLabel.text = "The simplest way"
         infoLabel.textColor = .white
-        infoLabel.font = UIFont(name: "Rubik-Light", size: 20)
+        infoLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         
         infoBoldLabel.text = "to manage your money"
         infoBoldLabel.textColor = .white
-        infoBoldLabel.font = UIFont(name: "Rubik-Medium", size: 20)
+        infoBoldLabel.font = UIFont.rubik(ofSize: 20, style: .medium)
         
         greetingsLabel.text = "Hi! What is your name?"
         greetingsLabel.textColor = .white
-        greetingsLabel.font = UIFont(name: "Rubik-Regular", size: 18)
+        greetingsLabel.font = UIFont.rubik(ofSize: 18, style: .regular)
         
         userNameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        userNameTextField.font = UIFont(name: "Rubik-Light", size: 18)
+        userNameTextField.font = UIFont.rubik(ofSize: 18, style: .light)
         userNameTextField.textColor = .white
         userNameTextField.textAlignment = .center
         
         lineTextFieldLabel.backgroundColor = .white
         
         saveNameButton.setTitle("Start now", for: .normal)
-        saveNameButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
+        saveNameButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         saveNameButton.tintColor = .white
-        saveNameButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
+        saveNameButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         saveNameButton.layer.cornerRadius = 35
         saveNameButton.addTarget(self, action: #selector(saveNameButtonTapped), for: .touchUpInside)
     }

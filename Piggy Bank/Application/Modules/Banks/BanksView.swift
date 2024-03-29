@@ -75,9 +75,9 @@ final class BanksView: UIViewController {
     }
     
     private func setupUI() {
-        titleLabel.text = "Your piggy banks"
+        titleLabel.text = NSLocalizedString("App.BanksView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         addButton.tintColor = UIColor(resource: .Colors.colorText)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)

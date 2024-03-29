@@ -100,9 +100,9 @@ class ConverterView: UIViewController {
     func configureUI() {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
-        converterTitleLabel.text = "Конвертер"
+        converterTitleLabel.text = NSLocalizedString("App.ConverterView.NavigationItemTitle", comment: "")
         converterTitleLabel.textColor = UIColor(resource: .Colors.colorText)
-        converterTitleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        converterTitleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         firstCurrencyView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         firstCurrencyView.layer.cornerRadius = 40
@@ -136,12 +136,12 @@ class ConverterView: UIViewController {
         currentCurrencyButton.tintColor = UIColor(resource: .Colors.colorText)
         currentCurrencyButton.semanticContentAttribute = .forceRightToLeft
         currentCurrencyButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        currentCurrencyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        currentCurrencyButton.titleLabel?.font = UIFont.rubik(ofSize: 20, style: .regular)
         currentCurrencyButton.setTitleColor(UIColor(resource: .Colors.colorText), for: .normal)
         currentCurrencyButton.addTarget(self, action: #selector(currentCurrencyButtonTapped), for: .touchUpInside)
         
         desiredCurrencyButton.setTitle("BYN", for: .normal)
-        desiredCurrencyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        desiredCurrencyButton.titleLabel?.font = UIFont.rubik(ofSize: 20, style: .regular)
         desiredCurrencyButton.setTitleColor(UIColor(resource: .Colors.colorText), for: .normal)
     }
     

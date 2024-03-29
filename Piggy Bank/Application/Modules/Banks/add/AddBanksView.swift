@@ -153,7 +153,7 @@ final class AddBanksView: UIViewController {
     private func setupUI() {
         iconLabel.text = "Icon"
         iconLabel.textColor = UIColor(resource: .Colors.colorText)
-        iconLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        iconLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         imageView.contentMode = .scaleAspectFit
         
@@ -171,15 +171,15 @@ final class AddBanksView: UIViewController {
         
         titleLabel.text = "Creat piggy bank"
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         nameLabel.text = "Name"
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
-        nameLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        nameLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", 
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
-        nameTextField.font = UIFont(name: "Rubik-Light", size: 18)
+        nameTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         nameTextField.textColor = UIColor(resource: .Colors.colorText)
         nameTextField.textAlignment = .center
         
@@ -187,11 +187,11 @@ final class AddBanksView: UIViewController {
         
         sumLabel.text = "Sum"
         sumLabel.textColor = UIColor(resource: .Colors.colorText)
-        sumLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        sumLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum", 
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
-        sumTextField.font = UIFont(name: "Rubik-Light", size: 18)
+        sumTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         sumTextField.textColor = UIColor(resource: .Colors.colorText)
         sumTextField.delegate = self
         sumTextField.keyboardType = .numberPad
@@ -200,9 +200,9 @@ final class AddBanksView: UIViewController {
         lineSumTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
         createButton.setTitle("Creat", for: .normal)
-        createButton.titleLabel?.font = UIFont(name: "Rubik-Regular", size: 18)
+        createButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         createButton.tintColor = .white
-        createButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
+        createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         

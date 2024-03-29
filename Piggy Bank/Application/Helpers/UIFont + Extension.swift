@@ -1,6 +1,6 @@
 import UIKit.UIFont
 
-//MARK: - Enum with Manrope font's styles to use to fallowing extension UIFont class
+//MARK: - Enum with Rubik font's styles to use to fallowing extension UIFont class
 
 enum RubikFontStyle: String {
     case extraBold = "Rubik-ExtraBold"
@@ -16,7 +16,7 @@ enum RubikFontStyle: String {
 
 extension UIFont {
     
-    static func manrope(ofSize size: CGFloat, style: RubikFontStyle) -> UIFont {
+    static func rubik(ofSize size: CGFloat, style: RubikFontStyle) -> UIFont {
         return UIFont(name: style.rawValue, size: size) ?? .systemFont(ofSize: size)
     }
 }
