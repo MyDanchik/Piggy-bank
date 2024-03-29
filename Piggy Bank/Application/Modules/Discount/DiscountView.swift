@@ -26,6 +26,7 @@ final class DiscountView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         setupSubviews()
         setupConstraints()

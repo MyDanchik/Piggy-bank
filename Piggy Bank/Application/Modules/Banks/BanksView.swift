@@ -27,6 +27,7 @@ final class BanksView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
+        navigationController?.navigationBar.isHidden = true
         setupSubviews()
         setupConstraints()
         setupUI()

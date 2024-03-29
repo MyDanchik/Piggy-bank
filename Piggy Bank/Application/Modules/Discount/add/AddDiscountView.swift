@@ -18,6 +18,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     private let addFrontImageButton = UIButton()
     private let customBackView = UIImageView()
     private let addBackImageButton = UIButton()
+    private let backButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         view.addSubview(addFrontImageButton)
         view.addSubview(customBackView)
         view.addSubview(addBackImageButton)
+        view.addSubview(backButton)
     }
     
     private func setupConstraints() {
@@ -112,6 +114,12 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         createButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         createButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
+        
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
     private func setupUI() {
@@ -159,6 +167,14 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         createButton.backgroundColor = UIColor(red: 197/255, green: 119/255, blue: 209/255, alpha: 1.0)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        
+        backButton.tintColor = UIColor(resource: .Colors.colorText)
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
+        backButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        backButton.addTarget(self, action: #selector(self.goBack), for: .touchUpInside)
+        backButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
+        backButton.layer.cornerRadius = 27.5
     }
     
     private func setupBindings() {
@@ -215,7 +231,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         print("save")
         saveDiscounts()
         goBack()
-        
     }
     
     @objc func goBack() {

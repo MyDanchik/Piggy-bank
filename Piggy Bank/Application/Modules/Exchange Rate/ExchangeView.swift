@@ -12,6 +12,7 @@ final class ExchangeView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
+        navigationController?.navigationBar.isHidden = true
         setupSubviews()
         setupConstraints()
         setupUI()
