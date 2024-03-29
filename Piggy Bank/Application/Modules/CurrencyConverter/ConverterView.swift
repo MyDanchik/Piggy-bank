@@ -45,10 +45,9 @@ class ConverterView: UIViewController {
         converterTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         converterTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         converterTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        converterTitleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
+
         firstCurrencyView.translatesAutoresizingMaskIntoConstraints = false
-        firstCurrencyView.topAnchor.constraint(equalTo: converterTitleLabel.bottomAnchor, constant: 43).isActive = true
+        firstCurrencyView.topAnchor.constraint(equalTo: converterTitleLabel.bottomAnchor, constant: 55).isActive = true
         firstCurrencyView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
         firstCurrencyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
         firstCurrencyView.heightAnchor.constraint(equalToConstant: 80).isActive = true
