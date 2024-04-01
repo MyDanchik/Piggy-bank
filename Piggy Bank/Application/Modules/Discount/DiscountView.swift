@@ -6,7 +6,6 @@ final class DiscountView: UIViewController {
         didSet {
             viewModel.transition = { [weak self] addDiscountView in
                 self?.navigationController?.pushViewController(addDiscountView, animated: true)
-                self?.navigationItem.backButtonTitle = ""
             }
             viewModel.setupDiscounts = { [weak self] discounts in
                 self?.discountsList = discounts
@@ -94,7 +93,6 @@ final class DiscountView: UIViewController {
     
     @objc func transitionToAddDiscountView() {
         viewModel.transitionToAddDiscountView()
-        print("add")
     }
 }
 
@@ -117,9 +115,9 @@ extension DiscountView: UITableViewDelegate, UITableViewDataSource {
         let deleteAction = UIContextualAction(style: .destructive, title: "") { (_, _, completion) in
             let discount = self.discountsList[indexPath.row]
             
-            let alertDelete = UIAlertController(title: NSLocalizedString("mainPage.alertDelete.message", comment: ""), message: "", preferredStyle: .alert)
-            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.no", comment: ""), style: .default, handler: nil))
-            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("mainPage.alertDelete.yes", comment: ""), style: .destructive, handler: { _ in
+            let alertDelete = UIAlertController(title: NSLocalizedString("App.DiscountView.AlertDelete.Message", comment: ""), message: "", preferredStyle: .alert)
+            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("App.DiscountView.AlertDelete.No", comment: ""), style: .default, handler: nil))
+            alertDelete.addAction(UIAlertAction(title: NSLocalizedString("App.DiscountView.AlertDelete.Yes", comment: ""), style: .destructive, handler: { _ in
                 _ = CoreDataManager.instance.deleteDiscounts(discount)
                 self.discountsList.remove(at: indexPath.row)
                 tableView.reloadData()

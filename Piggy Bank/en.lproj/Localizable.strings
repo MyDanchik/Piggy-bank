@@ -1,5 +1,20 @@
 // MARK: - DiscountView
 "App.DiscountView.NavigationItemTitle" = "Discount";
+"App.DiscountView.AlertDelete.Message" = "Do you want to remove?";
+"App.DiscountView.AlertDelete.Yes" = "Yes";
+"App.DiscountView.AlertDelete.No" = "No";
+
+// MARK: - AddDiscountView
+"App.AddDiscountView.NavigationItemTitle" = "Creat discount";
+"App.AddDiscountView.NameLabel" = "Name";
+"App.AddDiscountView.NameTextField" = "Enter name";
+"App.AddDiscountView.СreateButton" = "Сreate";
+"App.AddDiscountView.TapOnALertButton.camera" = "Camera";
+"App.AddDiscountView.TapOnALertButton.gallery" = "Gallery";
+"App.AddDiscountView.TapOnALertButton.cancel" = "Cancel";
+"App.AddDiscountView.TapOnALertButton.Eror" = "Eror";
+"App.AddDiscountView.TapOnALertButton.Message" = "Please fill in all required fields.";
+
 
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Piggy banks";

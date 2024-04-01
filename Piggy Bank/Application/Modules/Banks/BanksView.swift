@@ -6,7 +6,6 @@ final class BanksView: UIViewController {
         didSet {
             viewModel.transition = { [weak self] addBanksView in
                 self?.navigationController?.pushViewController(addBanksView, animated: true)
-                self?.navigationItem.backButtonTitle = ""
             }
             viewModel.setupBanks = { [weak self] banks in
                 self?.banksList = banks

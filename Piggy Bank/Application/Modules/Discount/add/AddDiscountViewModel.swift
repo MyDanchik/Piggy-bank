@@ -8,18 +8,18 @@ final class AddDiscountViewModel {
     
     func tapOnALertButton() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("addBirthdaysPage.tapOnALertButton.camera", comment: ""), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("App.AddDiscountView.TapOnALertButton.camera", comment: ""), style: .default, handler: { _ in
             self.openCamera()
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("addBirthdaysPage.tapOnALertButton.galery", comment: ""), style: .default, handler: { _ in
-            self.openGalery()
+        alert.addAction(UIAlertAction(title: NSLocalizedString("App.AddDiscountView.TapOnALertButton.gallery", comment: ""), style: .default, handler: { _ in
+            self.openGallery()
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("addBirthdaysPage.tapOnALertButton.cancel", comment: ""), style: .cancel, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("App.AddDiscountView.TapOnALertButton.cancel", comment: ""), style: .cancel, handler: { _ in
         }))
         setupAlert?(alert)
     }
     
-    func openGalery() {
+    func openGallery() {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePicker.sourceType = .photoLibrary
@@ -41,8 +41,6 @@ final class AddDiscountViewModel {
         guard let imageFrontDiscount = imageFrontDiscount,
               let imageBackDiscount = imageBackDiscount,
               let nameDiscount = nameDiscount, !nameDiscount.isEmpty else {
-            let alertEmpty = UIAlertController(title: NSLocalizedString("Bank.alertEmpty", comment: ""), message: "", preferredStyle: .alert)
-            alertEmpty.addAction(UIAlertAction(title: NSLocalizedString("Bank.alertOK", comment: ""), style: .destructive, handler: nil))
             return
         }
         

@@ -147,15 +147,15 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         addBackImageButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         addBackImageButton.addTarget(self, action: #selector(tapOnAlertButton2), for: .touchUpInside)
         
-        titleLabel.text = "Creat discount"
+        titleLabel.text = NSLocalizedString("App.AddDiscountView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        nameLabel.text = "Name"
+        nameLabel.text = NSLocalizedString("App.AddDiscountView.NameLabel", comment: "")
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
         nameLabel.font = UIFont.rubik(ofSize: 20, style: .medium)
         
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name",
+        nameTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("App.AddDiscountView.NameTextField", comment: ""),
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         nameTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         nameTextField.textColor = UIColor(resource: .Colors.colorText)
@@ -163,7 +163,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         
         lineNameTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
-        createButton.setTitle("Creat", for: .normal)
+        createButton.setTitle(NSLocalizedString("App.AddDiscountView.СreateButton", comment: ""), for: .normal)
         createButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         createButton.tintColor = .white
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
@@ -200,15 +200,19 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
               let imageBackDiscount = customBackView.image?.jpegData(compressionQuality: 1.0),
               let nameDiscount = nameTextField.text, !nameDiscount.isEmpty
         else {
+            let alert = UIAlertController(title: NSLocalizedString("App.AddDiscountView.TapOnALertButton.Eror", comment: ""), message: NSLocalizedString("App.AddDiscountView.TapOnALertButton.Message", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             return
         }
-        viewModel.saveNewDiscount(imageFrontDiscount: imageFrontDiscount, imageBackDiscount: imageBackDiscount,
-                                  nameDiscount: nameDiscount)
+        
+        viewModel.saveNewDiscount(imageFrontDiscount: imageFrontDiscount, imageBackDiscount: imageBackDiscount, nameDiscount: nameDiscount)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.onSave?()
         }
     }
+
     
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
@@ -230,7 +234,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func saveButtonTapped() {
-        print("save")
         saveDiscounts()
         goBack()
     }
@@ -246,17 +249,15 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     @objc func tapOnAlertButton() {
         viewModel?.tapOnALertButton()
         isImageSelected = true
-        print("im")
     }
     
     @objc func tapOnAlertButton2() {
         viewModel?.tapOnALertButton()
         isImageSelected = false
-        print("im2")
     }
     
     @objc func openGalery() {
-        viewModel.openGalery()
+        viewModel.openGallery()
     }
     
     @objc func openCamera() {

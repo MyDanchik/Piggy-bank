@@ -1,5 +1,19 @@
 // MARK: - DiscountView
 "App.DiscountView.NavigationItemTitle" = "Дисконтные";
+"App.DiscountView.AlertDelete.Message" = "Хотите удалить?";
+"App.DiscountView.AlertDelete.Yes" = "Да";
+"App.DiscountView.AlertDelete.No" = "Нет";
+
+// MARK: - AddDiscountView
+"App.AddDiscountView.NavigationItemTitle" = "Создание дискотной";
+"App.AddDiscountView.NameLabel" = "Имя";
+"App.AddDiscountView.NameTextField" = "Введите имя";
+"App.AddDiscountView.СreateButton" = "Создать";
+"App.AddDiscountView.TapOnALertButton.camera" = "Камера";
+"App.AddDiscountView.TapOnALertButton.gallery" = "Галерея";
+"App.AddDiscountView.TapOnALertButton.cancel" = "Отмена";
+"App.AddDiscountView.TapOnALertButton.Eror" = "Ошибка";
+"App.AddDiscountView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
 
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Копилки";
