@@ -39,9 +39,11 @@
 "App.AddBanksView.TapOnALertButton.Eror" = "Ошибка";
 "App.AddBanksView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
 
-
 // MARK: - ExchangeView
 "App.ExchangeView.NavigationItemTitle" = "Курсы валют";
+"App.ExchangeView.LastUpdatedLabel" = "Обновлено: ";
+"App.ExchangeView.TapOnALertButton.Update" = "Курсы обновлены";
+"App.ExchangeView.TapOnALertButton.Message" = "Обновлено: ";
 
 // MARK: - ConverterView
 "App.ConverterView.NavigationItemTitle" = "Конвертер";

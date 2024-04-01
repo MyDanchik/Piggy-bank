@@ -15,7 +15,6 @@
 "App.AddDiscountView.TapOnALertButton.Eror" = "Eror";
 "App.AddDiscountView.TapOnALertButton.Message" = "Please fill in all required fields.";
 
-
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Piggy banks";
 "App.BanksView.AlertDelete.Message" = "Do you want to remove?";
@@ -29,7 +28,6 @@
 "App.ModifyBanksView.ReplenishTextLabel" = "Enter the amount";
 "App.ModifyBanksView.CreateButton" = "Modify";
 
-
 // MARK: - AddBanksView
 "App.AddBanksView.NavigationItemTitle" = "Creat piggy banks";
 "App.AddBanksView.IconLabel" = "Icon";
@@ -41,15 +39,11 @@
 "App.AddBanksView.TapOnALertButton.Eror" = "Eror";
 "App.AddBanksView.TapOnALertButton.Message" = "Please fill in all required fields.";
 
-
-
-
-
-
-
-
 // MARK: - ExchangeView
 "App.ExchangeView.NavigationItemTitle" = "Exchange Rate";
+"App.ExchangeView.LastUpdatedLabel" = "Last updated: ";
+"App.ExchangeView.TapOnALertButton.Update" = "Courses updated";
+"App.ExchangeView.TapOnALertButton.Message" = "Update: ";
 
 // MARK: - ConverterView
 "App.ConverterView.NavigationItemTitle" = "Converter";

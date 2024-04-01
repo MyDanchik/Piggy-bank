@@ -88,7 +88,7 @@ final class ExchangeView: UIViewController {
                     self?.stopLoadingAnimation()
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    self?.lastUpdatedLabel.text = "Last updated: \(dateFormatter.string(from: Date()))"
+                    self?.lastUpdatedLabel.text = NSLocalizedString("App.ExchangeView.LastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
                 }
             }
         }
@@ -115,10 +115,10 @@ final class ExchangeView: UIViewController {
     @objc func tapOnAddButton() {
         fetchExchangeRates()
         startLoadingAnimation()
-        print("update")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let alertController = UIAlertController(title: "Обновлено", message: "время \(dateFormatter.string(from: Date()))", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("App.ExchangeView.TapOnALertButton.Update", comment: ""),
+                                                message: NSLocalizedString("App.ExchangeView.TapOnALertButton.Message", comment: "") + "\(dateFormatter.string(from: Date()))", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)

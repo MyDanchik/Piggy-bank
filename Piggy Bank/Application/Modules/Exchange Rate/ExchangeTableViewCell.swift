@@ -12,22 +12,25 @@ final class ExchangeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        addSubviews()
+        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupUI()
+        addSubviews()
+        setupConstraints()
     }
     
-    // MARK: - UI Setup
-    private func setupConstraints() {
-        
-    }
-    private func setupUI() {
+    func addSubviews() {
         contentView.addSubview(customView)
         customView.addSubview(nameLabel)
         customView.addSubview(priceLabel)
         customView.addSubview(imageFlag)
-        
+    }
+    // MARK: - UI Setup
+    private func setupConstraints() {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
@@ -45,7 +48,9 @@ final class ExchangeTableViewCell: UITableViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -25).isActive = true
-        
+    }
+    
+    private func setupUI() {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
