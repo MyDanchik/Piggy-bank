@@ -17,6 +17,28 @@
 
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Копилки";
+"App.BanksView.AlertDelete.Message" = "Хотите удалить?";
+"App.BanksView.AlertDelete.Yes" = "Да";
+"App.BanksView.AlertDelete.No" = "Нет";
+
+// MARK: - ModifyBanksView
+"App.ModifyBanksView.SavedLabel" = "Сохранено";
+"App.ModifyBanksView.LeftLabel" = "Осталось";
+"App.ModifyBanksView.ReplenishLabel" = "Пополнить";
+"App.ModifyBanksView.ReplenishTextLabel" = "Введите сумму";
+"App.ModifyBanksView.CreateButton" = "Внести";
+
+// MARK: - AddBanksView
+"App.AddBanksView.NavigationItemTitle" = "Создать копилку";
+"App.AddBanksView.IconLabel" = "Ярлык";
+"App.AddBanksView.NameLabel" = "Название";
+"App.AddBanksView.NameTextField" = "Введите название";
+"App.AddBanksView.SumLabel" = "Сумма";
+"App.AddBanksView.SumTextField" = "Введите сумму";
+"App.AddBanksView.CreateButton" = "Создать";
+"App.AddBanksView.TapOnALertButton.Eror" = "Ошибка";
+"App.AddBanksView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
+
 
 // MARK: - ExchangeView
 "App.ExchangeView.NavigationItemTitle" = "Курсы валют";

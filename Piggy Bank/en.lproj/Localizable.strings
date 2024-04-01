@@ -18,6 +18,35 @@
 
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Piggy banks";
+"App.BanksView.AlertDelete.Message" = "Do you want to remove?";
+"App.BanksView.AlertDelete.Yes" = "Yes";
+"App.BanksView.AlertDelete.No" = "No";
+
+// MARK: - ModifyBanksView
+"App.ModifyBanksView.SavedLabel" = "Saved";
+"App.ModifyBanksView.LeftLabel" = "Left";
+"App.ModifyBanksView.ReplenishLabel" = "Replenish";
+"App.ModifyBanksView.ReplenishTextLabel" = "Enter the amount";
+"App.ModifyBanksView.CreateButton" = "Modify";
+
+
+// MARK: - AddBanksView
+"App.AddBanksView.NavigationItemTitle" = "Creat piggy banks";
+"App.AddBanksView.IconLabel" = "Icon";
+"App.AddBanksView.NameLabel" = "Name";
+"App.AddBanksView.NameTextField" = "Enter name";
+"App.AddBanksView.SumLabel" = "Sum";
+"App.AddBanksView.SumTextField" = "Enter sum";
+"App.AddBanksView.CreateButton" = "Create";
+"App.AddBanksView.TapOnALertButton.Eror" = "Eror";
+"App.AddBanksView.TapOnALertButton.Message" = "Please fill in all required fields.";
+
+
+
+
+
+
+
 
 // MARK: - ExchangeView
 "App.ExchangeView.NavigationItemTitle" = "Exchange Rate";

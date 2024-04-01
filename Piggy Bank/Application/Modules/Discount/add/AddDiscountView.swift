@@ -213,7 +213,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
         view.addGestureRecognizer(tap)

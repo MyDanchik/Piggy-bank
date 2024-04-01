@@ -116,25 +116,25 @@ final class ModifyBanksView: UIViewController {
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        savedLabel.text = "Saved"
+        savedLabel.text = NSLocalizedString("App.ModifyBanksView.SavedLabel", comment: "")
         savedLabel.textColor = UIColor(resource: .Colors.colorText)
         savedLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         savedTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         savedTextLabel.textColor = UIColor(resource: .Colors.colorText)
         
-        leftLabel.text = "Left"
+        leftLabel.text = NSLocalizedString("App.ModifyBanksView.LeftLabel", comment: "")
         leftLabel.textColor = UIColor(resource: .Colors.colorText)
         leftLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         leftTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         leftTextLabel.textColor = UIColor(resource: .Colors.colorText)
         
-        replenishLabel.text = "Replenish"
+        replenishLabel.text = NSLocalizedString("App.ModifyBanksView.ReplenishLabel", comment: "")
         replenishLabel.textColor = UIColor(resource: .Colors.colorText)
         replenishLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        replenishTextLabel.attributedPlaceholder = NSAttributedString(string: "Replenish",
+        replenishTextLabel.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("App.ModifyBanksView.ReplenishTextLabel", comment: ""),
                                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         replenishTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         replenishTextLabel.textColor = UIColor(resource: .Colors.colorText)
@@ -144,7 +144,7 @@ final class ModifyBanksView: UIViewController {
         
         lineReplenishTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
-        createButton.setTitle("Ok", for: .normal)
+        createButton.setTitle(NSLocalizedString("App.ModifyBanksView.CreateButton", comment: ""), for: .normal)
         createButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         createButton.tintColor = .white
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
@@ -214,7 +214,7 @@ final class ModifyBanksView: UIViewController {
         } else {
             self.imageView.image = UIImage(named: "default_image")
         }
-        titleLabel.text = "Yuor \(banks.nameBank ?? "")"
+        titleLabel.text = "\(banks.nameBank ?? "")"
         nameLabel.text = banks.nameBank
         savedTextLabel.text = "\(String(format: "%g", Double(banks.savedPriceBank ?? "0") ?? 0)) $"
         if let priceBankString = banks.priceBank, let savedPriceBankString = banks.savedPriceBank,
@@ -227,7 +227,6 @@ final class ModifyBanksView: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        print("save")
         saveBanks()
     }
     

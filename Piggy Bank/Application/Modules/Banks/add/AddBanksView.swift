@@ -59,6 +59,7 @@ final class AddBanksView: UIViewController {
         view.addSubview(nextButton)
         view.addSubview(backButton)
     }
+    
     private func setupConstraints() {
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -125,26 +126,8 @@ final class AddBanksView: UIViewController {
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
-    private func updateImageView() {
-        imageView.image = viewModel.images[currentImageIndex]
-    }
-    
-    @objc private func previousButtonTapped() {
-        if currentImageIndex > 0 {
-            currentImageIndex -= 1
-            updateImageView()
-        }
-    }
-    
-    @objc private func nextButtonTapped() {
-        if currentImageIndex < viewModel.images.count - 1 {
-            currentImageIndex += 1
-            updateImageView()
-        }
-    }
-    
     private func setupUI() {
-        iconLabel.text = "Icon"
+        iconLabel.text = NSLocalizedString("App.AddBanksView.IconLabel", comment: "")
         iconLabel.textColor = UIColor(resource: .Colors.colorText)
         iconLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
@@ -162,15 +145,15 @@ final class AddBanksView: UIViewController {
         nextButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         
-        titleLabel.text = "Creat piggy bank"
+        titleLabel.text = NSLocalizedString("App.AddBanksView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        nameLabel.text = "Name"
+        nameLabel.text = NSLocalizedString("App.AddBanksView.NameLabel" , comment: "")
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
         nameLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name",
+        nameTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("App.AddBanksView.NameTextField", comment: ""),
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         nameTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         nameTextField.textColor = UIColor(resource: .Colors.colorText)
@@ -178,11 +161,11 @@ final class AddBanksView: UIViewController {
         
         lineNameTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
-        sumLabel.text = "Sum"
+        sumLabel.text = NSLocalizedString("App.AddBanksView.SumLabel", comment: "")
         sumLabel.textColor = UIColor(resource: .Colors.colorText)
         sumLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum",
+        sumTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("App.AddBanksView.SumTextField", comment: ""),
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         sumTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         sumTextField.textColor = UIColor(resource: .Colors.colorText)
@@ -192,7 +175,7 @@ final class AddBanksView: UIViewController {
         
         lineSumTextFieldLabel.backgroundColor = UIColor(resource: .Colors.colorText)
         
-        createButton.setTitle("Creat", for: .normal)
+        createButton.setTitle(NSLocalizedString("App.AddBanksView.CreateButton", comment: ""), for: .normal)
         createButton.titleLabel?.font = UIFont.rubik(ofSize: 18, style: .regular)
         createButton.tintColor = .white
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
@@ -217,24 +200,47 @@ final class AddBanksView: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
     private func saveBanks() {
         guard let imageBanks = imageView.image?.jpegData(compressionQuality: 1.0),
               let nameBanks = nameTextField.text, !nameBanks.isEmpty,
               let priceBanks = sumTextField.text, !priceBanks.isEmpty
         else {
+            let alert = UIAlertController(title: NSLocalizedString("App.AddBanksView.TapOnALertButton.Eror", comment: ""), message: NSLocalizedString("App.AddBanksView.TapOnALertButton.Message", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             return
         }
         viewModel.saveNewBanks(imageBanks: imageBanks,
                                nameBanks: nameBanks,
                                priceBanks: priceBanks)
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.onSave?()
         }
     }
     
+    private func updateImageView() {
+        imageView.image = viewModel.images[currentImageIndex]
+    }
+    
+    @objc private func previousButtonTapped() {
+        if currentImageIndex > 0 {
+            currentImageIndex -= 1
+            updateImageView()
+        }
+    }
+    
+    @objc private func nextButtonTapped() {
+        if currentImageIndex < viewModel.images.count - 1 {
+            currentImageIndex += 1
+            updateImageView()
+        }
+    }
+
+    
     @objc func saveButtonTapped() {
-        print("save")
         saveBanks()
         goBack()
         
