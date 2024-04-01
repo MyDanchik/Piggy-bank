@@ -30,12 +30,8 @@ final class ConverterViewModel {
               targetCurrency == "BYN" else {
             return nil
         }
-
+        
         return amount * (sourceRate.rate / sourceRate.scale)
     }
-
-
-
-
 }
 

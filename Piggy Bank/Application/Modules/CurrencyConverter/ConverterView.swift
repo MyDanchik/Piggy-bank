@@ -16,7 +16,7 @@ class ConverterView: UIViewController {
     private let conversionResult = UILabel()
     private let littleView1 = UIView()
     private let littleView2 = UIView()
-
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ConverterView: UIViewController {
         fetchConverterRates()
         setupTap()
     }
-
+    
     // MARK: - Methods
     func addSubviews() {
         view.addSubview(converterTitleLabel)
@@ -45,7 +45,7 @@ class ConverterView: UIViewController {
         converterTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         converterTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         converterTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
+        
         firstCurrencyView.translatesAutoresizingMaskIntoConstraints = false
         firstCurrencyView.topAnchor.constraint(equalTo: converterTitleLabel.bottomAnchor, constant: 55).isActive = true
         firstCurrencyView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
@@ -73,7 +73,7 @@ class ConverterView: UIViewController {
         changeCurrencyButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         changeCurrencyButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         changeCurrencyButton.isEnabled = false
-
+        
         secondCurrencyView.translatesAutoresizingMaskIntoConstraints = false
         secondCurrencyView.topAnchor.constraint(equalTo: changeCurrencyButton.bottomAnchor, constant: 25).isActive = true
         secondCurrencyView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
@@ -150,7 +150,7 @@ class ConverterView: UIViewController {
             if rates != nil {
                 self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
             } else {
-
+                
                 print("Failed to fetch exchange rates")
             }
         }
@@ -166,7 +166,7 @@ class ConverterView: UIViewController {
             }
             actionSheet.addAction(action)
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         actionSheet.addAction(cancelAction)
         
@@ -201,7 +201,7 @@ class ConverterView: UIViewController {
             }
         }
     }
-
+    
     @objc private func amountTextFieldDidChange() {
         guard let amountText = amountTextFieldForFirstView.text, !amountText.isEmpty else {
             conversionResult.text = " "
@@ -223,4 +223,4 @@ class ConverterView: UIViewController {
 
 
 
- 
+

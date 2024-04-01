@@ -11,7 +11,7 @@ final class DiscountViewModel {
         addDiscountView.viewModel = addDiscountViewModel
         transition?(addDiscountView)
     }
-        
+    
     func loadDiscounts() {
         let operationResult = CoreDataManager.instance.getDiscounts()
         switch operationResult {

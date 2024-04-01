@@ -54,7 +54,6 @@
 		988DB2F02B8361980057E34F /* ModifyBanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DB2EF2B8361980057E34F /* ModifyBanksViewModel.swift */; };
 		98E5A06F2B8C8D4700D8024D /* AddDiscountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E5A06D2B8C8D4700D8024D /* AddDiscountViewModel.swift */; };
 		98E5A0702B8C8D4700D8024D /* AddDiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E5A06E2B8C8D4700D8024D /* AddDiscountView.swift */; };
-		98FE36C42BB6C53200D8E20C /* ManualCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FE36C32BB6C53200D8E20C /* ManualCropViewController.swift */; };
 		98FE36C92BB6F14E00D8E20C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98FE36C72BB6F14E00D8E20C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +106,6 @@
 		988DB2EF2B8361980057E34F /* ModifyBanksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBanksViewModel.swift; sourceTree = "<group>"; };
 		98E5A06D2B8C8D4700D8024D /* AddDiscountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiscountViewModel.swift; sourceTree = "<group>"; };
 		98E5A06E2B8C8D4700D8024D /* AddDiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiscountView.swift; sourceTree = "<group>"; };
-		98FE36C32BB6C53200D8E20C /* ManualCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCropViewController.swift; sourceTree = "<group>"; };
 		98FE36C82BB6F14E00D8E20C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		98FE36CA2BB6F17900D8E20C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,7 +293,6 @@
 			children = (
 				98E5A06E2B8C8D4700D8024D /* AddDiscountView.swift */,
 				98E5A06D2B8C8D4700D8024D /* AddDiscountViewModel.swift */,
-				98FE36C32BB6C53200D8E20C /* ManualCropViewController.swift */,
 			);
 			path = add;
 			sourceTree = "<group>";
@@ -395,7 +392,6 @@
 			files = (
 				19571C372B78DE4C005928B0 /* LogInView.swift in Sources */,
 				19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */,
-				98FE36C42BB6C53200D8E20C /* ManualCropViewController.swift in Sources */,
 				986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */,
 				98E5A06F2B8C8D4700D8024D /* AddDiscountViewModel.swift in Sources */,
 				9833D66A2B7CE834008B8073 /* Exchange.swift in Sources */,

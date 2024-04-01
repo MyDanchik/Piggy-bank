@@ -45,7 +45,7 @@ final class DefaultLogInView: UIViewController {
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.bottomAnchor.constraint(equalTo: infoBoldLabel.topAnchor, constant: -8).isActive = true
         infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-                
+        
         infoBoldLabel.translatesAutoresizingMaskIntoConstraints = false
         infoBoldLabel.bottomAnchor.constraint(equalTo: greetingsLabel.topAnchor, constant: -71).isActive = true
         infoBoldLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -133,7 +133,7 @@ final class DefaultLogInView: UIViewController {
     @objc func tapDone() {
         view.endEditing(true)
     }
-
+    
     @objc private func saveNameButtonTapped() {
         let nextViewController = CustomTabBarController()
         nextViewController.modalPresentationStyle = .fullScreen

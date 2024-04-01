@@ -20,13 +20,6 @@ final class AddBanksView: UIViewController {
     private var currentImageIndex = 0
     private let backButton = UIButton()
     
-    private let images: [UIImage] = [UIImage(named: "icon1")!,
-                                     UIImage(named: "icon2")!,
-                                     UIImage(named: "icon3")!,
-                                     UIImage(named: "icon4")!,
-                                     UIImage(named: "icon5")!,
-                                     UIImage(named: "icon6")!]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
@@ -36,7 +29,7 @@ final class AddBanksView: UIViewController {
         setupKeyboard()
         setupTap()
         
-        if !images.isEmpty {
+        if !viewModel.images.isEmpty {
             updateImageView()
         }
     }
@@ -84,7 +77,7 @@ final class AddBanksView: UIViewController {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
         nextButton.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 40).isActive = true
-
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -133,7 +126,7 @@ final class AddBanksView: UIViewController {
     }
     
     private func updateImageView() {
-        imageView.image = images[currentImageIndex]
+        imageView.image = viewModel.images[currentImageIndex]
     }
     
     @objc private func previousButtonTapped() {
@@ -144,7 +137,7 @@ final class AddBanksView: UIViewController {
     }
     
     @objc private func nextButtonTapped() {
-        if currentImageIndex < images.count - 1 {
+        if currentImageIndex < viewModel.images.count - 1 {
             currentImageIndex += 1
             updateImageView()
         }
@@ -163,7 +156,7 @@ final class AddBanksView: UIViewController {
         previousButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
         previousButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
-
+        
         nextButton.tintColor = UIColor(resource: .Colors.colorText)
         nextButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         nextButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
@@ -177,7 +170,7 @@ final class AddBanksView: UIViewController {
         nameLabel.textColor = UIColor(resource: .Colors.colorText)
         nameLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", 
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name",
                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         nameTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         nameTextField.textColor = UIColor(resource: .Colors.colorText)
@@ -189,7 +182,7 @@ final class AddBanksView: UIViewController {
         sumLabel.textColor = UIColor(resource: .Colors.colorText)
         sumLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
-        sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum", 
+        sumTextField.attributedPlaceholder = NSAttributedString(string: "Sum",
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor(resource: .Colors.colorText)])
         sumTextField.font = UIFont.rubik(ofSize: 20, style: .light)
         sumTextField.textColor = UIColor(resource: .Colors.colorText)
@@ -213,7 +206,7 @@ final class AddBanksView: UIViewController {
         backButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
         backButton.layer.cornerRadius = 27.5
     }
-        
+    
     private func setupTap() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
         view.addGestureRecognizer(tap)
@@ -232,9 +225,9 @@ final class AddBanksView: UIViewController {
             return
         }
         viewModel.saveNewBanks(imageBanks: imageBanks,
-                                    nameBanks: nameBanks,
-                                    priceBanks: priceBanks)
-
+                               nameBanks: nameBanks,
+                               priceBanks: priceBanks)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.onSave?()
         }

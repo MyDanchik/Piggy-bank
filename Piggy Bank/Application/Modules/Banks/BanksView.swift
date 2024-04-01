@@ -23,7 +23,7 @@ final class BanksView: UIViewController {
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private var tableView = UITableView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
@@ -125,7 +125,7 @@ extension BanksView: UITableViewDelegate, UITableViewDataSource {
             present(alertDelete, animated: true)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let fullBanksView = ModifyBanksView()
         let banks = banksList[indexPath.row]

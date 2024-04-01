@@ -1,7 +1,7 @@
 import UIKit
 
 final class ModifyBanksView: UIViewController {
-
+    
     var viewModel: ModifyBanksViewModel!
     var onSave: (() -> Void)?
     
@@ -71,7 +71,7 @@ final class ModifyBanksView: UIViewController {
         savedTextLabel.translatesAutoresizingMaskIntoConstraints = false
         savedTextLabel.bottomAnchor.constraint(equalTo: leftLabel.topAnchor, constant: -45).isActive = true
         savedTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
+        
         leftLabel.translatesAutoresizingMaskIntoConstraints = false
         leftLabel.bottomAnchor.constraint(equalTo: leftTextLabel.topAnchor, constant: -10).isActive = true
         leftLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -79,7 +79,7 @@ final class ModifyBanksView: UIViewController {
         leftTextLabel.translatesAutoresizingMaskIntoConstraints = false
         leftTextLabel.bottomAnchor.constraint(equalTo: replenishLabel.topAnchor, constant: -50).isActive = true
         leftTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
+        
         replenishLabel.translatesAutoresizingMaskIntoConstraints = false
         replenishLabel.bottomAnchor.constraint(equalTo: replenishTextLabel.topAnchor, constant: -10).isActive = true
         replenishLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -112,7 +112,7 @@ final class ModifyBanksView: UIViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 53
         imageView.layer.masksToBounds = true
-
+        
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
@@ -122,14 +122,14 @@ final class ModifyBanksView: UIViewController {
         
         savedTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         savedTextLabel.textColor = UIColor(resource: .Colors.colorText)
-
+        
         leftLabel.text = "Left"
         leftLabel.textColor = UIColor(resource: .Colors.colorText)
         leftLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         leftTextLabel.font = UIFont.rubik(ofSize: 20, style: .light)
         leftTextLabel.textColor = UIColor(resource: .Colors.colorText)
- 
+        
         replenishLabel.text = "Replenish"
         replenishLabel.textColor = UIColor(resource: .Colors.colorText)
         replenishLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
@@ -164,7 +164,6 @@ final class ModifyBanksView: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDone))
         view.addGestureRecognizer(tap)
     }
-    
     
     private func setupKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -208,7 +207,7 @@ final class ModifyBanksView: UIViewController {
             print("Error saving data: \(error)")
         }
     }
-
+    
     func configureFullBanks(banks: Bank) {
         if let imageData = banks.imageBank, let bankImage = UIImage(data: imageData) {
             self.imageView.image = bankImage

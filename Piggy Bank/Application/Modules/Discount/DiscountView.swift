@@ -131,23 +131,23 @@ extension DiscountView: UITableViewDelegate, UITableViewDataSource {
         
         let originalImage = UIImage(resource: .Images.trash)
         let scaledImage = originalImage.resized(to: CGSize(width: 65, height: 65))
-
+        
         deleteAction.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         deleteAction.image = scaledImage
-
+        
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-
+        
         return configuration
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fullInfoView = DefaulInfoView()
+        let fullInfoView = InfoDiccountView()
         let info = discountsList[indexPath.row]
         fullInfoView.configureFullBirthdays(discounts: info)
         let navController = UINavigationController(rootViewController: fullInfoView)
         navController.modalPresentationStyle = .formSheet
         present(navController, animated: true, completion: nil)
     }
-
+    
     
 }

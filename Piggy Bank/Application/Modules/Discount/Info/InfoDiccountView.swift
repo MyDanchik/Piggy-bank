@@ -1,14 +1,14 @@
 import UIKit
 import WebKit
 
-final class DefaulInfoView: UIViewController {
+final class InfoDiccountView: UIViewController {
     
     // MARK: - UI Elements
     
     private let titleLabel = UILabel()
     private let customFrontView = UIImageView()
     private let customBackView = UIImageView()
-
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -59,7 +59,7 @@ final class DefaulInfoView: UIViewController {
         
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
-    
+        
         customFrontView.contentMode = .scaleAspectFill
         customFrontView.layer.shadowColor = UIColor.black.cgColor
         customFrontView.layer.shadowOffset = CGSize(width: 0, height: 5)
@@ -93,6 +93,5 @@ final class DefaulInfoView: UIViewController {
         }
         
         titleLabel.text = discounts.nameDiscount
-
     }
 }

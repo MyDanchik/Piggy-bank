@@ -29,6 +29,11 @@ class CustomTabBarController: UITabBarController {
         fourthViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         fourthViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.converter)
         
+        let fourthViewController1 = UINavigationController(rootViewController: DefaultLogInView())
+        fourthViewController1.tabBarItem.title = nil
+        fourthViewController1.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        fourthViewController1.tabBarItem.image = UIImage(resource: .Images.TapBar.settings)
+        
         viewControllers = [firstViewController, secondViewController, thirdViewController, fourthViewController]
         
         tabBar.tintColor = UIColor(resource: .Colors.tintSelectColorTapBar)

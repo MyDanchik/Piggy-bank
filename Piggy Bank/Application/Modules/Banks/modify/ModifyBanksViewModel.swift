@@ -14,7 +14,7 @@ final class ModifyBanksViewModel {
         switch result {
         case .success:
             print("Bank saved successfully")
-
+            
         case .failure(let failure):
             print("Failed to save Bank: \(failure)")
         }

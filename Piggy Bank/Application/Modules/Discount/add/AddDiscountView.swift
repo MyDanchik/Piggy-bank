@@ -204,7 +204,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         }
         viewModel.saveNewDiscount(imageFrontDiscount: imageFrontDiscount, imageBackDiscount: imageBackDiscount,
                                   nameDiscount: nameDiscount)
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.onSave?()
         }
@@ -248,13 +248,13 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         isImageSelected = true
         print("im")
     }
-
+    
     @objc func tapOnAlertButton2() {
         viewModel?.tapOnALertButton()
         isImageSelected = false
         print("im2")
     }
-
+    
     @objc func openGalery() {
         viewModel.openGalery()
     }

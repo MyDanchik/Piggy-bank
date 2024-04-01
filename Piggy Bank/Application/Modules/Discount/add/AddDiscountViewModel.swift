@@ -5,7 +5,7 @@ final class AddDiscountViewModel {
     
     var setupAlert: ((UIAlertController) -> Void)?
     var setupUIImagePicker: ((UIImagePickerController) -> Void)?
-
+    
     func tapOnALertButton() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: NSLocalizedString("addBirthdaysPage.tapOnALertButton.camera", comment: ""), style: .default, handler: { _ in
@@ -36,7 +36,7 @@ final class AddDiscountViewModel {
         } else { }
         setupUIImagePicker?(imagePicker)
     }
-
+    
     func saveNewDiscount(imageFrontDiscount: Data?, imageBackDiscount: Data?, nameDiscount: String?) {
         guard let imageFrontDiscount = imageFrontDiscount,
               let imageBackDiscount = imageBackDiscount,
@@ -51,7 +51,7 @@ final class AddDiscountViewModel {
         switch result {
         case .success:
             print("Bank saved successfully")
-
+            
         case .failure(let failure):
             print("Failed to save Bank: \(failure)")
         }
