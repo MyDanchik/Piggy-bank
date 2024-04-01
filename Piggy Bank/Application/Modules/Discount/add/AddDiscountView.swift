@@ -126,6 +126,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         customFrontView.layer.cornerRadius = 40
         customFrontView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         customFrontView.layer.masksToBounds = true
+        customFrontView.contentMode = .scaleAspectFill
         
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 55)
         
@@ -138,6 +139,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         customBackView.layer.cornerRadius = 40
         customBackView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         customBackView.layer.masksToBounds = true
+        customBackView.contentMode = .scaleAspectFill
         
         addBackImageButton.backgroundColor = .clear
         addBackImageButton.tintColor = UIColor(resource: .Colors.colorText)
@@ -182,7 +184,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
             self?.present(alert, animated: true)
         }
         
-        viewModel.setupPHPicker = { [weak self] picker in
+        viewModel.setupUIImagePicker = { [weak self] picker in
             picker.delegate = self
             self?.present(picker, animated: true)
         }
@@ -270,21 +272,9 @@ extension AddDiscountView: UITextFieldDelegate {
     }
 }
 
-extension AddDiscountView: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        let itemProvider = results.first?.itemProvider
-        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
-                self.setupImage(image: image as? UIImage)
-            }
-        }
-        dismiss(animated: true)
-    }
-}
-
 extension AddDiscountView: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
+        if let image = info[.editedImage] as? UIImage {
             setupImage(image: image)
         }
         picker.dismiss(animated: true, completion: nil)

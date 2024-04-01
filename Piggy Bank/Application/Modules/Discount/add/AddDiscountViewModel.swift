@@ -5,7 +5,6 @@ final class AddDiscountViewModel {
     
     var setupAlert: ((UIAlertController) -> Void)?
     var setupUIImagePicker: ((UIImagePickerController) -> Void)?
-    var setupPHPicker: ((PHPickerViewController) -> Void)?
 
     func tapOnALertButton() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -21,21 +20,22 @@ final class AddDiscountViewModel {
     }
     
     func openGalery() {
-        var configurator = PHPickerConfiguration(photoLibrary: .shared())
-        configurator.filter = .images
-        configurator.selectionLimit = 1
-        let picker = PHPickerViewController(configuration: configurator)
-        setupPHPicker?(picker)
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+        } else { }
+        setupUIImagePicker?(imagePicker)
     }
     
     func openCamera() {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
         } else { }
         setupUIImagePicker?(imagePicker)
     }
-
 
     func saveNewDiscount(imageFrontDiscount: Data?, imageBackDiscount: Data?, nameDiscount: String?) {
         guard let imageFrontDiscount = imageFrontDiscount,
