@@ -1,26 +1,28 @@
 import UIKit
 
 final class ExchangeTableViewCell: UITableViewCell {
+    
     // MARK: - UI Elements
+    
     private let customView = UIView()
     private let nameLabel = UILabel()
     private let priceLabel = UILabel()
     private let imageFlag = UIImageView()
     
-    // MARK: - Initialization
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        configureUI()
         addSubviews()
-        setupConstraints()
+        configureConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupUI()
+        configureUI()
         addSubviews()
-        setupConstraints()
+        configureConstraints()
     }
     
     func addSubviews() {
@@ -29,8 +31,10 @@ final class ExchangeTableViewCell: UITableViewCell {
         customView.addSubview(priceLabel)
         customView.addSubview(imageFlag)
     }
-    // MARK: - UI Setup
-    private func setupConstraints() {
+    
+    // MARK: - Private Methods
+    
+    private func configureConstraints() {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
@@ -50,7 +54,7 @@ final class ExchangeTableViewCell: UITableViewCell {
         priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -25).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         

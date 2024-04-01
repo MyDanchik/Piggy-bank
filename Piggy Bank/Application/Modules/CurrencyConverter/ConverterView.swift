@@ -2,46 +2,50 @@ import UIKit
 
 class ConverterView: UIViewController {
     
-    // MARK: - Publuc Properties
+    // MARK: - Properties
+    
     private var viewModel = ConverterViewModel()
     
-    // MARK: - UI Properties
+    // MARK: - UI Elements
+    
     private let converterTitleLabel = UILabel()
     private let firstCurrencyView = UIView()
     private let secondCurrencyView = UIView()
     private let changeCurrencyButton = UIButton()
     private let currentCurrencyButton = UIButton(type: .system)
-    private let amountTextFieldForFirstView = UITextField()
+    private let amountTextField = UITextField()
     private let desiredCurrencyButton = UIButton(type: .system)
     private let conversionResult = UILabel()
-    private let littleView1 = UIView()
-    private let littleView2 = UIView()
+    private let littleViewFirst = UIView()
+    private let littleViewSecond = UIView()
     
-    // MARK: - LifeCycle
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
-        constraints()
+        configureConstraints()
         configureUI()
         fetchConverterRates()
         setupTap()
     }
     
-    // MARK: - Methods
-    func addSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(converterTitleLabel)
         view.addSubview(firstCurrencyView)
         firstCurrencyView.addSubview(currentCurrencyButton)
-        firstCurrencyView.addSubview(amountTextFieldForFirstView)
-        firstCurrencyView.addSubview(littleView1)
+        firstCurrencyView.addSubview(amountTextField)
+        firstCurrencyView.addSubview(littleViewFirst)
         view.addSubview(changeCurrencyButton)
         view.addSubview(secondCurrencyView)
         secondCurrencyView.addSubview(desiredCurrencyButton)
         secondCurrencyView.addSubview(conversionResult)
-        secondCurrencyView.addSubview(littleView2)
+        secondCurrencyView.addSubview(littleViewSecond)
     }
     
-    func constraints() {
+    private func configureConstraints() {
         converterTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         converterTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         converterTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -56,16 +60,16 @@ class ConverterView: UIViewController {
         currentCurrencyButton.leadingAnchor.constraint(equalTo: firstCurrencyView.leadingAnchor, constant: 20).isActive = true
         currentCurrencyButton.centerYAnchor.constraint(equalTo: firstCurrencyView.centerYAnchor).isActive = true
         
-        amountTextFieldForFirstView.translatesAutoresizingMaskIntoConstraints = false
-        amountTextFieldForFirstView.trailingAnchor.constraint(equalTo: firstCurrencyView.trailingAnchor, constant: -30).isActive = true
-        amountTextFieldForFirstView.centerYAnchor.constraint(equalTo: firstCurrencyView.centerYAnchor).isActive = true
-        amountTextFieldForFirstView.widthAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
+        amountTextField.translatesAutoresizingMaskIntoConstraints = false
+        amountTextField.trailingAnchor.constraint(equalTo: firstCurrencyView.trailingAnchor, constant: -30).isActive = true
+        amountTextField.centerYAnchor.constraint(equalTo: firstCurrencyView.centerYAnchor).isActive = true
+        amountTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
         
-        littleView1.translatesAutoresizingMaskIntoConstraints = false
-        littleView1.trailingAnchor.constraint(equalTo: firstCurrencyView.trailingAnchor, constant: -30).isActive = true
-        littleView1.topAnchor.constraint(equalTo: amountTextFieldForFirstView.bottomAnchor, constant: 2).isActive = true
-        littleView1.widthAnchor.constraint(equalTo: amountTextFieldForFirstView.widthAnchor).isActive = true
-        littleView1.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        littleViewFirst.translatesAutoresizingMaskIntoConstraints = false
+        littleViewFirst.trailingAnchor.constraint(equalTo: firstCurrencyView.trailingAnchor, constant: -30).isActive = true
+        littleViewFirst.topAnchor.constraint(equalTo: amountTextField.bottomAnchor, constant: 2).isActive = true
+        littleViewFirst.widthAnchor.constraint(equalTo: amountTextField.widthAnchor).isActive = true
+        littleViewFirst.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         changeCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         changeCurrencyButton.topAnchor.constraint(equalTo: firstCurrencyView.bottomAnchor, constant: 25).isActive = true
@@ -89,14 +93,14 @@ class ConverterView: UIViewController {
         conversionResult.centerYAnchor.constraint(equalTo: secondCurrencyView.centerYAnchor).isActive = true
         conversionResult.widthAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
         
-        littleView2.translatesAutoresizingMaskIntoConstraints = false
-        littleView2.trailingAnchor.constraint(equalTo: secondCurrencyView.trailingAnchor, constant: -30).isActive = true
-        littleView2.topAnchor.constraint(equalTo: conversionResult.bottomAnchor, constant: 2).isActive = true
-        littleView2.widthAnchor.constraint(equalTo: conversionResult.widthAnchor).isActive = true
-        littleView2.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        littleViewSecond.translatesAutoresizingMaskIntoConstraints = false
+        littleViewSecond.trailingAnchor.constraint(equalTo: secondCurrencyView.trailingAnchor, constant: -30).isActive = true
+        littleViewSecond.topAnchor.constraint(equalTo: conversionResult.bottomAnchor, constant: 2).isActive = true
+        littleViewSecond.widthAnchor.constraint(equalTo: conversionResult.widthAnchor).isActive = true
+        littleViewSecond.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         converterTitleLabel.text = NSLocalizedString("App.ConverterView.NavigationItemTitle", comment: "")
@@ -110,12 +114,12 @@ class ConverterView: UIViewController {
         firstCurrencyView.layer.shadowRadius = 5
         firstCurrencyView.layer.shadowOpacity = 0.20
         
-        amountTextFieldForFirstView.textAlignment = .center
+        amountTextField.textAlignment = .center
         conversionResult.textAlignment = .center
         conversionResult.text = " "
         
-        littleView1.backgroundColor = UIColor(resource: .Colors.colorText)
-        littleView2.backgroundColor = UIColor(resource: .Colors.colorText)
+        littleViewFirst.backgroundColor = UIColor(resource: .Colors.colorText)
+        littleViewSecond.backgroundColor = UIColor(resource: .Colors.colorText)
         
         let configurationForChangeCurrencyButton = UIImage.SymbolConfiguration(pointSize: 40)
         let imageForChangeCurrencyButton = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: configurationForChangeCurrencyButton)
@@ -129,7 +133,7 @@ class ConverterView: UIViewController {
         secondCurrencyView.layer.shadowRadius = 5
         secondCurrencyView.layer.shadowOpacity = 0.20
         
-        amountTextFieldForFirstView.keyboardType = .numberPad
+        amountTextField.keyboardType = .numberPad
         
         currentCurrencyButton.setTitle("Add", for: .normal)
         currentCurrencyButton.tintColor = UIColor(resource: .Colors.colorText)
@@ -154,7 +158,7 @@ class ConverterView: UIViewController {
                 print("Failed to fetch exchange rates")
             }
         }
-        amountTextFieldForFirstView.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
+        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
     }
     
     private func showCurrencySelectionActionSheet(with rates: [ExchangeRate]) {
@@ -172,7 +176,7 @@ class ConverterView: UIViewController {
         
         present(actionSheet, animated: true, completion: nil)
         conversionResult.text = " "
-        amountTextFieldForFirstView.text = ""
+        amountTextField.text = ""
     }
     
     private func convertAndDisplayResult(from sourceCurrency: String, to targetCurrency: String, amount: Double) {
@@ -188,7 +192,9 @@ class ConverterView: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    @objc func tapDone() {
+    // MARK: - Actions
+    
+    @objc private func tapDone() {
         view.endEditing(true)
     }
     
@@ -203,12 +209,12 @@ class ConverterView: UIViewController {
     }
     
     @objc private func amountTextFieldDidChange() {
-        guard let amountText = amountTextFieldForFirstView.text, !amountText.isEmpty else {
+        guard let amountText = amountTextField.text, !amountText.isEmpty else {
             conversionResult.text = " "
             return
         }
         
-        guard let amountText = amountTextFieldForFirstView.text, let amount = Double(amountText) else {
+        guard let amountText = amountTextField.text, let amount = Double(amountText) else {
             print("Invalid amount entered")
             return
         }

@@ -2,7 +2,9 @@ import UIKit
 
 final class DiscountView: UIViewController {
     
-    var viewModel: DiscountViewModel! {
+    // MARK: - Properties
+    
+    private var viewModel: DiscountViewModel! {
         didSet {
             viewModel.transition = { [weak self] addDiscountView in
                 self?.navigationController?.pushViewController(addDiscountView, animated: true)
@@ -13,23 +15,27 @@ final class DiscountView: UIViewController {
         }
     }
     
-    var discountsList = [Discount]() {
+    private var discountsList = [Discount]() {
         didSet {
             tableView.reloadData()
         }
     }
     
+    // MARK: - UI Elements
+    
     private let titleLabel = UILabel()
-    private let addButton = UIButton()
+    private let addButton = UIButton(type: .system)
     private var tableView = UITableView()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupTableView()
         tableView.reloadData()
         viewModel = DiscountViewModel()
@@ -40,13 +46,15 @@ final class DiscountView: UIViewController {
         viewModel.loadDiscounts()
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -73,7 +81,7 @@ final class DiscountView: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    private func setupUI() {
+    private func configureUI() {
         titleLabel.text = NSLocalizedString("App.DiscountView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
@@ -91,10 +99,14 @@ final class DiscountView: UIViewController {
         addButton.layer.shadowOpacity = 0.20
     }
     
-    @objc func transitionToAddDiscountView() {
+    // MARK: - Actions
+    
+    @objc private func transitionToAddDiscountView() {
         viewModel.transitionToAddDiscountView()
     }
 }
+
+    // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension DiscountView: UITableViewDelegate, UITableViewDataSource {
     

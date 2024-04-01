@@ -1,11 +1,15 @@
 import UIKit
 
 final class BanksTableViewCell: UITableViewCell {
+    
     // MARK: - UI Elements
+    
     let customView = UIView()
     let nameLabel = UILabel()
     let priceLabel = UILabel()
     let imageCard = UIImageView()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,7 +24,8 @@ final class BanksTableViewCell: UITableViewCell {
         setupSubviews()
         setupConstraints()
     }
-    // MARK: - UI Setup
+    
+    // MARK: - Private Methods
     
     private func setupSubviews() {
         contentView.addSubview(customView)
@@ -74,6 +79,7 @@ final class BanksTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configuration
+    
     func configureEntity(banks: Bank) {
         if let imageData = banks.imageBank, let bankImage = UIImage(data: imageData) {
             self.imageCard.image = bankImage

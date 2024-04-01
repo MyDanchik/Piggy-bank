@@ -14,9 +14,9 @@ final class DefaultLogInView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupKeyboard()
         setupTap()
     }
@@ -25,7 +25,7 @@ final class DefaultLogInView: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    private func setupSubviews() {
+    private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(infoLabel)
         view.addSubview(infoBoldLabel)
@@ -35,7 +35,7 @@ final class DefaultLogInView: UIViewController {
         view.addSubview(saveNameButton)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -72,7 +72,7 @@ final class DefaultLogInView: UIViewController {
         saveNameButton.widthAnchor.constraint(equalToConstant: 290).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "backgroundImage")

@@ -2,8 +2,12 @@ import UIKit
 
 final class BanksViewModel {
     
+    // MARK: - Properties
+    
     var transition: ((AddBanksView) -> Void)?
     var setupBanks: (([Bank]) -> Void)?
+    
+    // MARK: - Methods
     
     func transitionToAddBanksView() {
         let addBanksView = AddBanksView()

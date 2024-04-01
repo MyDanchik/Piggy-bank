@@ -2,9 +2,13 @@ import UIKit
 
 class ExchangeViewModel {
     
+    // MARK: - Properties
+    
     private let networkManager = NetworkManager.instance
     
     var exchangeRates: [ExchangeRate] = []
+    
+    // MARK: - Methods
     
     func fetchExchangeRates(completion: @escaping ([ExchangeRate]?) -> Void) {
         networkManager.fetchExchangeRates { [weak self] rates in

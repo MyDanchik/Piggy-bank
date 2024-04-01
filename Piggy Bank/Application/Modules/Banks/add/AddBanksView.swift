@@ -2,30 +2,36 @@ import UIKit
 
 final class AddBanksView: UIViewController {
     
+    // MARK: - Properties
+    
     var viewModel: AddBanksViewModel!
     var onSave: (() -> Void)?
+    
+    // MARK: - UI Elements
     
     private let titleLabel = UILabel()
     private let nameLabel = UILabel()
     private let nameTextField = UITextField()
     private let sumLabel = UILabel()
     private let sumTextField = UITextField()
-    private let createButton = UIButton()
+    private let createButton = UIButton(type: .system)
     private let lineSumTextFieldLabel = UILabel()
     private let lineNameTextFieldLabel = UILabel()
     private let iconLabel = UILabel()
     private let imageView = UIImageView()
-    private let previousButton = UIButton()
-    private let nextButton = UIButton()
+    private let previousButton = UIButton(type: .system)
+    private let nextButton = UIButton(type: .system)
     private var currentImageIndex = 0
-    private let backButton = UIButton()
+    private let backButton = UIButton(type: .system)
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupKeyboard()
         setupTap()
         
@@ -44,7 +50,9 @@ final class AddBanksView: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(createButton)
         view.addSubview(lineSumTextFieldLabel)
@@ -60,7 +68,7 @@ final class AddBanksView: UIViewController {
         view.addSubview(backButton)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
@@ -126,7 +134,7 @@ final class AddBanksView: UIViewController {
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         iconLabel.text = NSLocalizedString("App.AddBanksView.IconLabel", comment: "")
         iconLabel.textColor = UIColor(resource: .Colors.colorText)
         iconLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
@@ -225,6 +233,8 @@ final class AddBanksView: UIViewController {
         imageView.image = viewModel.images[currentImageIndex]
     }
     
+    // MARK: - Actions
+    
     @objc private func previousButtonTapped() {
         if currentImageIndex > 0 {
             currentImageIndex -= 1
@@ -240,16 +250,16 @@ final class AddBanksView: UIViewController {
     }
 
     
-    @objc func saveButtonTapped() {
+    @objc private func saveButtonTapped() {
         saveBanks()
         goBack()
         
     }
-    @objc func goBack() {
+    @objc private func goBack() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func keyboardShow(notification: Notification) {
+    @objc private func keyboardShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             view.frame.origin.y = -keyboardSize.height
             UIView.animate(withDuration: 0.5) {
@@ -258,16 +268,18 @@ final class AddBanksView: UIViewController {
         }
     }
     
-    @objc func keyboardHide() {
+    @objc private func keyboardHide() {
         view.frame.origin.y = 0
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
     }
-    @objc func tapDone() {
+    @objc private func tapDone() {
         view.endEditing(true)
     }
 }
+
+    // MARK: - UITextFieldDelegate
 
 extension AddBanksView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

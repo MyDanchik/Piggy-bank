@@ -2,10 +2,10 @@ import UIKit
 
 final class ModifyBanksViewModel {
     
+    // MARK: - Public Methods
+    
     func modifyMyBanks(savedPriceBank: String?, forBankWithName name: String) {
         guard let savedPriceBank = savedPriceBank, !savedPriceBank.isEmpty else {
-            let alertEmpty = UIAlertController(title: NSLocalizedString("Bank.alertEmpty", comment: ""), message: "", preferredStyle: .alert)
-            alertEmpty.addAction(UIAlertAction(title: NSLocalizedString("Bank.alertOK", comment: ""), style: .destructive, handler: nil))
             return
         }
         

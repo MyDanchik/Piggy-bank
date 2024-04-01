@@ -1,5 +1,4 @@
 import UIKit
-import WebKit
 
 final class InfoDiccountView: UIViewController {
     
@@ -13,9 +12,9 @@ final class InfoDiccountView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,13 +29,13 @@ final class InfoDiccountView: UIViewController {
     
     // MARK: - Private Methods
     
-    private func setupSubviews() {
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(customFrontView)
         view.addSubview(customBackView)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -54,7 +53,7 @@ final class InfoDiccountView: UIViewController {
         customBackView.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         titleLabel.textColor = UIColor(resource: .Colors.colorText)

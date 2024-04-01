@@ -2,26 +2,34 @@ import UIKit
 
 final class ExchangeView: UIViewController {
     
+    // MARK: - Properties
+    
     private var viewModel = ExchangeViewModel()
     
+    // MARK: - UI Elements
+    
     private let titleLabel = UILabel()
-    private let fetchButton = UIButton()
+    private let fetchButton = UIButton(type: .system)
     private let tableView = UITableView()
     private let lastUpdatedLabel = UILabel()
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         navigationController?.navigationBar.isHidden = true
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupTableView()
         fetchExchangeRates()
         startLoadingAnimation()
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(fetchButton)
         view.addSubview(tableView)
@@ -37,7 +45,7 @@ final class ExchangeView: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -59,7 +67,7 @@ final class ExchangeView: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         titleLabel.text = NSLocalizedString("App.ExchangeView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
@@ -87,7 +95,7 @@ final class ExchangeView: UIViewController {
                     self?.tableView.reloadData()
                     self?.stopLoadingAnimation()
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
                     self?.lastUpdatedLabel.text = NSLocalizedString("App.ExchangeView.LastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
                 }
             }
@@ -112,7 +120,9 @@ final class ExchangeView: UIViewController {
         }
     }
     
-    @objc func tapOnAddButton() {
+    // MARK: - Actions
+    
+    @objc private func tapOnAddButton() {
         fetchExchangeRates()
         startLoadingAnimation()
         let dateFormatter = DateFormatter()
@@ -124,6 +134,8 @@ final class ExchangeView: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension ExchangeView: UITableViewDelegate, UITableViewDataSource {
     

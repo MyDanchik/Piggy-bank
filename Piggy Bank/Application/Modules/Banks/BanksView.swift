@@ -2,6 +2,8 @@ import UIKit
 
 final class BanksView: UIViewController {
     
+    // MARK: - Properties
+    
     var viewModel: BanksViewModel! {
         didSet {
             viewModel.transition = { [weak self] addBanksView in
@@ -19,17 +21,21 @@ final class BanksView: UIViewController {
         }
     }
     
+    // MARK: - UI Elements
+    
     private let titleLabel = UILabel()
-    private let addButton = UIButton()
+    private let addButton = UIButton(type: .system)
     private var tableView = UITableView()
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         navigationController?.navigationBar.isHidden = true
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupTableView()
         tableView.reloadData()
         viewModel = BanksViewModel()
@@ -40,13 +46,15 @@ final class BanksView: UIViewController {
         viewModel.loadBanks()
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(addButton)
         view.addSubview(tableView)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -73,7 +81,7 @@ final class BanksView: UIViewController {
         tableView.backgroundColor = .clear
     }
     
-    private func setupUI() {
+    private func configureUI() {
         titleLabel.text = NSLocalizedString("App.BanksView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
@@ -91,11 +99,16 @@ final class BanksView: UIViewController {
         addButton.layer.shadowOpacity = 0.20
     }
     
-    @objc func transitionToAddBanksView() {
+    // MARK: - Actions
+    
+    @objc private func transitionToAddBanksView() {
         viewModel.transitionToAddBanksView()
         print("add")
     }
 }
+
+    // MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension BanksView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

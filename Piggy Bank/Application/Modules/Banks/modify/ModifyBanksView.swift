@@ -2,8 +2,12 @@ import UIKit
 
 final class ModifyBanksView: UIViewController {
     
+    // MARK: - Properties
+    
     var viewModel: ModifyBanksViewModel!
     var onSave: (() -> Void)?
+    
+    // MARK: - UI Elements
     
     private let titleLabel = UILabel()
     private let nameLabel = UILabel()
@@ -13,17 +17,19 @@ final class ModifyBanksView: UIViewController {
     private let leftTextLabel = UILabel()
     private let replenishLabel = UILabel()
     private let replenishTextLabel = UITextField()
-    private let createButton = UIButton()
+    private let createButton = UIButton(type: .system)
     private let lineReplenishTextFieldLabel = UILabel()
     private let imageView = UIImageView()
-    private let backButton = UIButton()
+    private let backButton = UIButton(type: .system)
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupKeyboard()
         setupTap()
     }
@@ -38,7 +44,9 @@ final class ModifyBanksView: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(nameLabel)
         view.addSubview(createButton)
@@ -53,7 +61,7 @@ final class ModifyBanksView: UIViewController {
         view.addSubview(backButton)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -108,7 +116,7 @@ final class ModifyBanksView: UIViewController {
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 53
         imageView.layer.masksToBounds = true
@@ -226,15 +234,17 @@ final class ModifyBanksView: UIViewController {
         }
     }
     
-    @objc func saveButtonTapped() {
+    // MARK: - Actions
+    
+    @objc private func saveButtonTapped() {
         saveBanks()
     }
     
-    @objc func goBack() {
+    @objc private func goBack() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func keyboardShow(notification: Notification) {
+    @objc private func keyboardShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             view.frame.origin.y = -keyboardSize.height
             UIView.animate(withDuration: 0.5) {
@@ -243,16 +253,18 @@ final class ModifyBanksView: UIViewController {
         }
     }
     
-    @objc func keyboardHide() {
+    @objc private func keyboardHide() {
         view.frame.origin.y = 0
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
     }
-    @objc func tapDone() {
+    @objc private func tapDone() {
         view.endEditing(true)
     }
 }
+
+    // MARK: - UITextFieldDelegate
 
 extension ModifyBanksView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

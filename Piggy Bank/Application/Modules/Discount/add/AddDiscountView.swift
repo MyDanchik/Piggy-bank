@@ -3,29 +3,35 @@ import PhotosUI
 
 final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     
+    // MARK: - Properties
+    
     var viewModel: AddDiscountViewModel!
     var onSave: (() -> Void)?
+    
+    // MARK: - UI Elements
     
     private var isImageSelected = true
     private let titleLabel = UILabel()
     private let nameLabel = UILabel()
     private let nameTextField = UITextField()
-    private let createButton = UIButton()
+    private let createButton = UIButton(type: .system)
     private let lineNameTextFieldLabel = UILabel()
     private let iconLabel = UILabel()
     private let imageView = UIImageView()
     private let customFrontView = UIImageView()
-    private let addFrontImageButton = UIButton()
+    private let addFrontImageButton = UIButton(type: .system)
     private let customBackView = UIImageView()
-    private let addBackImageButton = UIButton()
-    private let backButton = UIButton()
+    private let addBackImageButton = UIButton(type: .system)
+    private let backButton = UIButton(type: .system)
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
-        setupSubviews()
-        setupConstraints()
-        setupUI()
+        addSubviews()
+        configureConstraints()
+        configureUI()
         setupTap()
         setupBindings()
     }
@@ -40,7 +46,9 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         tabBarController?.tabBar.isHidden = false
     }
     
-    private func setupSubviews() {
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(createButton)
         view.addSubview(lineNameTextFieldLabel)
@@ -55,7 +63,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         view.addSubview(backButton)
     }
     
-    private func setupConstraints() {
+    private func configureConstraints() {
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
@@ -122,7 +130,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
-    private func setupUI() {
+    private func configureUI() {
         customFrontView.layer.cornerRadius = 40
         customFrontView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         customFrontView.layer.masksToBounds = true
@@ -232,37 +240,41 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    @objc func saveButtonTapped() {
+    // MARK: - Actions
+    
+    @objc private func saveButtonTapped() {
         saveDiscounts()
         goBack()
     }
     
-    @objc func goBack() {
+    @objc private func goBack() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapDone() {
+    @objc private func tapDone() {
         view.endEditing(true)
     }
     
-    @objc func tapOnAlertButton() {
+    @objc private func tapOnAlertButton() {
         viewModel?.tapOnALertButton()
         isImageSelected = true
     }
     
-    @objc func tapOnAlertButton2() {
+    @objc private func tapOnAlertButton2() {
         viewModel?.tapOnALertButton()
         isImageSelected = false
     }
     
-    @objc func openGalery() {
+    @objc private func openGalery() {
         viewModel.openGallery()
     }
     
-    @objc func openCamera() {
+    @objc private func openCamera() {
         viewModel.openCamera()
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension AddDiscountView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -271,6 +283,8 @@ extension AddDiscountView: UITextFieldDelegate {
         return allowedCharacters.isSuperset(of: characterSet)
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
 
 extension AddDiscountView: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

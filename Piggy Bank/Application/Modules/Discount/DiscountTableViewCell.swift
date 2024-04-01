@@ -2,10 +2,14 @@
 import UIKit
 
 final class DiscountTableViewCell: UITableViewCell {
+    
     // MARK: - UI Elements
+    
     let customView = UIView()
     let nameLabel = UILabel()
     let imageCard = UIImageView()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,7 +25,7 @@ final class DiscountTableViewCell: UITableViewCell {
         setupConstraints()
     }
     
-    // MARK: - UI Setup
+    // MARK: - Private Methods
     
     private func setupSubviews() {
         contentView.addSubview(customView)
@@ -65,6 +69,7 @@ final class DiscountTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configuration
+    
     func configureEntity(discounts: Discount) {
         nameLabel.text = discounts.nameDiscount
     }

@@ -2,9 +2,13 @@ import UIKit
 
 final class DiscountViewModel {
     
+    // MARK: - Properties
+    
     var transition: ((AddDiscountView) -> Void)?
     var setupDiscounts: (([Discount]) -> Void)?
     
+    // MARK: - Methods
+
     func transitionToAddDiscountView() {
         let addDiscountView = AddDiscountView()
         let addDiscountViewModel = AddDiscountViewModel()

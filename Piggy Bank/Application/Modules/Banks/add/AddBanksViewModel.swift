@@ -2,6 +2,8 @@ import UIKit
 
 final class AddBanksViewModel {
     
+    // MARK: - Public Properties
+    
     let images: [UIImage] = [UIImage(named: "icon1")!,
                              UIImage(named: "icon2")!,
                              UIImage(named: "icon3")!,
@@ -9,12 +11,12 @@ final class AddBanksViewModel {
                              UIImage(named: "icon5")!,
                              UIImage(named: "icon6")!]
     
+    // MARK: - Methods
+    
     func saveNewBanks(imageBanks: Data?, nameBanks: String?, priceBanks: String?) {
         guard let imageBanks = imageBanks, imageBanks.count > 0,
               let nameBanks = nameBanks, !nameBanks.isEmpty,
               let priceBanks = priceBanks, priceBanks != "-" else {
-            let alertEmpty = UIAlertController(title: NSLocalizedString("Bank.alertEmpty", comment: ""), message: "", preferredStyle: .alert)
-            alertEmpty.addAction(UIAlertAction(title: NSLocalizedString("Bank.alertOK", comment: ""), style: .destructive, handler: nil))
             return
         }
         

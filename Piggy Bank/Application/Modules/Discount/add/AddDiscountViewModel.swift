@@ -3,8 +3,12 @@ import PhotosUI
 
 final class AddDiscountViewModel {
     
+    // MARK: - Properties
+    
     var setupAlert: ((UIAlertController) -> Void)?
     var setupUIImagePicker: ((UIImagePickerController) -> Void)?
+    
+    // MARK: - Public Methods
     
     func tapOnALertButton() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

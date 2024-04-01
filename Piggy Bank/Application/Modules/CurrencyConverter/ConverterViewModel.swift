@@ -2,9 +2,13 @@ import UIKit
 
 final class ConverterViewModel {
     
+    // MARK: - Properties
+    
     private let networkManager = NetworkManager.instance
     
     var exchangeRates: [ExchangeRate] = []
+    
+    // MARK: - Methods
     
     func fetchConverterRates(completion: @escaping ([ExchangeRate]?) -> Void) {
         networkManager.fetchExchangeRates { [weak self] rates in
