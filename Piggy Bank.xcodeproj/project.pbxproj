@@ -13,8 +13,8 @@
 		19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19571C272B78DC45005928B0 /* Piggy_Bank.xcdatamodeld */; };
 		19571C2B2B78DC46005928B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19571C2A2B78DC46005928B0 /* Assets.xcassets */; };
 		19571C2E2B78DC46005928B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19571C2C2B78DC46005928B0 /* LaunchScreen.storyboard */; };
-		19571C372B78DE4C005928B0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C362B78DE4C005928B0 /* LogInView.swift */; };
-		19571C392B78DE63005928B0 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C382B78DE63005928B0 /* LogInViewModel.swift */; };
+		19571C372B78DE4C005928B0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C362B78DE4C005928B0 /* AboutView.swift */; };
+		19571C392B78DE63005928B0 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19571C382B78DE63005928B0 /* AboutViewModel.swift */; };
 		19571C652B78E64B005928B0 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C572B78E64A005928B0 /* Rubik-MediumItalic.ttf */; };
 		19571C662B78E64B005928B0 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C582B78E64A005928B0 /* Rubik-Black.ttf */; };
 		19571C672B78E64B005928B0 /* Rubik-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19571C592B78E64A005928B0 /* Rubik-ExtraBoldItalic.ttf */; };
@@ -52,6 +52,8 @@
 		988DB2EA2B832A8F0057E34F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DB2E92B832A8F0057E34F /* CoreDataManager.swift */; };
 		988DB2EE2B8361870057E34F /* ModifyBanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DB2ED2B8361870057E34F /* ModifyBanksView.swift */; };
 		988DB2F02B8361980057E34F /* ModifyBanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DB2EF2B8361980057E34F /* ModifyBanksViewModel.swift */; };
+		98A1C8812BBD66A700B2E670 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1C8802BBD66A700B2E670 /* SettingsView.swift */; };
+		98A1C8832BBD66BD00B2E670 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1C8822BBD66BD00B2E670 /* SettingsViewModel.swift */; };
 		98E5A06F2B8C8D4700D8024D /* AddDiscountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E5A06D2B8C8D4700D8024D /* AddDiscountViewModel.swift */; };
 		98E5A0702B8C8D4700D8024D /* AddDiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E5A06E2B8C8D4700D8024D /* AddDiscountView.swift */; };
 		98FE36C92BB6F14E00D8E20C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98FE36C72BB6F14E00D8E20C /* Localizable.strings */; };
@@ -66,8 +68,8 @@
 		19571C2A2B78DC46005928B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19571C2D2B78DC46005928B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19571C2F2B78DC46005928B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19571C362B78DE4C005928B0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		19571C382B78DE63005928B0 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		19571C362B78DE4C005928B0 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		19571C382B78DE63005928B0 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		19571C572B78E64A005928B0 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		19571C582B78E64A005928B0 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		19571C592B78E64A005928B0 /* Rubik-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -104,6 +106,8 @@
 		988DB2E92B832A8F0057E34F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		988DB2ED2B8361870057E34F /* ModifyBanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBanksView.swift; sourceTree = "<group>"; };
 		988DB2EF2B8361980057E34F /* ModifyBanksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBanksViewModel.swift; sourceTree = "<group>"; };
+		98A1C8802BBD66A700B2E670 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		98A1C8822BBD66BD00B2E670 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		98E5A06D2B8C8D4700D8024D /* AddDiscountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiscountViewModel.swift; sourceTree = "<group>"; };
 		98E5A06E2B8C8D4700D8024D /* AddDiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiscountView.swift; sourceTree = "<group>"; };
 		98FE36C82BB6F14E00D8E20C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -152,13 +156,13 @@
 			path = "Piggy Bank";
 			sourceTree = "<group>";
 		};
-		19571C352B78DE27005928B0 /* LogIn */ = {
+		19571C352B78DE27005928B0 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				19571C362B78DE4C005928B0 /* LogInView.swift */,
-				19571C382B78DE63005928B0 /* LogInViewModel.swift */,
+				19571C362B78DE4C005928B0 /* AboutView.swift */,
+				19571C382B78DE63005928B0 /* AboutViewModel.swift */,
 			);
-			path = LogIn;
+			path = About;
 			sourceTree = "<group>";
 		};
 		19571C3A2B78E5F3005928B0 /* Fonts */ = {
@@ -213,11 +217,11 @@
 		19945F7B2BB58CEC00BCC8B4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				19571C352B78DE27005928B0 /* LogIn */,
 				986CC2632B7BA94F00BB8C82 /* Discount */,
 				986CC25E2B7B923000BB8C82 /* Banks */,
 				986CC2682B7BAA1F00BB8C82 /* Exchange Rate */,
 				19945F772BB57A3900BCC8B4 /* CurrencyConverter */,
+				98A1C87F2BBD663D00B2E670 /* Setting */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -230,8 +234,8 @@
 				19571C732B78F49C005928B0 /* CustomTabBarController.swift */,
 				988DB2E92B832A8F0057E34F /* CoreDataManager.swift */,
 				19945F7D2BB5EF5100BCC8B4 /* UIFont + Extension.swift */,
-				19571C3A2B78E5F3005928B0 /* Fonts */,
 				19A6188B2BB5F52E005B9436 /* UIImage + Extension.swift */,
+				19571C3A2B78E5F3005928B0 /* Fonts */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -286,6 +290,16 @@
 				988DB2EF2B8361980057E34F /* ModifyBanksViewModel.swift */,
 			);
 			path = modify;
+			sourceTree = "<group>";
+		};
+		98A1C87F2BBD663D00B2E670 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				98A1C8802BBD66A700B2E670 /* SettingsView.swift */,
+				98A1C8822BBD66BD00B2E670 /* SettingsViewModel.swift */,
+				19571C352B78DE27005928B0 /* About */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		98E5A06C2B8C8D4700D8024D /* add */ = {
@@ -390,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19571C372B78DE4C005928B0 /* LogInView.swift in Sources */,
+				19571C372B78DE4C005928B0 /* AboutView.swift in Sources */,
 				19571C1F2B78DC45005928B0 /* AppDelegate.swift in Sources */,
 				986CC26C2B7BAA4B00BB8C82 /* ExchangeView.swift in Sources */,
 				98E5A06F2B8C8D4700D8024D /* AddDiscountViewModel.swift in Sources */,
@@ -405,14 +419,16 @@
 				986CC26B2B7BAA4B00BB8C82 /* ExchangeViewModel.swift in Sources */,
 				19945F7E2BB5EF5100BCC8B4 /* UIFont + Extension.swift in Sources */,
 				19945F792BB57A3900BCC8B4 /* ConverterViewModel.swift in Sources */,
+				98A1C8812BBD66A700B2E670 /* SettingsView.swift in Sources */,
 				986CC2622B7B925B00BB8C82 /* BanksView.swift in Sources */,
 				98696D862B7E2265009C43B0 /* DiscountTableViewCell.swift in Sources */,
+				98A1C8832BBD66BD00B2E670 /* SettingsViewModel.swift in Sources */,
 				19571C292B78DC45005928B0 /* Piggy_Bank.xcdatamodeld in Sources */,
 				9833D6682B7CE806008B8073 /* NetworkManager.swift in Sources */,
 				19945F782BB57A3900BCC8B4 /* ConverterView.swift in Sources */,
 				98E5A0702B8C8D4700D8024D /* AddDiscountView.swift in Sources */,
 				988DB2F02B8361980057E34F /* ModifyBanksViewModel.swift in Sources */,
-				19571C392B78DE63005928B0 /* LogInViewModel.swift in Sources */,
+				19571C392B78DE63005928B0 /* AboutViewModel.swift in Sources */,
 				988DB2EE2B8361870057E34F /* ModifyBanksView.swift in Sources */,
 				98696D882B7E238A009C43B0 /* BanksTableViewCell.swift in Sources */,
 				98696D8B2B7E2577009C43B0 /* AddBanksView.swift in Sources */,

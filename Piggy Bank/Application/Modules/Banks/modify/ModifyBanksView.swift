@@ -20,6 +20,7 @@ final class ModifyBanksView: UIViewController {
     private let createButton = UIButton(type: .system)
     private let lineReplenishTextFieldLabel = UILabel()
     private let imageView = UIImageView()
+    private let backView = UIView()
     private let backButton = UIButton(type: .system)
     
     // MARK: - Lifecycle Methods
@@ -55,7 +56,8 @@ final class ModifyBanksView: UIViewController {
         view.addSubview(leftLabel)
         view.addSubview(savedTextLabel)
         view.addSubview(savedLabel)
-        view.addSubview(imageView)
+        backView.addSubview(imageView)
+        view.addSubview(backView)
         view.addSubview(replenishLabel)
         view.addSubview(replenishTextLabel)
         view.addSubview(backButton)
@@ -71,6 +73,12 @@ final class ModifyBanksView: UIViewController {
         imageView.heightAnchor.constraint(equalToConstant: 106).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 106).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        backView.bottomAnchor.constraint(equalTo: savedLabel.bottomAnchor, constant: -100).isActive = true
+        backView.heightAnchor.constraint(equalToConstant: 106).isActive = true
+        backView.widthAnchor.constraint(equalToConstant: 106).isActive = true
+        backView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         savedLabel.translatesAutoresizingMaskIntoConstraints = false
         savedLabel.bottomAnchor.constraint(equalTo: savedTextLabel.topAnchor, constant: -10).isActive = true
@@ -121,6 +129,12 @@ final class ModifyBanksView: UIViewController {
         imageView.layer.cornerRadius = 53
         imageView.layer.masksToBounds = true
         
+        backView.layer.cornerRadius = 53
+        backView.layer.shadowColor = UIColor.black.cgColor
+        backView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backView.layer.shadowRadius = 5
+        backView.layer.shadowOpacity = 0.20
+        
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
@@ -158,6 +172,10 @@ final class ModifyBanksView: UIViewController {
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        createButton.layer.shadowColor = UIColor.black.cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        createButton.layer.shadowRadius = 5
+        createButton.layer.shadowOpacity = 0.20
         
         backButton.tintColor = UIColor(resource: .Colors.colorText)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
@@ -166,6 +184,10 @@ final class ModifyBanksView: UIViewController {
         backButton.addTarget(self, action: #selector(self.goBack), for: .touchUpInside)
         backButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
         backButton.layer.cornerRadius = 27.5
+        backButton.layer.shadowColor = UIColor.black.cgColor
+        backButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backButton.layer.shadowRadius = 5
+        backButton.layer.shadowOpacity = 0.20
     }
     
     private func setupTap() {

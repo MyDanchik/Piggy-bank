@@ -4,16 +4,7 @@ final class DiscountView: UIViewController {
     
     // MARK: - Properties
     
-    private var viewModel: DiscountViewModel! {
-        didSet {
-            viewModel.transition = { [weak self] addDiscountView in
-                self?.navigationController?.pushViewController(addDiscountView, animated: true)
-            }
-            viewModel.setupDiscounts = { [weak self] discounts in
-                self?.discountsList = discounts
-            }
-        }
-    }
+    private var viewModel: DiscountViewModel!
     
     private var discountsList = [Discount]() {
         didSet {
@@ -31,7 +22,6 @@ final class DiscountView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         addSubviews()
         configureConstraints()
@@ -39,6 +29,7 @@ final class DiscountView: UIViewController {
         setupTableView()
         tableView.reloadData()
         viewModel = DiscountViewModel()
+        navigationCont()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +90,15 @@ final class DiscountView: UIViewController {
         addButton.layer.shadowOpacity = 0.20
     }
     
+    func navigationCont() {
+        viewModel.transition = { [weak self] addDiscountView in
+            self?.navigationController?.pushViewController(addDiscountView, animated: true)
+        }
+        viewModel.setupDiscounts = { [weak self] discounts in
+            self?.discountsList = discounts
+        }
+        navigationController?.navigationBar.isHidden = true
+    }
     // MARK: - Actions
     
     @objc private func transitionToAddDiscountView() {

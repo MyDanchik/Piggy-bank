@@ -140,6 +140,10 @@ final class AddBanksView: UIViewController {
         iconLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.layer.shadowRadius = 5
+        imageView.layer.shadowOpacity = 0.20
         
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
         
@@ -147,11 +151,19 @@ final class AddBanksView: UIViewController {
         previousButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
         previousButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
+        previousButton.layer.shadowColor = UIColor.black.cgColor
+        previousButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        previousButton.layer.shadowRadius = 5
+        previousButton.layer.shadowOpacity = 0.20
         
         nextButton.tintColor = UIColor(resource: .Colors.colorText)
         nextButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         nextButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        nextButton.layer.shadowColor = UIColor.black.cgColor
+        nextButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        nextButton.layer.shadowRadius = 5
+        nextButton.layer.shadowOpacity = 0.20
         
         titleLabel.text = NSLocalizedString("App.AddBanksView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
@@ -189,6 +201,10 @@ final class AddBanksView: UIViewController {
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        createButton.layer.shadowColor = UIColor.black.cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        createButton.layer.shadowRadius = 5
+        createButton.layer.shadowOpacity = 0.20
         
         backButton.tintColor = UIColor(resource: .Colors.colorText)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
@@ -196,6 +212,10 @@ final class AddBanksView: UIViewController {
         backButton.addTarget(self, action: #selector(self.goBack), for: .touchUpInside)
         backButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
         backButton.layer.cornerRadius = 27.5
+        backButton.layer.shadowColor = UIColor.black.cgColor
+        backButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backButton.layer.shadowRadius = 5
+        backButton.layer.shadowOpacity = 0.20
     }
     
     private func setupTap() {

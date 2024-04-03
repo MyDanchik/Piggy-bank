@@ -56,9 +56,9 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         view.addSubview(nameLabel)
         view.addSubview(iconLabel)
         view.addSubview(imageView)
-        view.addSubview(customFrontView)
+        addFrontImageButton.addSubview(customFrontView)
         view.addSubview(addFrontImageButton)
-        view.addSubview(customBackView)
+        addBackImageButton.addSubview(customBackView)
         view.addSubview(addBackImageButton)
         view.addSubview(backButton)
     }
@@ -132,28 +132,39 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     
     private func configureUI() {
         customFrontView.layer.cornerRadius = 40
-        customFrontView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
+        customFrontView.backgroundColor = .clear
         customFrontView.layer.masksToBounds = true
         customFrontView.contentMode = .scaleAspectFill
         
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 55)
         
-        addFrontImageButton.backgroundColor = .clear
+        addFrontImageButton.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         addFrontImageButton.tintColor = UIColor(resource: .Colors.colorText)
         addFrontImageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
         addFrontImageButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         addFrontImageButton.addTarget(self, action: #selector(tapOnAlertButton), for: .touchUpInside)
+        addFrontImageButton.layer.cornerRadius = 40
+        addFrontImageButton.layer.shadowColor = UIColor.black.cgColor
+        addFrontImageButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        addFrontImageButton.layer.shadowRadius = 5
+        addFrontImageButton.layer.shadowOpacity = 0.20
         
-        customBackView.layer.cornerRadius = 40
-        customBackView.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
+        customBackView.backgroundColor = .clear
         customBackView.layer.masksToBounds = true
         customBackView.contentMode = .scaleAspectFill
+        customBackView.layer.cornerRadius = 40
         
-        addBackImageButton.backgroundColor = .clear
+        addBackImageButton.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         addBackImageButton.tintColor = UIColor(resource: .Colors.colorText)
         addBackImageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
         addBackImageButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         addBackImageButton.addTarget(self, action: #selector(tapOnAlertButton2), for: .touchUpInside)
+        addBackImageButton.layer.cornerRadius = 40
+        addBackImageButton.layer.shadowColor = UIColor.black.cgColor
+        addBackImageButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        addBackImageButton.layer.shadowRadius = 5
+        addBackImageButton.layer.shadowOpacity = 0.20
+
         
         titleLabel.text = NSLocalizedString("App.AddDiscountView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
@@ -177,6 +188,10 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         createButton.backgroundColor = UIColor(resource: .Colors.colorButton)
         createButton.layer.cornerRadius = 35
         createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        createButton.layer.shadowColor = UIColor.black.cgColor
+        createButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        createButton.layer.shadowRadius = 5
+        createButton.layer.shadowOpacity = 0.20
         
         backButton.tintColor = UIColor(resource: .Colors.colorText)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
@@ -185,6 +200,10 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         backButton.addTarget(self, action: #selector(self.goBack), for: .touchUpInside)
         backButton.backgroundColor = UIColor(resource: .Colors.backgroundColorItem)
         backButton.layer.cornerRadius = 27.5
+        backButton.layer.shadowColor = UIColor.black.cgColor
+        backButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backButton.layer.shadowRadius = 5
+        backButton.layer.shadowOpacity = 0.20
     }
     
     private func setupBindings() {

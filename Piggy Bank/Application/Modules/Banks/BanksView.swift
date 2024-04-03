@@ -4,17 +4,8 @@ final class BanksView: UIViewController {
     
     // MARK: - Properties
     
-    var viewModel: BanksViewModel! {
-        didSet {
-            viewModel.transition = { [weak self] addBanksView in
-                self?.navigationController?.pushViewController(addBanksView, animated: true)
-            }
-            viewModel.setupBanks = { [weak self] banks in
-                self?.banksList = banks
-            }
-        }
-    }
-    
+    var viewModel = BanksViewModel()
+        
     var banksList = [Bank]() {
         didSet {
             tableView.reloadData()
@@ -32,13 +23,13 @@ final class BanksView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
-        navigationController?.navigationBar.isHidden = true
         addSubviews()
         configureConstraints()
         configureUI()
         setupTableView()
         tableView.reloadData()
         viewModel = BanksViewModel()
+        navigationCont()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +90,16 @@ final class BanksView: UIViewController {
         addButton.layer.shadowOpacity = 0.20
     }
     
+    private func navigationCont() {
+        viewModel.transition = { [weak self] addBanksView in
+            self?.navigationController?.pushViewController(addBanksView, animated: true)
+        }
+        viewModel.setupBanks = { [weak self] banks in
+            self?.banksList = banks
+        }
+        navigationController?.navigationBar.isHidden = true
+    }
+
     // MARK: - Actions
     
     @objc private func transitionToAddBanksView() {

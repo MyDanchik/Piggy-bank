@@ -9,32 +9,32 @@ class CustomTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let firstViewController = UINavigationController(rootViewController: DiscountView())
-        firstViewController.tabBarItem.title = nil
-        firstViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        firstViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.discount)
+        let discounViewController = UINavigationController(rootViewController: DiscountView())
+        discounViewController.tabBarItem.title = nil
+        discounViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        discounViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.discount)
         
-        let secondViewController = UINavigationController(rootViewController: BanksView())
-        secondViewController.tabBarItem.title = nil
-        secondViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        secondViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.banks)
+        let banksViewController = UINavigationController(rootViewController: BanksView())
+        banksViewController.tabBarItem.title = nil
+        banksViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        banksViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.banks)
         
-        let thirdViewController = UINavigationController(rootViewController: ExchangeView())
-        thirdViewController.tabBarItem.title = nil
-        thirdViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        thirdViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.exchange)
+        let exchangeViewController = UINavigationController(rootViewController: ExchangeView())
+        exchangeViewController.tabBarItem.title = nil
+        exchangeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        exchangeViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.exchange)
         
-        let fourthViewController = UINavigationController(rootViewController: ConverterView())
-        fourthViewController.tabBarItem.title = nil
-        fourthViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        fourthViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.converter)
+        let converterViewController = UINavigationController(rootViewController: ConverterView())
+        converterViewController.tabBarItem.title = nil
+        converterViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        converterViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.converter)
         
-        let fourthViewController1 = UINavigationController(rootViewController: DefaultLogInView())
-        fourthViewController1.tabBarItem.title = nil
-        fourthViewController1.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
-        fourthViewController1.tabBarItem.image = UIImage(resource: .Images.TapBar.settings)
+        let settingsViewController = UINavigationController(rootViewController: SettingsViewController())
+        settingsViewController.tabBarItem.title = nil
+        settingsViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
+        settingsViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.settings)
         
-        viewControllers = [firstViewController, secondViewController, thirdViewController, fourthViewController]
+        viewControllers = [discounViewController, banksViewController, exchangeViewController, converterViewController, settingsViewController]
         
         tabBar.tintColor = UIColor(resource: .Colors.tintSelectColorTapBar)
         tabBar.unselectedItemTintColor = UIColor(resource: .Colors.tintColorTapBar)

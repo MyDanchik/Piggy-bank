@@ -6,7 +6,9 @@ final class InfoDiccountView: UIViewController {
     
     private let titleLabel = UILabel()
     private let customFrontView = UIImageView()
+    private let frontView = UIView()
     private let customBackView = UIImageView()
+    private let backView = UIView()
     
     // MARK: - Lifecycle Methods
     
@@ -31,8 +33,11 @@ final class InfoDiccountView: UIViewController {
     
     private func addSubviews() {
         view.addSubview(titleLabel)
-        view.addSubview(customFrontView)
-        view.addSubview(customBackView)
+        frontView.addSubview(customFrontView)
+        view.addSubview(frontView)
+        backView.addSubview(customBackView)
+        view.addSubview(backView)
+        
     }
     
     private func configureConstraints() {
@@ -46,11 +51,23 @@ final class InfoDiccountView: UIViewController {
         customFrontView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         customFrontView.heightAnchor.constraint(equalToConstant: 210).isActive = true
         
+        frontView.translatesAutoresizingMaskIntoConstraints = false
+        frontView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50).isActive = true
+        frontView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
+        frontView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
+        frontView.heightAnchor.constraint(equalToConstant: 210).isActive = true
+        
         customBackView.translatesAutoresizingMaskIntoConstraints = false
         customBackView.topAnchor.constraint(equalTo: customFrontView.bottomAnchor, constant: -20).isActive = true
         customBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 57).isActive = true
         customBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -57).isActive = true
         customBackView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        backView.topAnchor.constraint(equalTo: customFrontView.bottomAnchor, constant: -20).isActive = true
+        backView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 57).isActive = true
+        backView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -57).isActive = true
+        backView.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
     
     private func configureUI() {
@@ -60,22 +77,26 @@ final class InfoDiccountView: UIViewController {
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
         
         customFrontView.contentMode = .scaleAspectFill
-        customFrontView.layer.shadowColor = UIColor.black.cgColor
-        customFrontView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customFrontView.layer.shadowRadius = 6
-        customFrontView.layer.shadowOpacity = 0.20
         customFrontView.layer.cornerRadius = 30
-        customFrontView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         customFrontView.layer.masksToBounds = true
         
+        frontView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
+        frontView.layer.shadowColor = UIColor.black.cgColor
+        frontView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        frontView.layer.shadowRadius = 6
+        frontView.layer.shadowOpacity = 0.20
+        frontView.layer.cornerRadius = 30
+        
         customBackView.contentMode = .scaleAspectFill
-        customBackView.layer.shadowColor = UIColor.black.cgColor
-        customBackView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        customBackView.layer.shadowRadius = 6
-        customBackView.layer.shadowOpacity = 0.20
         customBackView.layer.cornerRadius = 30
-        customBackView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         customBackView.layer.masksToBounds = true
+        
+        backView.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
+        backView.layer.shadowColor = UIColor.black.cgColor
+        backView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        backView.layer.shadowRadius = 6
+        backView.layer.shadowOpacity = 0.20
+        backView.layer.cornerRadius = 30
     }
     
     // MARK: - Public Methods

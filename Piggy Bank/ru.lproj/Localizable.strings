@@ -5,7 +5,7 @@
 "App.DiscountView.AlertDelete.No" = "Нет";
 
 // MARK: - AddDiscountView
-"App.AddDiscountView.NavigationItemTitle" = "Создание дискотной";
+"App.AddDiscountView.NavigationItemTitle" = "Создать";
 "App.AddDiscountView.NameLabel" = "Имя";
 "App.AddDiscountView.NameTextField" = "Введите имя";
 "App.AddDiscountView.СreateButton" = "Создать";
@@ -29,7 +29,7 @@
 "App.ModifyBanksView.CreateButton" = "Внести";
 
 // MARK: - AddBanksView
-"App.AddBanksView.NavigationItemTitle" = "Создать копилку";
+"App.AddBanksView.NavigationItemTitle" = "Создать";
 "App.AddBanksView.IconLabel" = "Ярлык";
 "App.AddBanksView.NameLabel" = "Название";
 "App.AddBanksView.NameTextField" = "Введите название";
