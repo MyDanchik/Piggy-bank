@@ -5,6 +5,7 @@ final class InfoDiccountView: UIViewController {
     // MARK: - UI Elements
     
     private let titleLabel = UILabel()
+    private let infoLabel = UILabel()
     private let customFrontView = UIImageView()
     private let frontView = UIView()
     private let customBackView = UIImageView()
@@ -33,6 +34,7 @@ final class InfoDiccountView: UIViewController {
     
     private func addSubviews() {
         view.addSubview(titleLabel)
+        view.addSubview(infoLabel)
         frontView.addSubview(customFrontView)
         view.addSubview(frontView)
         backView.addSubview(customBackView)
@@ -40,19 +42,25 @@ final class InfoDiccountView: UIViewController {
         
     }
     
+    //MARK: - Configure constraintes
+    
     private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 90).isActive = true
+        
         customFrontView.translatesAutoresizingMaskIntoConstraints = false
-        customFrontView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50).isActive = true
+        customFrontView.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 15).isActive = true
         customFrontView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         customFrontView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         customFrontView.heightAnchor.constraint(equalToConstant: 210).isActive = true
         
         frontView.translatesAutoresizingMaskIntoConstraints = false
-        frontView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50).isActive = true
+        frontView.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 15).isActive = true
         frontView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 27).isActive = true
         frontView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -27).isActive = true
         frontView.heightAnchor.constraint(equalToConstant: 210).isActive = true
@@ -70,11 +78,17 @@ final class InfoDiccountView: UIViewController {
         backView.heightAnchor.constraint(equalToConstant: 160).isActive = true
     }
     
+    //MARK: - Configure UI
+    
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
         
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .semiBold)
+        
+        infoLabel.textColor = UIColor(resource: .Colors.colorText)
+        infoLabel.font = UIFont.rubik(ofSize: 20, style: .light)
+        infoLabel.text = NSLocalizedString("App.AddDiscountView.InfoLabel", comment: "")
         
         customFrontView.contentMode = .scaleAspectFill
         customFrontView.layer.cornerRadius = 30
@@ -100,6 +114,7 @@ final class InfoDiccountView: UIViewController {
     }
     
     // MARK: - Public Methods
+    
     func configureFullBirthdays(discounts: Discount) {
         if let imageData = discounts.imageFrontDiscount, let frontDiscount = UIImage(data: imageData) {
             customFrontView.image = frontDiscount

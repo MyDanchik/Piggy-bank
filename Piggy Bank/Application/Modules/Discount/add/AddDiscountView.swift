@@ -63,6 +63,8 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         view.addSubview(backButton)
     }
     
+    //MARK: - Configure constraintes
+    
     private func configureConstraints() {
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -129,6 +131,8 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         backButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
+    
+    //MARK: - Configure UI
     
     private func configureUI() {
         customFrontView.layer.cornerRadius = 40

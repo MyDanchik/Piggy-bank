@@ -15,6 +15,9 @@
 "App.AddDiscountView.TapOnALertButton.Eror" = "Ошибка";
 "App.AddDiscountView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
 
+// MARK: - InfoDiccountView
+"App.AddDiscountView.InfoLabel" = "Ваша дисконтная карта";
+
 // MARK: - BanksView
 "App.BanksView.NavigationItemTitle" = "Копилки";
 "App.BanksView.AlertDelete.Message" = "Хотите удалить?";
