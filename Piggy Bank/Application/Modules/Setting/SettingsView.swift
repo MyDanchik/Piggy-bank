@@ -1,11 +1,12 @@
 import UIKit
 
-//MARK: - Final class SettingsViewController
-
-final class SettingsViewController: UIViewController {
+final class SettingsView: UIViewController {
     
-    // MARK: - Public Properties    
+    // MARK: - Properties
+    
     private var viewModel: SettingsViewModel!
+    
+    // MARK: - UI Elements
     
     private let titleLabel = UILabel()
     private let aboutOfUseView = UIView()
@@ -20,6 +21,7 @@ final class SettingsViewController: UIViewController {
     private let privacyPolicyButton = UIButton(type: .system)
     
     // MARK: - LyfeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = SettingsViewModel()
@@ -113,7 +115,7 @@ final class SettingsViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Colors.backgroundColorMain)
 
-        titleLabel.text = "Настройки"
+        titleLabel.text = NSLocalizedString("App.SettingsView.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Colors.colorText)
         titleLabel.font = UIFont.rubik(ofSize: 24, style: .bold)
                 
@@ -127,7 +129,7 @@ final class SettingsViewController: UIViewController {
         
         aboutLabel.textAlignment = .left
         aboutLabel.font = UIFont.rubik(ofSize: 15, style: .light)
-        aboutLabel.text = "About us"
+        aboutLabel.text = NSLocalizedString("App.SettingsView.AboutLabel", comment: "")
         
         iconPrivacyImageView.image = UIImage(named: "roundedPrivacy")?.withRenderingMode(.alwaysTemplate)
         iconPrivacyImageView.tintColor = UIColor(resource: .Colors.colorText)
@@ -139,7 +141,7 @@ final class SettingsViewController: UIViewController {
         
         privacyLabel.textAlignment = .left
         privacyLabel.font = UIFont.rubik(ofSize: 15, style: .light)
-        privacyLabel.text = "Privacy policy"
+        privacyLabel.text = NSLocalizedString("App.SettingsView.PrivacyLabel", comment: "")
         
         aboutOfUseButton.backgroundColor = UIColor(resource: .Colors.backgroundColorCell)
         aboutOfUseButton.addTarget(self, action: #selector(aboutOfUseButtonTapped), for: .touchUpInside)

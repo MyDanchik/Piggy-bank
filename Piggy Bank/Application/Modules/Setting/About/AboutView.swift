@@ -2,12 +2,18 @@ import UIKit
 
 final class AboutView: UIViewController {
     
+    // MARK: - Properties
+    
     var viewModel: AboutViewModel!
 
+    // MARK: - UI Elements
+    
     private let imageView = UIImageView()
     private let piggyImageView = UIImageView()
     private let infoLabel = UILabel()
     private let backButton = UIButton(type: .system)
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +32,16 @@ final class AboutView: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    // MARK: - Add subviews
+    
     private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(piggyImageView)
         view.addSubview(infoLabel)
         view.addSubview(backButton)
     }
+    
+    //MARK: - Configure constraintes
     
     private func configureConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +66,8 @@ final class AboutView: UIViewController {
         backButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
+    //MARK: - Configure UI
+    
     private func configureUI() {
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFill
@@ -64,7 +76,7 @@ final class AboutView: UIViewController {
         piggyImageView.image = UIImage(named: "PiggyImage")
         piggyImageView.contentMode = .scaleAspectFill
         
-        infoLabel.text = "Приложение предоставляет простой и удобный способ управлять финансами. В нем есть функции для создания дисконтных карт и копилок, отслеживания курсов валют и конвертации средств."
+        infoLabel.text = NSLocalizedString("App.AboutView.InfoLabel", comment: "")
         infoLabel.textColor = .white
         infoLabel.numberOfLines = 0
         infoLabel.textAlignment = .center
@@ -78,6 +90,8 @@ final class AboutView: UIViewController {
         backButton.backgroundColor = .clear
         backButton.layer.cornerRadius = 27.5
     }
+    
+    //MARK: - Actions
     
     @objc private func goBack() {
         navigationController?.popViewController(animated: true)

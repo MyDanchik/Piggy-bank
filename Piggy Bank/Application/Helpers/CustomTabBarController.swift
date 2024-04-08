@@ -29,7 +29,7 @@ class CustomTabBarController: UITabBarController {
         converterViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         converterViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.converter)
         
-        let settingsViewController = UINavigationController(rootViewController: SettingsViewController())
+        let settingsViewController = UINavigationController(rootViewController: SettingsView())
         settingsViewController.tabBarItem.title = nil
         settingsViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 15, left: 0, bottom: -15, right: 0)
         settingsViewController.tabBarItem.image = UIImage(resource: .Images.TapBar.settings)

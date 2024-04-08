@@ -48,3 +48,10 @@
 // MARK: - ConverterView
 "App.ConverterView.NavigationItemTitle" = "Converter";
 
+// MARK: - SettingsView
+"App.SettingsView.NavigationItemTitle" = "Settings";
+"App.SettingsView.AboutLabel" = "About us";
+"App.SettingsView.PrivacyLabel" = "Privacy policy";
+
+// MARK: - AboutView
+"App.AboutView.InfoLabel" = "The app provides a simple and convenient way to manage your finances. It has functions for creating discount cards and piggy banks, tracking exchange rates and converting funds.";

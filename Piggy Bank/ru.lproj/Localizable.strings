@@ -48,3 +48,10 @@
 // MARK: - ConverterView
 "App.ConverterView.NavigationItemTitle" = "Конвертер";
 
+// MARK: - SettingsView
+"App.SettingsView.NavigationItemTitle" = "Настройки";
+"App.SettingsView.AboutLabel" = "О нас";
+"App.SettingsView.PrivacyLabel" = "Политика конфиденциальности";
+
+// MARK: - AboutView
+"App.AboutView.InfoLabel" = "Приложение предоставляет простой и удобный способ управлять финансами. В нем есть функции для создания дисконтных карт и копилок, отслеживания курсов валют и конвертации средств.";
