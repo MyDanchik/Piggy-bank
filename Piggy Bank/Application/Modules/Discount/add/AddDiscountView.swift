@@ -16,8 +16,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     private let nameTextField = UITextField()
     private let createButton = UIButton(type: .system)
     private let lineNameTextFieldLabel = UILabel()
-    private let iconLabel = UILabel()
-    private let imageView = UIImageView()
     private let customFrontView = UIImageView()
     private let addFrontImageButton = UIButton(type: .system)
     private let customBackView = UIImageView()
@@ -54,8 +52,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         view.addSubview(lineNameTextFieldLabel)
         view.addSubview(nameTextField)
         view.addSubview(nameLabel)
-        view.addSubview(iconLabel)
-        view.addSubview(imageView)
         addFrontImageButton.addSubview(customFrontView)
         view.addSubview(addFrontImageButton)
         addBackImageButton.addSubview(customBackView)
@@ -66,16 +62,6 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
     //MARK: - Configure constraintes
     
     private func configureConstraints() {
-        iconLabel.translatesAutoresizingMaskIntoConstraints = false
-        iconLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        iconLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20).isActive = true
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: -100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 106).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 106).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -90,7 +76,7 @@ final class AddDiscountView: UIViewController, UINavigationControllerDelegate {
         nameTextField.widthAnchor.constraint(equalTo: createButton.widthAnchor, multiplier: 0.7).isActive = true
         
         lineNameTextFieldLabel.translatesAutoresizingMaskIntoConstraints = false
-        lineNameTextFieldLabel.bottomAnchor.constraint(equalTo: customFrontView.topAnchor, constant: -60).isActive = true
+        lineNameTextFieldLabel.bottomAnchor.constraint(equalTo: customFrontView.topAnchor, constant: -35).isActive = true
         lineNameTextFieldLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         lineNameTextFieldLabel.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineNameTextFieldLabel.widthAnchor.constraint(equalTo: createButton.widthAnchor, multiplier: 0.7).isActive = true
