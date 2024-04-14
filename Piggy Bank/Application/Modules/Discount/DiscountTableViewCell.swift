@@ -5,9 +5,9 @@ final class DiscountTableViewCell: UITableViewCell {
     
     // MARK: - UI Elements
     
-    let customView = UIView()
-    let nameLabel = UILabel()
-    let imageCard = UIImageView()
+    private let customView = UIView()
+    private let nameLabel = UILabel()
+    private let imageCard = UIImageView()
     
     // MARK: - Initializers
     

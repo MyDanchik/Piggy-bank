@@ -1,6 +1,6 @@
 import UIKit
 
-class ConverterView: UIViewController {
+final class ConverterView: UIViewController {
     
     // MARK: - Properties
     

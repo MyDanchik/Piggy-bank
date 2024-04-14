@@ -1,6 +1,6 @@
 import UIKit
 
-class ExchangeViewModel {
+final class ExchangeViewModel {
     
     // MARK: - Properties
     
