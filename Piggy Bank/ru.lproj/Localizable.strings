@@ -1,0 +1,60 @@
+// MARK: - DiscountView
+"App.DiscountView.NavigationItemTitle" = "Дисконтные";
+"App.DiscountView.AlertDelete.Message" = "Хотите удалить?";
+"App.DiscountView.AlertDelete.Yes" = "Да";
+"App.DiscountView.AlertDelete.No" = "Нет";
+
+// MARK: - AddDiscountView
+"App.AddDiscountView.NavigationItemTitle" = "Создать";
+"App.AddDiscountView.NameLabel" = "Имя";
+"App.AddDiscountView.NameTextField" = "Введите имя";
+"App.AddDiscountView.СreateButton" = "Создать";
+"App.AddDiscountView.TapOnALertButton.camera" = "Камера";
+"App.AddDiscountView.TapOnALertButton.gallery" = "Галерея";
+"App.AddDiscountView.TapOnALertButton.cancel" = "Отмена";
+"App.AddDiscountView.TapOnALertButton.Eror" = "Ошибка";
+"App.AddDiscountView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
+
+// MARK: - InfoDiccountView
+"App.AddDiscountView.InfoLabel" = "Ваша дисконтная карта";
+
+// MARK: - BanksView
+"App.BanksView.NavigationItemTitle" = "Копилки";
+"App.BanksView.AlertDelete.Message" = "Хотите удалить?";
+"App.BanksView.AlertDelete.Yes" = "Да";
+"App.BanksView.AlertDelete.No" = "Нет";
+
+// MARK: - ModifyBanksView
+"App.ModifyBanksView.SavedLabel" = "Сохранено";
+"App.ModifyBanksView.LeftLabel" = "Осталось";
+"App.ModifyBanksView.ReplenishLabel" = "Пополнить";
+"App.ModifyBanksView.ReplenishTextLabel" = "Введите сумму";
+"App.ModifyBanksView.CreateButton" = "Внести";
+
+// MARK: - AddBanksView
+"App.AddBanksView.NavigationItemTitle" = "Создать";
+"App.AddBanksView.IconLabel" = "Ярлык";
+"App.AddBanksView.NameLabel" = "Название";
+"App.AddBanksView.NameTextField" = "Введите название";
+"App.AddBanksView.SumLabel" = "Сумма";
+"App.AddBanksView.SumTextField" = "Введите сумму";
+"App.AddBanksView.CreateButton" = "Создать";
+"App.AddBanksView.TapOnALertButton.Eror" = "Ошибка";
+"App.AddBanksView.TapOnALertButton.Message" = "Пожалуйста, заполните все необходимые поля.";
+
+// MARK: - ExchangeView
+"App.ExchangeView.NavigationItemTitle" = "Курсы валют";
+"App.ExchangeView.LastUpdatedLabel" = "Обновлено: ";
+"App.ExchangeView.TapOnALertButton.Update" = "Курсы обновлены";
+"App.ExchangeView.TapOnALertButton.Message" = "Обновлено: ";
+
+// MARK: - ConverterView
+"App.ConverterView.NavigationItemTitle" = "Конвертер";
+
+// MARK: - SettingsView
+"App.SettingsView.NavigationItemTitle" = "Настройки";
+"App.SettingsView.AboutLabel" = "О нас";
+"App.SettingsView.PrivacyLabel" = "Политика конфиденциальности";
+
+// MARK: - AboutView
+"App.AboutView.InfoLabel" = "Приложение предоставляет простой и удобный способ управлять финансами. В нем есть функции для создания дисконтных карт и копилок, отслеживания курсов валют и конвертации средств.";

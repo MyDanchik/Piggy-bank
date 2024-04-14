@@ -1,0 +1,60 @@
+// MARK: - DiscountView
+"App.DiscountView.NavigationItemTitle" = "Discount";
+"App.DiscountView.AlertDelete.Message" = "Do you want to remove?";
+"App.DiscountView.AlertDelete.Yes" = "Yes";
+"App.DiscountView.AlertDelete.No" = "No";
+
+// MARK: - AddDiscountView
+"App.AddDiscountView.NavigationItemTitle" = "Creat discount";
+"App.AddDiscountView.NameLabel" = "Name";
+"App.AddDiscountView.NameTextField" = "Enter name";
+"App.AddDiscountView.СreateButton" = "Сreate";
+"App.AddDiscountView.TapOnALertButton.camera" = "Camera";
+"App.AddDiscountView.TapOnALertButton.gallery" = "Gallery";
+"App.AddDiscountView.TapOnALertButton.cancel" = "Cancel";
+"App.AddDiscountView.TapOnALertButton.Eror" = "Eror";
+"App.AddDiscountView.TapOnALertButton.Message" = "Please fill in all required fields.";
+
+// MARK: - InfoDiccountView
+"App.AddDiscountView.InfoLabel" = "Your discont card data";
+
+// MARK: - BanksView
+"App.BanksView.NavigationItemTitle" = "Piggy banks";
+"App.BanksView.AlertDelete.Message" = "Do you want to remove?";
+"App.BanksView.AlertDelete.Yes" = "Yes";
+"App.BanksView.AlertDelete.No" = "No";
+
+// MARK: - ModifyBanksView
+"App.ModifyBanksView.SavedLabel" = "Saved";
+"App.ModifyBanksView.LeftLabel" = "Left";
+"App.ModifyBanksView.ReplenishLabel" = "Replenish";
+"App.ModifyBanksView.ReplenishTextLabel" = "Enter the amount";
+"App.ModifyBanksView.CreateButton" = "Modify";
+
+// MARK: - AddBanksView
+"App.AddBanksView.NavigationItemTitle" = "Creat piggy banks";
+"App.AddBanksView.IconLabel" = "Icon";
+"App.AddBanksView.NameLabel" = "Name";
+"App.AddBanksView.NameTextField" = "Enter name";
+"App.AddBanksView.SumLabel" = "Sum";
+"App.AddBanksView.SumTextField" = "Enter sum";
+"App.AddBanksView.CreateButton" = "Create";
+"App.AddBanksView.TapOnALertButton.Eror" = "Eror";
+"App.AddBanksView.TapOnALertButton.Message" = "Please fill in all required fields.";
+
+// MARK: - ExchangeView
+"App.ExchangeView.NavigationItemTitle" = "Exchange Rate";
+"App.ExchangeView.LastUpdatedLabel" = "Last updated: ";
+"App.ExchangeView.TapOnALertButton.Update" = "Courses updated";
+"App.ExchangeView.TapOnALertButton.Message" = "Update: ";
+
+// MARK: - ConverterView
+"App.ConverterView.NavigationItemTitle" = "Converter";
+
+// MARK: - SettingsView
+"App.SettingsView.NavigationItemTitle" = "Settings";
+"App.SettingsView.AboutLabel" = "About us";
+"App.SettingsView.PrivacyLabel" = "Privacy policy";
+
+// MARK: - AboutView
+"App.AboutView.InfoLabel" = "The app provides a simple and convenient way to manage your finances. It has functions for creating discount cards and piggy banks, tracking exchange rates and converting funds.";
